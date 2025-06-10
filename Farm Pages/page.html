@@ -1,0 +1,3192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My-Dashboard</title>
+</head>
+<!----==== styles csss===----->
+<link rel="stylesheet" href="design.css">
+  <!----===== script js ====--->
+  <script src="script.js" defer></script>
+l
+  
+<!--Chart .js-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!--Iconifyy icons-->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+
+
+<body>
+
+      
+
+    <header class="dashboard-header">
+      <div class="logo-section">
+        <img src="Company logo.jpg" alt="ATS Logo" class="logo"/>
+        <button id="toggleSidebar">&#9776;</button>
+        <div class="company-name">
+        </div>
+      </div>
+      <h1 class="dashboard-title">Admin Dashboard</h1>
+      <div class="header-right">
+        
+        <div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search...."/>
+  <i class="fa-solid fa-magnifying-glass" id="searchBtn"></i>
+</div>
+
+        
+        <div class="icons">
+
+        <div class="notification" id="notificationBell" title="Notifications">
+        <div class="icon-wrapper notification">
+          <i class="fas fa-bell icon"></i>
+
+  <span class="notificationbadge" id="badgeCount">3</span>
+</div>
+
+ 
+<div class="dropdown" id="notificationDropdown">
+   
+   <div class="notification-header">
+    <span>Notifications</span>
+  </div>
+
+
+  <div class="dropdown-item unread" data-index="0">
+    <p><strong>Megha</strong> placed an order of 20 liters milk & 12kgs of panneer</p>
+    <div class="timestamp">Just now</div>
+  </div>
+   <div class="dropdown-item unread" data-index="0">
+    <p><strong>Order #1143</strong> placed 20 liters milk just now</p>
+    <div class="timestamp">Just now</div>
+  </div>
+  <div class="dropdown-item unread" data-index="1">
+    <p><strong>Order #1144</strong> placed 15 liters milk</p>
+    <div class="timestamp">5 minutes ago</div>
+  </div>
+  <div class="dropdown-item read" data-index="2">
+    <p><strong>Order #1145</strong> placed 10 liters milk</p>
+    <div class="timestamp">42 minutes ago</div>
+  </div>
+   <div class="dropdown-item read" data-index="3">
+      <p><strong>Neha</strong> signed up as a new customer</p>
+      <div class="timestamp">1 hour ago</div>
+    </div>
+  <div class="dropdown-item read" data-index="4">
+    <p><strong>Milk stock updated</strong></p>
+    <div class="timestamp">Yesterday</div>
+  </div>
+  <div class="dropdown-item read" data-index="5">
+    <p><strong>System maintenance</strong></p>
+    <div class="timestamp">2 days ago</div>
+  </div>
+  
+</div>
+
+
+
+          </div>
+            <div class="icon-wrapper message">
+         <i class="fas fa-envelope icon"></i>
+          <span class="badge">6</span>
+          </div>
+
+           <div class="icon-wrapper globe">
+          <i class="fas fa-globe icon"></i> <!-- Language or globe -->
+        </div>
+          <!-- Wrap profile area in a button or link -->
+      <div class="profile" id="profileTrigger">
+        <img src="customer.jpg" alt="User" class="avatar" />
+        <span>Mark Williams</span>
+      </div>
+
+      
+    </header>
+
+
+
+ 
+
+
+        <!-------====== New Navigation =====--->
+     
+        
+            <div class="navigation">
+                
+                  <ul id="sidebarMenu"> 
+
+                    <li class="active">
+                        <a href="page.html">
+                            <span class="icon">
+                            <i class="fa-solid fa-table-columns"></i></span>
+                            <span class="tittle">Dashboard</span>
+                        </a>    
+                    </li>
+                    <li>
+                        <a href="human.html">
+                            <span class="icon"><i class="fa-solid fa-person"></i></span>
+                            <span class="tittle">Human Resources
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                        </a>    
+                    </li>
+                    <li>
+                        <a href="customer.html">
+                            <span class="icon"><i class="fa-solid fa-people-arrows"></i></span>
+                            <span class="tittle">Customers
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                        </a>    
+                    </li>
+                   
+                    <li>
+                        <a href="monitor.html">
+                            <span class="icon"><i class="fa-solid fa-desktop"></i></span>
+                            <span class="tittle">Animals Monitor
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+            
+                        </a>    
+                    </li>
+                    <li>
+                        <a href="Manage.html">
+            
+                            <span class="icon"><i class="fa-solid fa-cow"></i></span>
+                             
+                            <span class="tittle">Manage Stall
+                            <i class="fa-solid fa-chevron-right icon-right"></i>
+                         
+                            </span>
+                        </a>    
+                    </li>
+
+                  <li class="submenu">
+
+  <a href="#" class="submenu-toggle">
+    <span class="icon"> <iconify-icon icon="mdi:storefront-outline"></iconify-icon></span>
+    <span class="tittle">Bussiness Units</span>
+     <i class="fa-solid fa-chevron-down submenu-arrow"></i> 
+  </a>
+  <ul class="submenu-items">
+  <li>
+    <a href="retail.html">
+      Retail
+      <i class="fa-solid fa-chevron-right icon-right"></i>
+    </a>
+  </li>
+  <li>
+    <a href="franchise.html">
+      Franchise
+      <i class="fa-solid fa-chevron-right icon-right"></i>
+    </a>
+  </li>
+</ul>
+</li>
+                    
+                    <li>
+                        <a href="settings.htm">
+                            <span class="icon"><i class="fa-solid fa-gear"></i></span>
+                            <span class="tittle">Settings
+                          <i class="fa-solid fa-chevron-right icon-right"></i>
+                        </span>
+                        </a>    
+                    </li>     
+                    
+                    <li>
+                        <a href="report.html">
+                            <span class="icon"><i class="fa-solid fa-flag-checkered"></i></span>
+                            <span class="tittle">Reports
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                        </a>    
+                    </li>
+
+                    <li class="logout-nav">
+           <a href="#" onclick="logout()">
+        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+        <span class="tittle">Logout
+           <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                </a>
+                </li>
+                </ul>
+            </div>
+        
+        
+
+          <!---==main page ==-->
+
+          <!-- === Main Content Start === -->
+      <main class="content-area">
+
+     
+         <div class="dashboard-cards">
+  <!-- Revenue Overview -->
+  <div class="card">
+    <div class="card-header">
+      <div class="iconss revenue"><i class="fa-solid fa-sack-dollar"></i></div>
+      <div>
+        <h3>₹ 10,918,258</h3>
+        <p>Revenue Overview</p>
+        <small class="trend positive">▲ 12% from last year</small>
+      </div>
+    </div>
+    <div class="chart-placeholder"><canvas id="revenueChart" width="80" height="80"></canvas>
+</div>
+
+
+   <div class="legend-items">
+  <div class="legend-item">
+    <span class="color-box milk"></span>
+    <small>Milk</small>
+  </div>
+  <div class="legend-item">
+    <span class="color-box butter"></span>
+    <small>Butter</small>
+  </div>
+  <div class="legend-item">
+    <span class="color-box ghee"></span>
+    <small>Ghee</small>
+  </div>
+</div>
+
+  </div>
+
+  <!-- Customer Retention -->
+  <div class="card">
+    <div class="card-header">
+      <div class="iconss engagement"><i class="fa-solid fa-face-smile"></i></div>
+      <div>
+        <h3>87%</h3>
+        <p>Customer Retention</p>
+        <small class="trend positive">▲ 4% YoY</small>
+      </div>
+    </div>
+    <div class="chart-placeholder"> <canvas id="retentionTrend"></canvas>
+</div>
+  </div>
+
+  <!-- Inventory Utilization -->
+  <div class="card">
+    <div class="card-header">
+      <div class="iconss inventory"><i class="fa-solid fa-boxes-stacked"></i></div>
+      <div>
+        <h3>68%</h3>
+        <p>Inventory Utilization</p>
+        <small class="trend negative">↓ 5% from last month</small>
+      </div>
+    </div>
+    <div class="chart-placeholder"><canvas id="inventoryCircle" width="100" height="100"></canvas>
+</div>
+   
+    
+   <div class="legend-items">
+  <div class="legend-item">
+    <span class="color-box Feed"></span>
+    <small>Feed</small>
+  </div>
+  <div class="legend-item">
+    <span class="color-box Milk"></span>
+    <small>Milk</small>
+  </div>
+  <div class="legend-item">
+    <span class="color-box Equipment"></span>
+    <small>Equipment</small>
+  </div>
+</div>
+  </div>
+
+  <!-- Profit Margin -->
+  <div class="card">
+    <div class="card-header">
+      <div class="iconss profit"><i class="fa-solid fa-percent"></i></div>
+      <div>
+        <h3>24%</h3>
+        <p>Profit Margin</p>
+        <small class="trend positive">▲ 3.2% from Q1</small>
+      </div>
+    </div>
+    <div class="visual-meter">
+      <span class="low"></span><span class="medium active"></span><span class="high"></span>
+    </div>
+    <small class="legend">Low / Medium / High</small>
+  </div>
+
+  <!-- Order Fulfillment -->
+  <div class="card">
+    <div class="card-header">
+      <div class="iconss fulfillment"><i class="fa-solid fa-truck-fast"></i></div>
+      <div>
+        <h3>92%</h3>
+        <p>Order Fulfillment</p>
+        <small class="trend positive">Avg time: 1.3 days</small>
+      </div>
+    </div>
+
+
+     <div class="order-progress-bar">
+    <div class="progress" style="width: 92%; background-color: #f57c00;"></div>
+  </div>
+  <span class="badge on-time">On-time</span>
+
+  <small class="legend">On-time / Delayed</small>
+</div>
+  
+
+  <!-- Farmers Engaged -->
+
+<div class="card">
+  <div class="card-header">
+    <div class="iconss farmers"><i class="fa-solid fa-people-group"></i></div>
+    <div>
+      <h3>1,220</h3>
+      <p>Active Farmers</p>
+      <small class="trend positive">▲ 6.5% from last quarter</small>
+    </div>
+  </div>
+
+  <!-- Horizontal Progress Bar -->
+  <div class="order-progress-bar">
+    <div class="progress" style="width: 78%;  background-color: #10b981;"></div>
+  </div>
+  <span class="badge engaged">78% Engaged</span>
+
+  <small class="legend">Participation Rate</small>
+</div>
+
+</div>
+
+
+<!--Recent orders-->
+
+        <div class="details">
+          <div class="recentOrders">  
+          <div class="cardheader">
+              <h2>RecentOrders</h2>
+              <!-- <a href="#"class="btn">View All</a> -->
+              </div>
+              <table>
+                  <thead>
+                      <tr>
+                          <td>Name</td>
+                          <td>Price</td>
+                          <td>Payment</td>
+                          <td>Status</td>
+  
+                      </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Toned Milk</td>
+                              <td>₹ 8500</td>
+                              <td>Paid</td>
+                              <td class="status delivered">Delivered</td>
+                          </tr>
+                          <tr>
+                              <td>Doodla Butter</td>
+                              <td>₹ 9200</td>
+                              <td>Due</td>
+                              <td class="status pending">Pending</td>
+                          </tr>
+                          <tr>
+                              <td>Doodla Curd</td>
+                              <td>₹ 10000</td>
+                              <td>Paid</td>
+                              <td class="status inprogress">In progress</td>
+                          </tr>
+                          <tr>
+                              <td>Cow Ghee</td>
+                              <td>₹ 12895</td>
+                              <td>Paid</td>
+                              <td class="status return">Return</td>
+                          </tr>
+                          <tr>
+                              <td>Cream Milk</td>
+                              <td>₹ 11560</td>
+                              <td>Paid</td>
+                              <td class="status inprogress">In progress</td>
+                          </tr><tr>
+                            <td>Buffalo Ghee</td>
+                            <td>₹ 10345</td>
+                            <td>Paid</td>
+                            <td class="status delivered">Delivered</td>
+                        </tr>
+                          <tr>
+                              <td>Cheese</td>
+                              <td>₹ 6732</td>
+                              <td>Paid</td>
+                              <td class="status pending">pending</td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  </div>
+
+
+                  <!---==customers==-->
+                  <div class="recentcustomer">  
+                      <div class="cardheader">
+                          <h2>Recent Customers</h2>
+                  </div>
+
+                  <div class="customer-list"> 
+                  <table>
+                      <tr>
+                          <td width="60px">
+                              <div class="imgBx"><img src="customer 2.jpg" alt=""></div>
+                              </td>
+                              <td>
+                                  <h4>Ananya<br> <span>India</span></h4>
+                                  </td>
+                          </tr>
+                          <tr>
+                              <td width="60px">
+                                  <div class="imgBx"><img src="customer 3.jpg" alt=""></div>
+                                  </td>
+                                  <td>
+                                      <h4>Priya Sharma<br> <span>India</span></h4>
+                                      </td>
+                              </tr>
+                              <tr>
+                                  <td width="60px">
+                                      <div class="imgBx"><img src="customer 7.jpg" alt=""></div>
+                                      </td>
+                                      <td>
+                                          <h4>Aarav patel<br> <span>India</span></h4>
+                                          </td>
+                                  </tr>
+                                  <tr>
+                                      <td width="60px">
+                                          <div class="imgBx"><img src="mega cos.jpg" alt=""></div>
+                                          </td>
+                                          <td>
+                                              <h4>Megha<br> <span>India</span></h4>
+                                              </td>
+                                      </tr>
+                                      <tr>
+                                          <td width="60px">
+                                              <div class="imgBx"><img src="customer 4.jpg" alt=""></div>
+                                              </td>
+                                              <td>
+                                                  <h4>Meera desai<br> <span>India</span></h4>
+                                                  </td>
+                                          </tr>
+                                          <tr>
+                                              <td width="60px">
+                                                  <div class="imgBx"><img src="customer 6.jpg" alt=""></div>
+                                                  </td>
+                                                  <td>
+                                                      <h4>Kamal<br> <span>India</span></h4>
+                                                      </td>
+                                              </tr>
+                                              <tr>
+                                                  <td width="60px">
+                                                      <div class="imgBx"><img src="customer 5.jpg" alt=""></div>
+                                                      </td>
+                                                      <td>
+                                                          <h4>Pawan<br> <span>India</span></h4>
+                                                          </td>
+                                                  </tr>
+      <tr>
+      <td width="60px">
+   <div class="imgBx"><img src="W staff1.jpg" alt=""></div>
+     </td>
+      <td>
+      <h4>Sarah<br> <span>India</span></h4>
+       </td>
+       </tr>
+
+          <tr>
+        <td width="60px">
+   <div class="imgBx"><img src="staff1.jpg" alt=""></div>
+        </td>
+       <td>
+      <h4>Arjun<br> <span>England</span></h4>
+      </td>
+      </tr>                             
+                 </table>
+                </div>
+                </div>
+                      
+
+
+
+    <!--Milk production-->
+
+    <div class="milk-production-section">
+ 
+<div class="dashboard">
+  <h1>Milk Production and Dairy Information</h1>
+
+  <div class="main-layout">
+ 
+    <div class="left-grid">
+      
+      <div class="card">
+        <p class="title">Average Milk Yield per Lactating Cow</p>
+        <iconify-icon class="center-icon" icon="game-icons:cow" width="90" height="90"></iconify-icon>
+         <h2>27.6 <span class="unit">lit/day</span></h2>
+        <small>7-day avg</small>
+      </div>
+
+      <div class="card">
+        <p class="title">Cow Health Index</p>
+        <div class="icon heart"><i class="fas fa-heartbeat"></i></div>
+        <h2>82.5</h2>
+        <p class="status healthy">Healthy</p>
+      </div>
+      
+
+     <div class="card reproductive-card">
+  <p class="title">Reproductive Status Summary</p>
+  <div class="repro-row">
+    <div class="repro-labels">
+      <div>Pregnant</div>
+      <div>Open</div>
+      <div>Dry</div>
+      <div>Fresh</div>
+    </div>
+    <div class="repro-values">
+      <div>634</div>
+      <div>208</div>
+      <div>120</div>
+      <div>52</div>
+    </div>
+  </div>
+</div>
+
+      <div class="card">
+        <p class="title">Cow Turnover Rate</p>
+        
+    <div class="turnover-lameness-container">
+    <!-- Lameness Left -->
+    <div class="lameness">
+      <img src="cowicon.png" alt="Cow Icon" class="cow-img" />
+      <div class="lameness-text">
+        <p><strong>Lameness Detection Alerts</strong></p>
+        <p>5 cows flagged</p>
+        <small>Check activity logs</small>
+      </div>
+    </div>
+
+    <!-- Separator Line -->
+    <div class="separator"></div>
+
+    <!-- Turnover Right -->
+    <div class="turnover">
+      <div class="turn-item">
+
+         <div class="number up"><span class="arrow up">↑</span> 14</div>
+        <div class="label">New</div>
+      </div>
+      <div class="turn-item">
+        <div class="number down"><span class="arrow down">↓</span> 9</div>
+        <div class="label">Culled</div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+
+    
+    <div class="right-column">
+      <div class="card">
+        <p class="title">Somatic Cell Count <span>(SCC)</span></p>
+        
+    <h2 class="main-count">145,000</h2>
+    <h2 class="unit-label">cells/mL</h2>
+
+        <small>Avg of last 5 tests</small>
+      </div>
+
+      <div class="card">
+        <p class="title">Mastitis Incidence Rate</p>
+        <h2>3.2%</h2>
+        <small>Month of May</small>
+      </div>
+
+     <div class="card">
+  <p class="title">Body Condition Score (BCS) Distribution</p>
+
+  <div class="bcs-container">
+   
+    <div class="bcs-chart">
+      <canvas id="bcsChart" ></canvas>
+      <div class="bcs-percent">72%</div>
+    </div>
+
+
+    <div class="bcs-legend">
+      <div><span class="dot green"></span> Optimal</div>
+      <div><span class="dot orange"></span> Low</div>
+      <div><span class="dot red"></span> High</div>
+    </div>
+  </div>
+</div>
+
+     
+    </div>
+  </div>
+</div>
+
+
+   
+
+           <!--Revenue Charts-->
+
+        
+           <div class="chart">
+            <h2 class="chart-title">Monthly Revenue Chart</h2>
+            <canvas id="myChart" class="canvas2"></canvas>
+
+          </div>
+   
+          
+    <!-- Load Chart.js first for revenue -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+ 
+
+                <!--Expenses & inventories-->
+       
+ <div class="dashboard-container">
+    <!-- Expenses Section -->
+    <div class="expensescard">
+      <h3>Expenses</h3>
+      <div class="chart-placeholder">
+        <canvas id="expensesChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Feed Inventory Section -->
+    <div class="inventorycard">
+      <h3>Feed Inventory</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Feed Type</th>
+            <th>Quantity (kg)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alfalfa</td>
+            <td>500</td>
+            <td>Low</td>
+          </tr>
+          <tr>
+            <td>Silage</td>
+            <td>1200</td>
+            <td>Okay</td>
+          </tr>
+          <tr>
+            <td>Grain</td>
+            <td>800</td>
+            <td>Okay</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Milk Storage Section -->
+<div class="inventorycard">
+  <h3>Milk Storage</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Tank</th>
+        <th>Volume (L)</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tank A</td>
+        <td>950</td>
+        <td>Full</td>
+      </tr>
+      <tr>
+        <td>Tank B</td>
+        <td>750</td>
+        <td>Full</td>
+      </tr>
+      <tr>
+        <td>Tank C</td>
+        <td>300</td>
+        <td>Low</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+  
+
+
+
+
+                        <!--selling & offers-->
+  
+<div class="dual-box-container">
+
+              <!---Top Selling Products--->
+          
+                
+              <div class="top-selling">
+                <h2>Top Selling Dairy Products</h2>
+                <div class="carousel-wrapper">
+                  <button class="carousel-btn left">&#8592;</button>
+
+                  <div class="carousel-track" id="productCarousel">
+                  <div class="product-card">
+                    <img src="milk.jpg" alt="Milk Bottle">
+                    <h4>Fresh Milk</h4>
+                    <p>1,250 Liters Sold</p>
+                  </div>
+                  <div class="product-card">
+                    <img src="ghee.jpg" alt="Ghee">
+                    <h4>Pure Ghee</h4>
+                    <p>820 Kg Sold</p>
+                  </div>
+                  <div class="product-card">
+                    <img src="cheese.jpg" alt="Cheese">
+                    <h4>Cheddar Cheese</h4>
+                    <p>530 Kg Sold</p>
+                  </div>
+                  <div class="product-card">
+                    <img src="yogurt.jpg" alt="Yogurt">
+                    <h4>Organic Yogurt</h4>
+                    <p>670 Packs Sold</p>
+                  </div>
+                  <div class="product-card">
+                    <img src="butter.jpg" alt="Butter">
+                    <h4>Farm Butter</h4>
+                    <p>510 Packs Sold</p>
+                  </div>
+                  
+                  </div>
+
+                  <button class="carousel-btn right">&#8594;</button>
+
+                  </div>
+                </div>
+              
+
+
+                 <!-- Current Offers Card -->
+
+        <div class="current-offers">
+          <h2>Current Offers </h2>
+          <iconify-icon icon="bxs:offer" class="bxs-icon"></iconify-icon>
+          <div class="offer-item">
+              <div class="offer-title">Weekend Special</div>
+              <div>15% off on Cheese</div>
+          </div>
+          <div class="offer-item">
+              <div class="offer-title">New Customer Deal</div>
+              <div>Buy 2 Milk, Get 1 Free</div>
+          </div>
+          <div class="offer-item">
+              <div class="offer-title">Limited Time</div>
+              <div>Free Delivery on 5+ Items</div>
+          </div>
+      </div>
+      </div>
+
+    </main>
+
+      <!---Designs css styles-->
+
+      <style>
+
+        /* Google fonts === */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+*
+ /*========Globals===========*/
+{
+    font-family: "Ubuntu", sans-serif;
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+ :root
+{
+    --blue: #292185;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1:#222; 
+    --blacl2:#999;
+    --grey:var(--grey);
+    --sidebar-collapsed-width: 70px;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+body
+{
+background-color: #f7f9fb;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header {
+  display: flex;
+   position: fixed;     ;
+  top: 0;               
+  left: 0;              
+  width: 100%;  
+  height: 94px;        
+  background-color: #fff; 
+  z-index: 1000;        
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
+  padding: 10px 5px 0px ;
+ 
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;  
+  overflow: visible;
+  
+}
+
+.logo-section {
+display: flex;
+align-items: center;
+gap: 10px;
+font-size: small;
+height: 100%;
+}
+
+.logo {
+  max-height: 200px; 
+  max-width: 242px; 
+  object-fit: contain; 
+    height: auto;
+  width: auto;
+  
+}
+
+#toggleSidebar {
+font-size: 24px;
+background: none;
+border: none;
+cursor: pointer;
+margin-left: 20px;
+}
+
+
+.company-name {
+display: flex;
+flex-direction: column;
+font-size: 12px;
+line-height: 1.2;
+
+}
+
+.dashboard-title {
+font-size: 25px;
+color: 	#2C3E50;
+flex-grow: 1;
+text-align:left;
+margin-left: 40px;
+}
+
+.header-right {
+display: flex;
+align-items: center;
+gap: 35px;
+text-align: center;
+}
+
+.search-container input {
+position: relative;
+padding: 12px 34px;
+border-radius: 20px;
+border: 1px solid 	#DCDFE3;
+min-width: 332px;
+height: 40px;
+background-color: #F0F3F5;
+}
+
+.search-container .fa-magnifying-glass {
+  position: relative;
+  font-size: 1.0rem;
+  right:322px;
+
+}
+
+.search-container input::placeholder {
+  color: #95a5a6;
+  padding: 5px;
+  font-size: 15px;
+}
+
+.icons {
+  display: flex;
+  gap: 25px;
+  font-size: 22px;
+  align-items: center;
+}
+
+.icon-wrapper {
+  position: relative;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.icon {
+
+  transition: color 0.3s ease;
+}
+
+
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  font-weight: bold;
+  
+}
+
+
+/* Message Icon - Blue */
+.icon-wrapper.message .icon {
+  color: #3498db;
+}
+.icon-wrapper.message .icon:hover {
+  color: #2980b9;
+}
+
+/* Globe Icon - Green */
+.icon-wrapper.globe .icon {
+  color: #2ecc71;}
+
+.profile {
+display: flex;
+align-items: center;
+gap: 9.8px;
+font-size: 16px;
+margin-right: 10px;
+color: 	#34495E;
+}
+ 
+.avatar {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+border: 2px solid 	#999;
+object-fit: cover;
+
+}
+
+
+.notification-header {
+  position: relative;
+  background: #d6eaff;
+  padding: 12px 16px;
+  font-weight: bold;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  color: #333;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* The arrow */
+/* #notificationDropdown::before {
+  content: "";
+  position: absolute;
+  top: 15px;            
+  left: 50%;          
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid #222; 
+  width: 10px;
+  height: 20px;
+  z-index: 1101;
+} */
+
+
+
+ .notification {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 23px;
+    color: #333;
+    overflow: visible;
+  }
+
+
+  .notification .notificationbadge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    border-radius: 50%;
+    background: #e03e2f;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    position: absolute;
+  font-size: 10px;
+  padding: 2px 5px;
+
+  }
+
+
+  /* Notification Icon - Orange */
+.icon-wrapper.notification .icon {
+  color: #f39c12;
+}
+.icon-wrapper.notification .icon:hover {
+  color: #e67e22;
+}
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 45px;
+    
+   min-width: 350px;
+  max-height: 400px;
+  overflow-y: auto;
+  position: absolute;   
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff; 
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  padding-top: 10px; 
+  z-index: 1100;
+}
+  
+
+  
+  .dropdown.active {
+    display: block;
+  }
+  .dropdown-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .dropdown-item:last-child {
+    border-bottom: none;
+  }
+  .dropdown-item:hover {
+    background: #f2f6fb;
+  }
+  .dropdown-item.read {
+    background: #f9f9f9;
+    color: #888;
+  }
+  .dropdown-item p {
+    margin: 0 0 6px 0;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #222;
+  }
+  .dropdown-item.read p {
+    color: #666;
+    text-decoration: none;
+  }
+  .dropdown-item p strong {
+    font-weight: 700;
+  }
+  .timestamp {
+    font-size: 13px;
+    color: #999;
+    font-style: italic;
+  }
+
+
+
+/* toggle click collapsed sidebar -----------------------------------------------------*/
+
+/* === COLLAPSED SIDEBAR STYLES === */
+.navigation.collapsed {
+  width: 80px;
+}
+
+
+.navigation.collapsed ul li a .tittle {
+  display: none;
+}
+
+.navigation.collapsed ul li a .icon {
+  justify-content: center;
+  min-width: 100%;
+}
+
+
+.navigation.collapsed ul li a {
+  padding: 16px 0;
+  justify-content: center;
+  text-align: center;
+}
+
+.navigation.collapsed ul li a .icon-right {
+  display: none;
+}
+
+.content-area.sidebar-collapsed {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+/* end toggle click collapsed sidebar -----------------------------------------------------*/
+
+
+
+
+/*===new navigations ===*/
+.navigation {
+  position: fixed;
+  width: 250px;
+    height: calc(100% - 90px);
+  background: #fff; /* options #ecf0f3 e8f5e9 */
+    transition: all 0.3s ease;
+
+  top: 94px;
+  z-index: 1400;
+    overflow-y: auto; 
+  overflow-x: hidden;
+  scrollbar-width: thin;
+ scrollbar-color: #888 transparent;
+}
+
+
+
+
+.navigation.active {
+      width: 80px;
+}
+
+.navigation ul{
+  position: static ;
+  left: 0;
+  right: 0;
+  width:100%;
+
+}
+.navigation ul li{
+  
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px ;
+
+}
+
+.navigation ul li:nth-child(1){
+  margin-top: 10px;
+
+}
+.navigation ul li a{
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: #2c3e50;
+  margin: 5px;
+    padding-right: 8px; 
+}
+
+.navigation ul li > a:hover {
+  background: #4CAF50;
+  color: white;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+}
+
+
+.navigation ul li a .icon iconify-icon {
+  font-size: 1.60rem; 
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  min-width: 60px;
+
+}
+
+
+.navigation ul li a .icon i  { 
+  font-size: 1.30rem;
+}     
+
+ .navigation ul li a .tittle{
+    flex: 1;
+    position: relative;
+    display: flex;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }
+
+
+ 
+ .navigation ul li a .icon-right{
+  margin-left: auto;
+  font-size: 12px;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+.submenu-items li a .icon-right {
+  font-size: 12px;
+  color: #444;
+  margin-right: 9px;       
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Active state (current page) */
+.navigation ul li.active {
+  background-color: #2e7d32; /* rich forest green */
+  color: #fff;
+  border-top-left-radius: 40px;
+border-bottom-left-radius: 40px;
+border-top-right-radius: 40px;
+border-bottom-right-radius: 40px;
+}
+
+.navigation ul li.active a {
+  color: white;
+  align-items: center ;
+padding: 4px 4px ;  
+height: 40px ;     
+line-height: 0.9rem ;
+}
+
+
+
+.submenu {
+  display: block; 
+  margin: 0; 
+  padding-left: 0;
+  border-radius: 0;
+  width: 100%;
+}
+
+
+.submenu-items {
+ 
+   display: none;
+  flex-direction: column;
+  background-color: #fff;
+  border-left: 3px solid #4CAF50;
+  padding-left: 25px;
+  border-radius: 0 12px 12px 0;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+
+
+
+.submenu.open .submenu-items {
+  display: flex;
+  width: 100%;
+}
+
+
+.submenu-items li {
+  display: block;
+  width: 100%;
+}
+
+.submenu-items li a {
+   color: #444;
+  font-size: 15px;
+  padding: 8px 12px;
+  transition: background 0.3s;
+}
+
+
+.submenu:hover .submenu-items li a {
+  color: #777; 
+
+}
+.submenu .submenu-items li a:hover {
+   color: #fff; 
+ }
+
+
+.submenu-arrow {
+    margin-left: auto;
+    padding-right: 8px;
+  font-size: 11px;
+  color: #444;
+  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible; 
+  transition: transform 0.3s ease;
+}
+
+.submenu.open .submenu-arrow {
+  transform: rotate(180deg); 
+  
+}
+
+
+/* Main */
+
+
+ 
+/*-------cards------*/
+
+.content-area {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-left: 221px;
+  position: relative;
+  
+}
+
+ /* Main layout */
+    main.content-area {
+      position: relative;
+      z-index: 2;
+      padding: 40px;
+      margin-top: 32px;
+
+    }
+
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  margin-top: 10px;
+}
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+
+}
+.card-header {
+  display: flex;
+  gap: 0.75rem;
+margin-bottom: 15px;
+
+}
+
+.iconss {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.2rem;
+}
+.iconss.revenue { background: #007bff; }
+.iconss.engagement { background: #6f42c1; }
+.iconss.inventory { background: #fd7e14; }
+.iconss.profit { background: #198754; }
+.iconss.fulfillment { background: #FFB74D ; }
+.iconss.farmers { background: #20c997; } /*#FFB74D */
+
+
+.card h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #222;
+}
+.card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+.trend.positive { color: #15803d; }
+.trend.negative { color: #b91c1c; }
+
+.chart-placeholder {
+  background: #f0f4f8;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 80px;
+  color: #999;
+  font-size: 0.9rem;
+
+}
+
+.card canvas {
+  margin-left: 15px; 
+}
+
+#retentionTrend {
+  width: 100% !important;
+  height: auto !important;
+}
+.visual-meter {
+  display: flex;
+  height: 6px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.visual-meter span {
+  flex: 1;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.visual-meter .low {
+  background-color: #fde2e1; 
+}
+.visual-meter .medium {
+  background-color: #facc15; 
+}
+.visual-meter .high {
+  background-color: #a5e2ba; 
+}
+
+.visual-meter .active {
+  opacity: 1;
+  transform: scaleY(1.3); 
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+.legend {
+  font-size: 0.75rem;
+  color: #777;
+    margin-top: 4px;
+}
+
+.card canvas {
+  margin-top: 40px;
+  max-width: 85%;
+  max-height: 80%;
+}
+
+.order-progress-bar {
+  background-color: #e5e7eb;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.order-progress-bar .progress {
+  height: 100%;
+  border-radius: 20px;
+  transition: width 0.3s ease-in-out;
+}
+
+.badge.on-time {
+  background-color: #FFD180; /* Orange tone */
+  color: 		#E65100;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 12px;
+  display: inline-block;
+
+}
+
+.badge.engaged {
+   background-color: #d1fae5;
+  color: #065f46;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  display: inline-block;
+}
+
+
+.legend-items {
+  display: flex;
+  gap: 12px;      
+  margin-top: 6px; 
+  font-size: 0.85rem;
+  color: #555;    
+}
+
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px; 
+}
+
+
+.color-box {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+
+.color-box.milk   { background: #3b82f6; } 
+.color-box.butter { background: #60a5fa; } 
+.color-box.ghee   { background: #93c5fd; } 
+
+.color-box.Feed   { background: #FB8C00; } 
+.color-box.Milk { background: #FFA726; } 
+.color-box.Equipment   { background: #FFCC80; } 
+
+
+
+/*--- Recent orders--- */
+.details{
+  position:grid;
+  width:102%;
+  padding:.5px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap:13px;
+  margin-top: -10px;
+  
+ 
+}
+.details .recentOrders{
+  position: flex;
+  display: grid;
+  min-height: 300px;
+  background: #ffffff;
+  padding: 40px;
+   box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  text-align: center;
+  height: 532px;
+}
+ .recentOrders .cardheader{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: -8px;
+ }
+ .recentOrders .cardheader h2 {
+  font-weight: 600;
+  color: var(--blue)
+ }
+ .recentOrders .cardheader .btn{
+  font-size: 15px;
+  color:#001eff;
+  border: none;
+  padding: 5px 8px;
+  transition: all 0.3s ease;
+  text-underline-offset: unset;
+
+ }
+
+ .recentOrders .cardheader .btn:hover{
+ 
+  color: #222;           
+  cursor: pointer;
+}
+
+ 
+
+ .recentOrders table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+  height: 400px;
+ }
+ .recentOrders table thead td{
+  font-weight: 600;
+
+ }
+
+ .recentOrders table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+
+ }
+ .recentOrders table tbody tr:hover {
+  background:#f0f8ff;
+  color: #222;
+ }
+ .details .recentOrders table tr td{
+  padding:9px;
+  text-align: left; 
+ }
+
+ .details .recentOrders table tr td:last-child{
+  padding: auto;
+  text-align: center;
+ }
+ .details .recentOrders table tr td:nth-child(3){
+  text-align:center;
+ }
+ .details .recentOrders table tr td:nth-child(4){
+  text-align: center;
+  display: inline-block;
+ }
+
+ .status {
+  padding: 5px 12px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-weight: bold;
+  display: inline-block;
+  min-width: 90px; 
+  text-align: center;}
+
+ .status.delivered {
+  background: #8de02c;
+  color: var(--white);
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-flex;
+  text-align:center;
+  padding-left: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  border-width: 100;
+ 
+ }
+
+ .status.pending {
+  padding: 2px 4px;
+  background: #F39C12;
+  color: var(--white);
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-block;
+  text-align:right;
+  padding-left: 20px;
+  margin-left: 10px;
+  margin-top: 10px;
+ 
+
+ }
+ 
+
+ .status.return {
+  padding: 2px 4px;
+  background: #E74C3C;
+  color: var(--white);
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-block;
+  text-align:right;
+  padding-left: 20px;
+  margin-left: 10px;
+  margin-top: 10px;
+ 
+
+ }
+ 
+ .status.inprogress {
+  padding: 2px 4px;
+  background: #1795ce;
+  color: var(--white);
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-block;
+  text-align:center;
+  padding-left: 20px;
+  margin-left: 12px;
+  margin-top: 10px;
+
+ }
+
+ /*---customers-----*/
+
+
+ .recentcustomer{
+  position: flex;
+  display: grid;
+  height: 532px;
+  background: var(--white);
+  padding: 25px;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  width:auto;
+  margin-right: -12px;
+  margin-top: 0px;
+  overflow-y: auto;
+  
+ }
+
+.recentcustomer .customer-list .imgBx{
+  position: relative ;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+.recentcustomer .customer-list .imgBx img{
+  position: absolute ;
+  width:100%;
+  height: 100%;
+  top: 0;
+  left:0;
+  object-fit:cover;
+ 
+}
+
+.recentcustomer .customer-list table tr:hover {
+  background: var(--blue);
+  color: var(--white);
+  
+}
+
+.recentcustomer .customer-list table tr td {
+position: relative;
+padding: 12px 10px;
+
+}
+
+
+
+.customer-list {
+  overflow-y: auto;
+  max-height: 425px; 
+
+  
+}
+
+.recentcustomer .customer-list table tr td h4{
+  font-size: 16px;
+  font-weight: 500px;
+  line-height: 1.2rem;
+}
+.recentcustomer .customer-list table tr td h4 span{
+  font-size: 14px;
+  color: var(--blacl2);
+  font-weight: 500;
+}
+.recentcustomer table tr:hover td h4 span{
+  color: var(--white);
+}
+ .recentcustomer .cardheader h2 {
+  font-weight: 600;
+  color: var(--blue)
+ }
+
+/*--milk Peoduction*/
+
+.milk-production-section {
+  width: 153%;
+}
+
+
+.dashboard {
+  padding: 5px;
+  font-family: 'Segoe UI', sans-serif;
+  
+}
+
+.dashboard h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding: 20px 20px;
+  background: #f3f4f6;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.main-layout {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+
+.left-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  flex: 2;
+  margin-bottom: 90px ;
+}
+
+
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.card p {
+  bottom: -10px;
+}
+
+.card .title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 17px;
+  margin-top: -6px;
+}
+
+.card h2 {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: -5px;
+}
+
+.card small {
+  color: gray;
+  margin-bottom: -4px;
+  text-align: center;
+  margin-top: -5px;
+}
+
+.card .main-count {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.card .unit-label {
+  font-size: 17px;
+  font-weight: normal;
+  color: #555;
+  margin-top: -10px;
+  margin-bottom: 7px;
+ font-weight: bold;
+}
+
+.center-icon {
+  display: inline-block;
+  margin: 10px auto;
+  margin-top: -5px;
+
+}
+
+.card h2 .unit {
+  font-size: 18px;
+  font-weight: normal;
+  margin-left: 4px;
+  color: #444;
+  font-weight: bold;
+}
+
+.bcs-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.bcs-chart {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-top: -36px;
+  margin-bottom: 2px;
+  margin-right: 20px;
+}
+
+.bcs-chart canvas {
+  width: 115px !important;
+  height: 110px !important;
+  margin-left: 30px;
+}
+
+.bcs-percent {
+  position: absolute;
+  left: 64%;
+  top: 90px;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 18px;
+
+}
+
+.bcs-legend {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  gap: 6px;
+  margin-top: 25px;
+  margin-right: 20px;
+}
+
+.bcs-legend .dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.dot.green { background: green; }
+.dot.orange { background: orange; }
+.dot.red { background: red; }
+
+
+.icon.heart {
+  font-size: 52px;
+  color: #30d098;
+  text-align: center;
+  margin-top:20px;
+  margin-bottom: 20px;
+
+}
+
+
+.turnover-lameness-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: -10px;
+}
+
+
+.lameness {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 180px; 
+  text-align: center;
+}
+
+.cow-img {
+  width: 65px;
+  height: auto;
+  margin-bottom: 15px;
+  margin-top: 0px;
+}
+
+
+.lameness-text p,
+.lameness-text small {
+  margin: 4px 0px;
+  
+}
+
+
+.separator {
+  width: 1px;
+  height: 150px;
+  background-color: #ccc;
+  align-self: stretch;
+}
+
+
+.turnover {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  
+}
+
+.turn-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.arrow {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.arrow.up {
+  color: #0f9d58; /* Google green */
+}
+
+.arrow.down {
+  color: #d93025; /* Google red */
+}
+
+
+
+.number.up {
+  color: #0f9d58;
+  
+  font-size: 33px;
+  font-weight: bold;
+}
+
+.number.down {
+  color: #d93025;
+  
+  font-size: 33px;
+  font-weight: bold;
+}
+
+
+.label {
+  font-size: 14px;
+  color: #555;
+}
+
+
+
+.status.healthy {
+  color: green;
+  font-weight: 750;
+  font-size: 17px;
+  text-align: center;
+  margin-top: -15px;
+ 
+}
+
+
+
+.repro-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.repro-labels,
+.repro-values {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/*-----Revenue chart---*/
+
+
+.chart {
+  height: 450px;
+  padding: 50px;
+  position: relative;
+  max-width: 1230px;
+  margin:  -50px 0px 15px;
+  padding: 30px 20px 80px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  
+}
+
+canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+
+}
+.chart-title {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 20px;
+}
+
+
+/*= Top Selling */
+
+.dual-box-container{
+  display: flex;
+  gap: 10px;
+  max-width: 1230px; 
+  margin: 0 auto;
+  padding: 20px;
+ margin-left: 10px;
+
+}
+
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 550px;
+  margin: 0 auto;      
+  padding: 0 10px;      
+  margin-left:-9px;
+  max-height: 420px
+
+}
+
+.carousel-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.top-selling {
+  flex: 2;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 12px;
+  margin-top: 2px;
+  margin-left: -30px;
+  box-sizing: border-box;
+  max-width: 570px;
+  height: 285px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+}
+
+.top-selling h2 {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 15px;
+   color: #2f3e46;  
+   margin-bottom: 16px;
+  padding-left: 10px;
+  border-left: 4px solid #4caf50;  
+  font-weight: 600;
+}
+
+.product-list {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+}
+
+.product-card {
+  margin-top: 12px;
+  min-width: 140px;
+  min-height: 110px;
+  background: #e6f0e6;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 1px;
+  margin-top: 9.2px;
+}
+
+.product-card h4 {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #2f5d3f;
+}
+
+.product-card p {
+  color: #556b5f;
+  font-size: 14px;
+}
+
+
+
+.carousel-btn {
+  background-color: #fff;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 1;
+  transition: background 0.2s;
+}
+
+.carousel-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.carousel-btn.left {
+  margin-right: 8px;
+}
+
+.carousel-btn.right {
+  margin-left: 8px;
+}
+
+/* Current Offers */
+
+.current-offers {
+  flex: 1; 
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-top: 3px solid #e74c3c;
+  width: 80px;
+  height: 285px;
+  margin-right: -18px;
+  position: relative;
+}
+  .offer-box {
+    border-top: 3px solid #e74c3c;
+}
+
+.current-offers h2{
+ font-size: 21px;
+ text-align: center;
+}
+
+ .offer-item {
+  margin-top: 10px;
+    margin-bottom: 12px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    border-left: 3px solid #3498db;
+    text-align: left;
+}
+
+.offer-item {
+    border-left-color: #e74c3c;
+    text-align: left;
+}
+
+.product-name, .offer-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.product-name { color: #3498db; }
+.offer-title { color: #e74c3c; }
+
+  
+
+.bxs-icon {
+  position: absolute;
+  font-size: 40px;
+  color: #FFD700;
+  top: 10px; 
+  right: 115px;
+ 
+}
+
+
+/*-----Inventory expenses---*/
+
+.dashboard-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center; 
+  overflow-x: auto; 
+  overflow-y: hidden;
+
+}
+
+.expensescard {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding-left: 15px;
+  padding-top: 9px;
+  width: 365px;
+  height: 240px;
+  flex:  1 ;
+  margin-top: 12px;
+   
+}
+
+.inventorycard {
+  margin-top: 13px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 350px;
+}
+
+.chart-placeholder {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background: transparent; 
+}
+
+.chart-placeholder,
+#expensesChart {
+  background: transparent;
+  height: 269px;
+  width: 285px;
+  margin-top: -29px;
+  margin-left: 8px
+
+}
+
+.inventorycard      table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+ .inventorycard table th,
+ .inventorycard table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  height: 20px;
+}
+  .inventorycard           table th {
+  background-color: #f0f0f0;
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+.expensescard h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  text-align: center; 
+  margin-top: 1px;
+  margin-right:8px;
+}
+.inventorycard h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center; 
+}
+
+
+
+
+
+                          /*themes*/
+
+/* Dark Theme */
+body.dark-theme {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+.dark-theme h3, {
+  margin-bottom: 10px;
+  color: #f9f9f9;
+}
+
+
+/* Dark Theme Header */
+body.dark-theme header {
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+}
+
+
+/* Dark Theme Header Text */
+body.dark-theme header,
+body.dark-theme header * {
+  color: #fff ;
+}
+
+/*logo color in dark theme */
+.dark-theme .logo {
+  filter: invert(1);  
+}
+
+
+
+body.dark-theme .card {
+  background: #333333;
+  color: var(--text-dark);
+  box-shadow: 0px 1px 0px 4px rgba(0, 0, 0, 0.2);
+  .target { color: #f0f0f0; display: block; }
+}
+
+.dark-theme .search-container input {
+  background-color: var(--white);
+  border: 1px solid var(--border-light);
+}
+
+body.dark-theme .search-container input {
+  background-color: #333;
+  border: 1px solid var(--border-dark);
+  color: var(--text-dark);
+}
+
+/* General Dark Theme */
+body.dark-theme {
+  background-color: #121212; 
+  color: #e0e0e0; 
+}
+
+
+/* DARK THEME FOR NAVIGATION */
+
+/* Dark Theme Sidebar */
+body.dark-theme .navigation {
+  background-color: #1e1e2f;
+}
+
+/* Dark Theme Nav Links */
+body.dark-theme .navigation ul li a {
+  color: #f1f1f1;
+}
+
+/* Dark Theme Icon Color */
+body.dark-theme .navigation ul li a .icon i,
+body.dark-theme .navigation ul li a .icon iconify-icon {
+  color: #f1f1f1;
+}
+
+/*  Hover */
+body.dark-theme .navigation ul li:hover {
+  background-color: #2a2a3d;
+}
+
+body.dark-theme .navigation ul li:hover a {
+  color: white;
+}
+
+/* Dark Theme Active Item */
+body.dark-theme .navigation ul li.active {
+  background-color: #2c7a33;
+}
+
+body.dark-theme .navigation ul li.active a {
+  color: #ffffff;
+}
+
+/* === DARK MODE FOR NAVIGATION === */
+body.dark-theme .navigation {
+  background: #1e1e2f; 
+}
+
+body.dark-theme .navigation ul li a {
+  color: #cfd8dc;
+}
+
+body.dark-theme .navigation ul li:hover {
+  background: #388e3c; 
+}
+
+body.dark-theme .navigation ul li:hover a {
+  color: #ffffff;
+}
+
+body.dark-theme .navigation ul li.active {
+  background-color: #66bb6a;
+  color: #ffffff;
+}
+
+body.dark-theme .navigation ul li.active a {
+  color: #ffffff;
+}
+
+body.dark-theme {
+  --light: #1e1e1e;
+  --dark: #ccc;
+  --black2: #222;
+  --blue: #0099ff;
+  --white: #eee;
+}
+
+
+/* Dashboard cards */
+.dark-theme .card {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dark-theme .card h3 {
+  color: #ffffff;
+}
+
+.dark-theme .card p {
+  color: #aaaaaa;
+}
+
+.dark-theme .trend.positive {
+  color: #4ade80;
+}
+
+.dark-theme .trend.negative {
+  color: #f87171;
+}
+
+/* Chart area placeholder */
+.dark-theme .chart-placeholder {
+ 
+  color: #999999;
+}
+
+/* Legends */
+.dark-theme .legend {
+  color: #999;
+}
+
+.dark-theme .legend-items {
+  color: #cccccc;
+}
+
+/* Progress bars */
+.dark-theme .order-progress-bar {
+  background-color: #2f2f2f;
+}
+
+.dark-theme .order-progress-bar .progress {
+  background-color: #60a5fa;
+}
+
+/* Visual meter */
+.dark-theme .visual-meter .low {
+  background-color: #7f1d1d;
+}
+.dark-theme .visual-meter .medium {
+  background-color: #a16207;
+}
+.dark-theme .visual-meter .high {
+  background-color: #15803d;
+}
+
+/* Badges */
+.dark-theme .badge.on-time {
+  background-color: #ffb74d;
+  color: #fff3e0;
+}
+
+.dark-theme .badge.engaged {
+  background-color: #134e4a;
+  color: #d1fae5;
+}
+
+
+
+/* Recent Orders Section */
+
+body.dark-theme .recentOrders {
+  border: 1px solid var(--border-dark);
+  background-color: #333333;
+}
+
+/* Button - View All */
+body.dark-theme .btn {
+  
+  color: #fff; 
+  border: 1px solid #666; 
+}
+
+body.dark-theme .btn:hover {
+  
+  color: #fff; 
+}
+
+/* Recent Orders Table Header */
+body.dark-theme .recentOrders  table thead tr {
+  background-color: #555; 
+  color: #f9f9f9; 
+}
+
+/* Recent Orders Table Data */
+body.dark-theme .recentOrders table tbody tr {
+  background-color: #444; 
+  color: #e0e0e0; 
+}
+
+
+body.dark-theme .recentOrders  h2 {
+  color: #e0e0e0; 
+}
+
+body.dark-theme .recentcustomer  h2 {
+  color: #e0e0e0;
+}
+
+/* Status Text */
+
+
+body.dark-theme .status.delivered {
+  background-color: #388e3c;
+}
+
+
+body.dark-theme .status.pending {
+  background-color: #ff9800;
+}
+
+
+
+body.dark-theme .status.inprogress {
+  background-color: #00bcd4;
+}
+
+
+
+body.dark-theme .status.return {
+  background-color: #f44336;
+}
+
+/* Recent Customers Section */
+
+
+body.dark-theme .recentcustomer {
+  border: 1px solid var(--border-dark);
+  background-color: #333333;
+}
+
+
+
+body.dark-theme .recentcustomer h4 {
+  color: var(--text-dark);
+}
+
+
+
+body.dark-theme .recentcustomer span {
+  color: #b0bec5;
+}
+
+/* Milk Production Section */
+
+.dark-theme .dashboard h1 {
+
+  background: #2c2f38; /* Darker background */
+  border: 1px solid #444a56; }
+
+
+
+
+/* Revenue Chart */
+
+
+body.dark-theme .chart {
+  background-color: #333333;
+}
+
+
+body.dark-theme .chart-title {
+  color: var(--text-dark);
+}
+
+
+body.dark-theme .canvas2 {
+  background-color: #333333;
+}
+
+
+
+
+
+/* Dashboard Container for Expenses, Inventory, and Milk Storage */
+body.dark-theme .dashboard-container {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+}
+
+body.dark-theme .expensescard,
+body.dark-theme .inventorycard {
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 16px;
+  color: #f1f1f1;
+  margin-bottom: 20px;
+}
+
+body.dark-theme .inventorycard table {
+  border-collapse: collapse;
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+}
+
+body.dark-theme .inventorycard  thead th{
+  background-color: #333;
+  color: #f1f1f1;
+}
+
+
+body.dark-theme .inventorycard tbody td {
+  padding: 10px;
+  border-top: 1px solid #444;
+}
+
+/* Top Selling Products Section */
+body.dark-theme .top-selling {
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 16px;
+  color: #f1f1f1;
+}
+
+/* carousel or other */
+body.dark-theme .carouse {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+body.dark-theme .product-card p {
+  color: #cbd5cb; 
+  font-size: 14px;
+}
+
+body.dark-theme .product-card{
+
+  background: #555;
+
+}
+
+body.dark-theme .product-card h4{
+
+  color: #f5f5f5;
+
+}
+
+body.dark-theme.product-card p {
+  color: #f0f0f0;
+  font-size: 14px;
+}
+
+/* === Current Offers Section - Dark Theme === */
+body.dark-theme .current-offers {
+  background-color: #2c2c2c;
+  color: #f1f1f1;
+  border: 1px solid #444;
+}
+
+body.dark-theme .current-offers h2 {
+  color: #ffffff;
+ 
+}
+
+body.dark-theme .offer-item {
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+  
+  color: #f1f1f1;
+}
+
+body.dark-theme .offer-title {
+  
+  color: #ffd700;
+} 
+
+
+/* DARK THEME: for cards */
+
+body.dark-theme .info-data .card {
+  background: #444 ;
+  color: #f1f1f1 ;
+  border-left: none ;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.04);
+}
+
+body.dark-theme .info-data .card * {
+  color: #f1f1f1;
+}
+
+body.dark-theme .card:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.08);
+}
+
+body.dark-theme .card .progress {
+  background: #333 ;
+}
+
+body.dark-theme .progress-bar {
+  background-color: #333;
+}
+
+body.dark-theme .progress-bar::before,
+body.dark-theme .progress-fill {
+  background-color: #4caf50 ;
+}
+
+      
+        </style>
+
+       <!---End of Designs css styles-->
+
+
+
+
+
+          <!---Script for dashboard-->
+<script>
+
+  document.addEventListener("DOMContentLoaded", () => {
+
+   // ─── DashBoard Cards js ──────────────────────────────────────
+
+      // ─── Revenue Card js ──────────────────────────────────────
+  const ctxRevenue = document.getElementById('revenueChart').getContext('2d');
+  new Chart(ctxRevenue, {
+    type: 'doughnut',
+    data: {
+      labels: ['Milk', 'Butter', 'Ghee'],
+      datasets: [{
+        data: [55, 30, 15],
+        backgroundColor: ['#3b82f6', '#60a5fa', '#93c5fd'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      cutout: '70%',
+      plugins: { legend: { display: false } }
+    }
+  });
+ 
+     // ─── Retention Card js ──────────────────────────────────────
+  const ctx = document.getElementById('retentionTrend').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+    datasets: [{
+      data: [70, 75, 80, 85, 87],
+      borderColor: '#6c63ff',
+      backgroundColor: 'rgba(108, 99, 255, 0.1)',
+      tension: 0.4,
+      borderWidth: 2,
+       pointRadius: 4,
+      pointBackgroundColor: '#6c63ff',
+      fill: {
+        target: 'origin',
+        above: 'rgba(108, 99, 255, 0.05)'
+      }
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { enabled: false }
+    },
+    scales: {
+      x: { 
+        display: true,
+        grid: { display: false }
+      },
+      y: { 
+        display: true,
+        min: 65,
+        max: 90,
+        grid: { display: false }
+      }
+    },
+    elements: {
+      line: {
+        cubicInterpolationMode: 'monotone'
+      }
+    }
+  }
+});
+
+   // ─── Inventory Card js ──────────────────────────────────────
+
+  const ctxInventory = document.getElementById('inventoryCircle').getContext('2d');
+  new Chart(ctxInventory, {
+    type: 'doughnut',
+    data: {
+      labels: ['Feed', 'Milk', 'Equipment'],
+      datasets: [{
+        data: [40, 20, 8],
+        backgroundColor: ['	#FB8C00', '#FFA726', '#FFCC80'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      cutout: '70%',
+      plugins: { legend: { display: false } }
+    }
+  });
+
+
+
+  // ─── Monthly Revenue Chart ──────────────────────────────────────
+  const revenueCtx = document.getElementById('myChart')?.getContext('2d');
+  if (revenueCtx) {
+    new Chart(revenueCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [{
+          label: '',
+          data: [16, 14, 20, 15, 21, 20, 32, 11, 21, 20, 32, 11],
+          backgroundColor: [
+            'rgba(255,99,132,0.5)', 'rgba(54,162,235,0.5)', 'rgba(255,206,86,0.5)',
+            'rgba(75,192,192,0.5)', 'rgba(153,102,255,0.5)', 'rgba(255,159,64,0.5)',
+            'rgba(199,199,199,0.5)', 'rgba(83,102,255,0.5)', 'rgba(56,122,0,0.5)',
+            'rgba(153,0,0,0.5)', 'rgba(255,99,243,0.5)', 'rgba(60,60,60,0.5)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)', 'rgba(54,162,235,1)', 'rgba(255,206,86,1)',
+            'rgba(75,192,192,1)', 'rgba(153,102,255,1)', 'rgba(255,159,64,1)',
+            'rgba(199,199,199,1)', 'rgba(83,102,255,1)', 'rgba(56,122,0,1)',
+            'rgba(153,0,0,1)', 'rgba(255,99,243,1)', 'rgba(60,60,60,1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 50,
+            ticks: {
+              stepSize: 10,
+              color: '#555',
+              callback: function(value) {
+                return '₹' + value + 'k';
+              }
+            },
+            title: {
+              display: true,
+              text: 'Income in Indian Rupees',
+              font: { size: 15 },
+              color: '#333',
+              padding: 10,
+              align: 'center',
+              rotation: -90
+            }
+          }
+        }
+      }
+    });
+  }
+
+  // ─── Expenses Donut Chart ───────────────────────────────────────
+  const expensesCtx = document.getElementById('expensesChart')?.getContext('2d');
+  if (expensesCtx) {
+    new Chart(expensesCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Feed', 'Labor', 'Veterinary', 'Other'],
+        datasets: [{
+          data: [35, 25, 20, 20],
+          backgroundColor: ['#5C6BC0', '#FBC02D', '#26A69A', '#EF5350'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        cutout: '60%',
+        plugins: {
+          legend: {
+            position: 'right',
+            labels: {
+              usePointStyle: true,
+              pointStyle: 'circle',
+              boxHeight: 8,
+              boxWidth: 12,
+              padding: 11
+            }
+          }
+        }
+      }
+    });
+  }
+
+  // ─── Profile Redirect ───────────────────────────────────────────
+  const profileTrigger = document.getElementById('profileTrigger');
+  if (profileTrigger) {
+    profileTrigger.addEventListener('click', () => {
+      window.location.href = 'profile.html';
+    });
+  }
+
+  // ─── Carousel Buttons ───────────────────────────────────────────
+  const carousel = document.getElementById('productCarousel');
+  const leftBtn = document.querySelector('.carousel-btn.left');
+  const rightBtn = document.querySelector('.carousel-btn.right');
+  if (carousel && leftBtn && rightBtn) {
+    leftBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+    rightBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+  }
+
+  // ─── SEARCH input script ──────────────────────────────────────────────
+
+ const searchInput = document.getElementById('searchInput');
+  const navItems = document.querySelectorAll('#sidebarMenu li');
+
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+
+    navItems.forEach(item => {
+      const titleElement = item.querySelector('.tittle');
+      const title = titleElement ? titleElement.textContent.toLowerCase() : '';
+
+      item.style.display = title.includes(query) ? '' : 'none';
+    });
+  });
+
+
+  // ─── For toggle function input script ──────────────────────────────────────────────
+
+
+  const toggleBtn = document.getElementById('toggleSidebar');
+  const sidebar = document.querySelector('.navigation');
+  const mainContent = document.querySelector('.content-area');
+  const body = document.body;
+
+  toggleBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+      mainContent.classList.toggle('sidebar-collapsed'); // 
+    body.classList.toggle('sidebar-collapsed');
+  });
+
+
+
+});
+
+
+  // ─── BCS chart script ──────────────────────────────────────────────
+
+
+const ctx = document.getElementById('bcsChart').getContext('2d');
+new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Optimal', 'Low', 'High'],
+    datasets: [{
+      data: [72, 18, 10],
+      backgroundColor: ['#4caf50', '#fb8c00', '#e53935'],
+      borderWidth: 0
+    }]
+  },
+  options: {
+    cutout: '70%',
+    plugins: { legend: { display: false } }
+  }
+});
+
+
+  // For Notification ------------------///
+
+ const bell = document.getElementById('notificationBell');
+  const badge = document.getElementById('badgeCount');
+  const dropdown = document.getElementById('notificationDropdown');
+  const messages = dropdown.querySelectorAll('.dropdown-item');
+
+  // We start with 3 unread
+  let unreadCount = 3;
+  // Track read status per message: true = read, false = unread
+  let readStatus = Array.from(messages).map(msg => !msg.classList.contains('unread'));
+
+  function updateBadge() {
+    if (unreadCount > 0) {
+      badge.style.display = 'inline-block';
+      badge.textContent = unreadCount;
+    } else {
+      badge.style.display = 'none';
+    }
+  }
+
+  // Toggle dropdown 
+  bell.addEventListener('click', () => {
+    dropdown.classList.toggle('active');
+  });
+
+  // Clicking an unread message marks it as read
+  messages.forEach((msg, idx) => {
+    msg.addEventListener('click', () => {
+      if (!readStatus[idx]) {
+        readStatus[idx] = true;
+        unreadCount--;
+        msg.classList.remove('unread');
+        msg.classList.add('read');
+        updateBadge();
+      }
+    });
+
+    
+  });
+
+  // Close dropdown 
+  window.addEventListener('click', (e) => {
+    if (!bell.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('active');
+    }
+  });
+
+  updateBadge();
+
+  // ─── Submenu Function ──────────────────────────────────────────────
+
+ document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+  toggle.addEventListener('click', function (e) {
+    e.preventDefault(); // Prevent default anchor behavior
+
+    const parentLi = this.closest('.submenu');
+    parentLi.classList.toggle('open');
+
+    // Optionally: close others if only one submenu should open
+    document.querySelectorAll('.submenu').forEach(item => {
+      if (item !== parentLi) item.classList.remove('open');
+    });
+  });
+});
+// ─── Logout Function ──────────────────────────────────────────────
+function logout() {
+  window.location.href = "login.html";
+}
+
+  </script>
+            <!---End of Script for dashboard-->
+
+
+  <!---Theme js-->
+<script src="theme.js" defer></script>
+    
+  
+
+              
+    <!----===== script js ====--->
+    <script src="script.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <!---- ====font awesome==== ---->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+</body>
+</html>   

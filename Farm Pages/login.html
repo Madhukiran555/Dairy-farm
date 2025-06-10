@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+
+            <div class="welcome-section">
+                <h2>Welcome to <br> Dairy Farm Management System</h2>
+                <img src="Dairy farm Weather.jpg" alt="HRMS Icon">
+            </div>
+            <div class="login-box">
+                <h2>Login Here</h2>
+                <form onsubmit="auth(); return false;">
+                    <label for="login-id">Login ID</label>
+                    <input type="text" id="login-id" placeholder="Enter Email" required>
+                    
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter Password" required>
+                    
+                   <div class="remember-forgot">
+  <label class="remember-label">
+    <input type="checkbox" id="remember">
+    <span>Remember me</span>
+  </label>
+</div>
+
+                    <button type="button" class="login-btn" onclick="auth()">Login</button>
+
+                    <a href="forgot.html" class="forgot-password">Forgot Password?</a>
+                    <div class="divider"><span>OR</span></div>
+
+
+                   <div class="social-login">
+  <a href="#" class="social-btn google"><i class="fab fa-google"></i></a>
+  <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+  <a href="#" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+</div>
+
+
+                    <p class="signup-text">
+                 Don't have an account? <a href="signup.html" class="signup-link">Sign up</a>
+                   </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function auth() {
+            var text = document.getElementById('login-id').value.trim();
+            var password = document.getElementById('password').value.trim();
+
+            if (text === 'mark1428@gmail.com' && password === 'williams14') {
+                alert("Login Successfully");
+                window.location.href = 'page.html';
+            } else {
+                alert("Invalid Credentials");
+            }
+        }
+    </script>
+</body>
+</html>

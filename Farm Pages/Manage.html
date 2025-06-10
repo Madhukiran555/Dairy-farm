@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm-GO</title>
+</head>
+    
+<!----==== styles csss===----->
+<link rel="stylesheet" href="manage.css">
+<!----===== script js ====--->
+<script src="manage.js"></script>
+<!--===charts==-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!--Iconifyy icons-->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+
+
+
+<body>
+
+    <header class="dashboard-header">
+      <div class="logo-section">
+        <img src="logo.png" alt="ATS Logo" class="logo"/>
+        <button id="toggleSidebar">&#9776;</button>
+        <div class="company-name">
+        </div>
+      </div>
+      <h1 class="dashboard-title">Admin Dashboard</h1>
+      <div class="header-right">
+        <div class="search-container">
+          <input type="text" placeholder="Search..."/>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        
+        <div class="icons">
+
+         <div class="icon-wrapper notification">
+          <i class="fas fa-bell icon"></i>
+          <span class="badge">3</span> <!-- Notification count -->
+          </div>
+            <div class="icon-wrapper message">
+         <i class="fas fa-envelope icon"></i>
+          <span class="badge">6</span>
+          </div>
+
+           <div class="icon-wrapper globe">
+          <i class="fas fa-globe icon"></i> <!-- Language or globe -->
+        </div>
+          <!-- Wrap profile area in a button or link -->
+      <div class="profile" id="profileTrigger">
+        <img src="customer.jpg" alt="User" class="avatar" />
+        <span>Mark Williams</span>
+      </div>
+    </div>
+
+      
+    </header>
+
+  </body>
+
+
+  
+          <!-------====== New Navigation =====--->
+       
+          <div class="container">
+              <div class="navigation">
+                  <ul>
+                      <li>
+                          <a href="page.html">
+                              <span class="icon"><i class="fa-solid fa-table-columns"></i></i></span>
+                              <span class="tittle">Dashboard</span>
+                          </a>    
+                      </li>
+                      <li>
+                        <a href="human.html">
+                            <span class="icon"><i class="fa-solid fa-person"></i></span>
+                            <span class="tittle">Human Resources
+                            <i class="fa-solid fa-chevron-right icon-right"></i>
+                            </span>
+                        </a>    
+                    </li>
+                      <li>
+                          <a href="customer.html">
+                              <span class="icon"><i class="fa-solid fa-people-arrows"></i></span>
+                              <span class="tittle">Customers
+                                <i class="fa-solid fa-chevron-right icon-right"></i>
+                              </span>
+                          </a>    
+                      </li>
+                     
+                      <li>
+                          <a href="monitor.html">
+                            <span class="icon"><i class="fa-solid fa-desktop"></i></span>
+                            <span class="tittle">Animals Monitor
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                          </a>    
+                      </li>
+                      <li>
+                        <li class="active">
+                          <a href="Manage.html">
+                              <span class="icon">
+                            <iconify-icon icon="mdi:storefront-outline"></iconify-icon>
+                             </span>
+                              <span class="tittle">Manage Stall
+                              </span>
+                          </a>    
+                      </li>
+                      <li>
+                          <a href="settings.htm">
+                              <span class="icon"><i class="fa-solid fa-gear"></i></span>
+                             <span class="tittle">Settings
+                          <i class="fa-solid fa-chevron-right icon-right"></i>
+                          </a>    
+                      </li>
+                      
+                      <li>
+                          <a href="report.html">
+                              <span class="icon"><i class="fa-solid fa-flag-checkered"></i></span>
+                              <span class="tittle">Reports
+                                <i class="fa-solid fa-chevron-right icon-right"></i>
+                              </span>
+                          </a>    
+                      </li>
+                             <li class="logout-nav">
+           <a href="#" onclick="logout()">
+        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+        <span class="tittle">Logout
+           <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                </a>
+                </li>
+                  </ul>
+              </div>
+          </div>
+
+
+          <!---===main table===-->
+
+         <!---=== Main Stall Management Section ===-->
+<div class="tabular-wrapper">
+  <div class="header">
+    <h1 class="Main-tittle">Manage Stall</h1>
+    <div class="controls">
+      <!-- Search Stall -->
+      <div class="search-box">
+        <input type="text" id="search-stall" placeholder="Search stalls..." oninput="searchStalls()">
+        <i class="fas fa-search"></i> 
+      </div>
+      
+      <!-- Add Stall Button -->
+      <button class="btn-add" onclick="openAddStallModal()">
+        <i class="fas fa-plus"></i> Add Stall
+      </button>
+    </div>
+  </div>
+
+  <!-- Stall Table -->
+  <div class="table-container">
+    <table id="stalls-table">
+      <thead>
+        <tr>
+          <th>Stall ID</th>
+          <th>Name</th>
+          <th>Capacity</th>
+          <th>Occupied</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Rows will be populated dynamically -->
+        <tr>
+          <td>Stall A1</td>
+          <td>East Stall</td>
+          <td>564 cows</td>
+          <td>499</td>
+          <td><span class="status-badge good">Good</span></td>
+          <td class="actions">
+            <button class="btn-edit" onclick="editRow(this)">Edit</button>
+            <button class="btn-delete" onclick="deleteRow(this)">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Stall B2</td>
+          <td>North Stall</td>
+          <td>245 cows</td>
+          <td>243</td>
+          <td><span class="status-badge good">Good</span></td>
+          <td class="actions">
+            <button class="btn-edit" onclick="editRow(this)">Edit</button>
+            <button class="btn-delete" onclick="deleteRow(this)">Delete</button>
+            </td>
+      </tr>
+      </tr>
+      <tr>
+          <td>Stall C3</td>
+          <td>Central Stall</td>
+          <td>155 cows</td>
+          <td>149</td>
+          <td><span class="status-badge needs-cleaning">Need Cleaning</span></td>
+          <td class="actions">
+            <button class="btn-edit" onclick="editRow(this)">Edit</button>
+            <button class="btn-delete" onclick="deleteRow(this)">Delete</button>
+            </td>
+      </tr>
+      </tr>
+      <tr>
+          <td>Stall D4</td>
+          <td>South Stall</td>
+          <td>151 cows</td>
+          <td>133</td>
+          <td><span class="status-badge good">Good</span></td>
+          <td class="actions">
+            <button class="btn-edit" onclick="editRow(this)">Edit</button>
+            <button class="btn-delete" onclick="deleteRow(this)">Delete</button>
+            </td>
+      </tr>
+          
+      </tr>
+      <tr>
+          <td>Stall E5</td>
+          <td>West Stall</td>
+          <td>11 cows</td>
+          <td>9</td>
+          <td><span class="status-badge needs-cleaning">Need Cleaning</span></td>
+          <td class="actions">
+            <button class="btn-edit" onclick="editRow(this)">Edit</button>
+            <button class="btn-delete" onclick="deleteRow(this)">Delete</button>
+            </td>
+      </tr>
+      </tr>
+      </tbody>
+
+      
+    </table>
+  </div>
+</div>
+
+<!-- Add Stall Modal (Hidden by Default) -->
+<div id="addStallModal" class="modal">
+  <div class="modal-content">
+      <span class="close" onclick="closeAddStallModal()">&times;</span>
+    <h2>Add New Stall</h2>
+    <form id="add-stall-form">
+      <input type="text" id="stall-id" maxlength="12" placeholder="Stall ID" required>
+      <input type="text" id="stall-name" maxlength="12" placeholder="Name" required>
+      <input type="number" id="stall-capacity" maxlength="12"  placeholder="Capacity" required>
+      <input type="number" id="stall-occupied" maxlength="12" placeholder="Occupied" required>
+      <select id="stall-status" required>
+        <option value="">Select Status</option>
+        <option value="Good">Good</option>
+        <option value="Needs Cleaning">Needs Cleaning</option>
+      </select>
+      <button type="submit" class="btn-submit">Save</button>
+    </form>
+  </div>
+</div>
+
+      <!---Manage css-->
+
+      <style>
+        /* Google fonts === */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+*
+ /*========Globals===========*/
+{
+    font-family: "Ubuntu", sans-serif;
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+ :root
+{
+    --blue: #292185;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1:#222; 
+    --blacl2:#999;
+    --grey:var(--grey)
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+body
+{
+background-color: #f7f9fb;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header {
+   position: fixed;      
+  top: 0;              
+  left: 0;             
+  width: 100%;          
+  background-color: #fff; 
+  z-index: 1000;       
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 10px 20px;    
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;  
+}
+
+.logo-section {
+display: flex;
+align-items: center;
+gap: 10px;
+font-size: small;
+}
+
+
+
+#toggleSidebar {
+font-size: 24px;
+background: none;
+border: none;
+cursor: pointer;
+margin-left: 20px;
+}
+
+.logo {
+width: 145px;
+height: 70px;
+}
+
+.company-name {
+display: flex;
+flex-direction: column;
+font-size: 12px;
+line-height: 1.2;
+
+}
+
+.dashboard-title {
+font-size: 25px;
+color: 	#2C3E50;
+flex-grow: 1;
+text-align:left;
+margin-left: 40px;
+}
+
+
+.header-right {
+display: flex;
+align-items: center;
+gap: 32px;
+text-align: center;
+}
+
+.search-container input {
+position: relative;
+padding: 12px 34px;
+border-radius: 20px;
+border: 1px solid 	#DCDFE3;
+min-width: 332px;
+height: 40px;
+background-color: #F0F3F5;
+}
+
+.search-container .fa-magnifying-glass {
+  position: relative;
+  font-size: 1.0rem;
+  right:322px;
+
+}
+
+.search-container input::placeholder {
+  color: #95a5a6;
+  padding: 5px;
+  font-size: 15px;
+}
+
+
+.icons {
+display: flex;
+gap: 10px;
+font-size: 22px;
+}
+
+
+
+
+
+.icons {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.icon-wrapper {
+  position: relative;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.icon {
+
+  transition: color 0.3s ease;
+}
+
+
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+
+
+.icon-wrapper.notification .icon {
+  color: #f39c12;
+}
+.icon-wrapper.notification .icon:hover {
+  color: #e67e22;
+}
+
+
+.icon-wrapper.message .icon {
+  color: #3498db;
+}
+.icon-wrapper.message .icon:hover {
+  color: #2980b9;
+}
+
+
+.icon-wrapper.globe .icon {
+  color: #2ecc71;}
+
+.profile {
+display: flex;
+align-items: center;
+gap: 9.8px;
+font-size: 16px;
+margin-right: -5px;
+color: 	#34495E;
+}
+ 
+.avatar {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+border: 2px solid 	#999;
+object-fit: cover;
+
+
+}
+
+
+
+
+
+
+/*===new navigations ===*/
+.navigation {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  background: #fff; /* Pure white background other #ecf0f3 e8f5e9 */
+  transition: 0.5s;
+  overflow: hidden;
+  top: 90px;
+  z-index: 1400;
+}
+
+
+.navigation.active {
+      width: 80px;
+}
+
+.navigation ul{
+  position: absolute ;
+  left: 0;
+  right: 0;
+  width:100%;
+
+}
+.navigation ul li{
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px ;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  
+}
+.navigation ul li:hover{
+  
+  background: #4CAF50; 
+  display: flex;
+  align-items: center ;
+  padding: 4px 4px ;  
+  height: 40px ;       
+  line-height: 0.9rem ;
+}
+.navigation ul li:nth-child(1){
+  margin-top: 10px;
+
+}
+.navigation ul li a{
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: #2c3e50;
+  margin: 5px;
+}    
+.navigation ul li:hover a {
+  color: white; 
+}
+
+.navigation ul li a .icon iconify-icon {
+  font-size: 1.60rem; 
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  min-width: 60px;
+
+}
+
+
+.navigation ul li a .icon i  { 
+  font-size: 1.30rem;
+}     
+
+ .navigation ul li a .tittle{
+    flex: 1;
+    position: relative;
+    display: flex;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }
+
+
+ 
+ .navigation ul li a .icon-right{
+  margin-left: auto;
+  font-size: 12px;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+
+/* Active state (current page) */
+.navigation ul li.active {
+  background-color: #2e7d32;
+  color: #fff;
+  border-top-left-radius: 40px;
+border-bottom-left-radius: 40px;
+border-top-right-radius: 40px;
+border-bottom-right-radius: 40px;
+}
+
+.navigation ul li.active a {
+  color: white;
+  align-items: center ;
+padding: 4px 4px ;  
+height: 40px ;     
+line-height: 0.9rem ;
+}
+
+
+ /*main table*/
+
+ /* === Main Structure === */
+.tabular-wrapper {
+
+  padding: 10px;
+  margin-left: 255px;
+  margin-right: 9px;
+  margin-top: 100px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Main-tittle {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* === Header & Controls === */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* === Search Box === */
+.search-box {
+  position: relative;
+  min-width: 250px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 15px 10px 35px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.search-box input:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.search-box i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 14px;
+}
+
+/* === Buttons === */
+.btn-add {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.btn-add:hover {
+  background: #3d8b40;
+  transform: translateY(-1px);
+}
+
+.btn-edit, .btn-delete {
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.btn-edit {
+ background-color: #e3f2fd; /* light blue */
+  color: #1976d2;  }
+
+  .btn-edit:hover {  
+   background-color: #bbdefb;
+  border-color: #64b5f6;
+}  
+
+.btn-delete {
+  background: #FFEBEE;  
+  color: #D32F2F;  
+}
+.btn-delete:hover {  
+  background: #FFCDD2;  
+}  
+
+.btn-delete:active {  
+  background: #EF9A9A;  
+  color: #B71C1C;  
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);  
+} 
+
+
+/* === Table Styles === */
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background-color: #f8f9fa;
+  color: #555;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+.actions {
+  white-space: nowrap;
+}
+
+/* === Status Badges === */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.good {
+  background: #e6f7ee;
+  color: #4CAF50;
+}
+
+.needs-cleaning {
+  background: #fff3e0;
+  color: #FF9800;
+}
+
+/* === Modal Styles === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.modal-content {
+  background: white;
+  margin: 10% auto;
+  padding: 25px;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  font-size: 24px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #333;
+}
+
+.modal h2 {
+  margin-top: 0;
+  color: #333;
+  font-size: 20px;
+}
+
+/* === Form Styles === */
+#add-stall-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+#add-stall-form input,
+#add-stall-form select {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+#add-stall-form input:focus,
+#add-stall-form select:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+.btn-submit {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 10px;
+  transition: all 0.3s;
+}
+
+.btn-submit:hover {
+  background: #3d8b40;
+}
+
+/* === Responsive Design === */
+ (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .controls {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .search-box {
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .modal-content {
+    margin: 20% auto;
+    width: 90%;
+  }
+}
+
+
+                          /*themes*/
+
+/* Dark Theme */
+body.dark-theme {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+.dark-theme h3, {
+  margin-bottom: 10px;
+  color: #f9f9f9;
+}
+
+
+/* Dark Theme Header */
+body.dark-theme header {
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+}
+
+
+/* Dark Theme Header Text */
+body.dark-theme header,
+body.dark-theme header * {
+  color: #fff ;
+}
+
+/* logo color in dark theme */
+.dark-theme .logo {
+  filter: invert(1);  
+}
+
+
+
+body.dark-theme .card {
+  background: #333333;
+  color: var(--text-dark);
+  box-shadow: 0px 1px 0px 4px rgba(0, 0, 0, 0.2);
+  .target { color: #f0f0f0; display: block; }
+}
+
+.dark-theme .search-container input {
+  background-color: var(--white);
+  border: 1px solid var(--border-light);
+}
+
+body.dark-theme .search-container input {
+  background-color: #333;
+  border: 1px solid var(--border-dark);
+  color: var(--text-dark);
+}
+
+/* General Dark Theme */
+body.dark-theme {
+  background-color: #121212; 
+  color: #e0e0e0; 
+}
+
+
+/* DARK THEME FOR NAVIGATION */
+
+/* Dark Theme Sidebar */
+body.dark-theme .navigation {
+  background-color: #1e1e2f;
+}
+
+/* Dark Theme Nav Links */
+body.dark-theme .navigation ul li a {
+  color: #f1f1f1;
+}
+
+/* Dark Theme Icon Color */
+body.dark-theme .navigation ul li a .icon i,
+body.dark-theme .navigation ul li a .icon iconify-icon {
+  color: #f1f1f1;
+}
+
+/* Dark Theme Hover */
+body.dark-theme .navigation ul li:hover {
+  background-color: #2a2a3d;
+}
+
+body.dark-theme .navigation ul li:hover a {
+  color: white;
+}
+
+/* Dark Theme Active Item */
+body.dark-theme .navigation ul li.active {
+  background-color: #2c7a33;
+}
+
+body.dark-theme .navigation ul li.active a {
+  color: #ffffff;
+}
+
+/* === DARK MODE FOR NAVIGATION === */
+body.dark-theme .navigation {
+  background: #1e1e2f; 
+}
+
+body.dark-theme .navigation ul li a {
+  color: #cfd8dc;
+}
+
+body.dark-theme .navigation ul li:hover {
+  background: #388e3c; 
+}
+
+body.dark-theme .navigation ul li:hover a {
+  color: #ffffff;
+}
+
+body.dark-theme .navigation ul li.active {
+  background-color: #66bb6a;
+  color: #ffffff;
+}
+
+body.dark-theme .navigation ul li.active a {
+  color: #ffffff;
+}
+
+.dark-theme .tabular-wrapper {
+  padding: 10px;
+  margin-left: 255px;
+  margin-right: 9px;
+  margin-top: 100px;
+  background: #121212;          
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dark-theme .Main-tittle {
+  font-size: 24px;
+  color: #e0e0e0;               
+  margin: 0;
+  font-weight: 600;
+}
+
+.dark-theme .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.dark-theme .controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.dark-theme .search-box {
+  position: relative;
+  min-width: 250px;
+}
+
+.dark-theme .search-box input {
+  width: 100%;
+  padding: 10px 15px 10px 35px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #222;
+  color: #ddd;
+  transition: all 0.3s;
+}
+
+.dark-theme .search-box input:focus {
+  border-color: #66bb6a;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(102, 187, 106, 0.4);
+}
+
+.dark-theme .search-box i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 14px;
+}
+
+.dark-theme .btn-add {
+  background: #388e3c;
+  color: #e0e0e0;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.dark-theme .btn-add:hover {
+  background: #2e7031;
+  transform: translateY(-1px);
+}
+
+.dark-theme .btn-edit, 
+.dark-theme .btn-delete {
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.dark-theme .btn-edit {
+  background-color: #1565c0; /* dark blue */
+  color: #bbdefb;
+}
+
+.dark-theme .btn-edit:hover {
+  background-color: #1e88e5;
+  border-color: #64b5f6;
+}
+
+.dark-theme .btn-delete {
+  background: #b71c1c;
+  color: #ffcdd2;
+}
+
+.dark-theme .btn-delete:hover {
+  background: #d32f2f;
+}
+
+.dark-theme .btn-delete:active {
+  background: #f44336;
+  color: #b71c1c;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.dark-theme .table-container {
+  overflow-x: auto;
+}
+
+.dark-theme table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.dark-theme th, 
+.dark-theme td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #444;
+  color: #ccc;
+}
+
+.dark-theme th {
+  background-color: #1f1f1f;
+  color: #bbb;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.dark-theme tr:hover {
+  background-color: #333;
+}
+
+.dark-theme .actions {
+  white-space: nowrap;
+}
+
+.dark-theme .status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.dark-theme .good {
+  background: #2e7d3220; /* translucent dark green */
+  color: #81c784;
+}
+
+.dark-theme .needs-cleaning {
+  background: #ff980020; 
+  color: #ffb74d;
+}
+
+.dark-theme .modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.9);
+  backdrop-filter: blur(2px);
+}
+
+.dark-theme .modal-content {
+  background: #222;
+  margin: 10% auto;
+  padding: 25px;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+  position: relative;
+  color: #ddd;
+}
+
+.dark-theme .close {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  font-size: 24px;
+  color: #888;
+  cursor: pointer;
+}
+
+.dark-theme .close:hover {
+  color: #eee;
+}
+
+.dark-theme .modal h2 {
+  margin-top: 0;
+  color: #eee;
+  font-size: 20px;
+}
+
+.dark-theme #add-stall-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.dark-theme #add-stall-form input,
+.dark-theme #add-stall-form select {
+  padding: 10px 15px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #222;
+  color: #ddd;
+}
+
+.dark-theme #add-stall-form input:focus,
+.dark-theme #add-stall-form select:focus {
+  border-color: #66bb6a;
+  outline: none;
+}
+
+.dark-theme .btn-submit {
+  background: #388e3c;
+  color: #e0e0e0;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 10px;
+  transition: all 0.3s;
+}
+
+.dark-theme .btn-submit:hover {
+  background: #2e7031;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .dark-theme .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dark-theme .controls {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dark-theme .search-box {
+    width: 100%;
+  }
+
+  .dark-theme th, 
+  .dark-theme td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+}
+
+.dark-theme .btn-add {
+  background-color: #333;
+  color: #f0f0f0;
+}
+   
+ .dark-theme .btn-add:hover {
+  background-color: #444;
+}
+
+      </style>
+
+    <!---End of Manage css-->
+
+     <!--- Manage Js-->
+
+     <script>
+      
+document.addEventListener('DOMContentLoaded', () => {
+  // ---------- DOM---
+  const searchInput  = document.getElementById('search-stall');
+  const tableBody    = document.querySelector('#stalls-table tbody');
+  const modal        = document.getElementById('addStallModal');
+  const form         = document.getElementById('add-stall-form');
+  const openModalBtn = document.querySelector('.btn-add');   // “Add Stall” button
+
+  let currentEditRow = null;     
+
+  // ---------- 1) SEARCH ----------
+  searchInput.addEventListener('input', () => {
+    const filter = searchInput.value.toUpperCase();
+    tableBody.querySelectorAll('tr').forEach(row => {
+      const match = Array.from(row.cells)
+        .slice(0, -1)                         
+        .some(cell => cell.textContent.toUpperCase().includes(filter));
+      row.style.display = match ? '' : 'none';
+    });
+  });
+
+  // ---------- 2) OPEN / CLOSE MODAL ----------
+  function openModal()  { modal.style.display = 'block'; }
+  function closeModal() { modal.style.display = 'none';  }
+
+  if (openModalBtn) {
+    openModalBtn.addEventListener('click', () => {
+      currentEditRow = null;      
+      form.reset();
+      openModal();
+    });
+  }
+
+
+  const closeBtn = document.querySelector('#addStallModal .close');
+
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+}
+
+
+  //  outside click modal to close
+  window.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
+  });
+
+
+  // ---------- 3) TABLE ACTIONS (edit / delete) ----------
+  tableBody.addEventListener('click', e => {
+    const target = e.target;
+
+    // --- edit ---
+    if (target.classList.contains('btn-edit')) {
+      currentEditRow = target.closest('tr');
+      populateFormFromRow(currentEditRow);
+      openModal();
+    }
+
+    // --- delete ---
+    if (target.classList.contains('btn-delete')) {
+      if (confirm('Delete this stall?')) {
+        target.closest('tr').remove();
+      }
+    }
+  });
+
+  function populateFormFromRow(row) {
+    form['stall-id'       ].value = row.cells[0].textContent.trim();
+    form['stall-name'     ].value = row.cells[1].textContent.trim();
+    form['stall-capacity' ].value = row.cells[2].textContent.replace(' cows','').trim();
+    form['stall-occupied' ].value = row.cells[3].textContent.trim();
+    form['stall-status'   ].value = row.cells[4].textContent.trim();
+  }
+
+  // ---------- 4) FORM SUBMIT  (add save edit) ----------
+  form.addEventListener('submit', e => {
+    e.preventDefault();                      
+
+    const stallId   = form['stall-id'      ].value.trim();
+    const name      = form['stall-name'    ].value.trim();
+    const capacity  = form['stall-capacity'].value.trim();
+    const occupied  = form['stall-occupied'].value.trim();
+    const status    = form['stall-status'  ].value.trim();
+
+    const statusClass = status === 'Good' ? 'good' : 'needs-cleaning';
+
+     // --- Validations ---
+
+
+  // Stall Name
+  if (!name || !/^[a-zA-Z\s]{3,30}$/.test(name)) {
+    alert('Please enter a valid Stall Name (letters and spaces only, 3 to 30 characters).');
+    return;
+  }
+
+  // Capacity 
+  if (!capacity || !/^\d+$/.test(capacity) || parseInt(capacity) <= 0) {
+    alert('Please enter a valid Capacity (positive number).');
+    return;
+  }
+
+  // Occupied 
+  if (!occupied || !/^\d+$/.test(occupied) || parseInt(occupied) < 0 || parseInt(occupied) > parseInt(capacity)) {
+    alert('Please enter a valid Occupied count (0 to Capacity).');
+    return;
+  }
+
+  // Status - required, either "Good" or "Needs Cleaning"
+  const validStatuses = ['Good', 'Needs Cleaning'];
+  if (!validStatuses.includes(status)) {
+    alert('Status must be either "Good" or "Needs Cleaning".');
+    return;
+  }
+
+    const rowHTML = `
+      <td>${stallId}</td>
+      <td>${name}</td>
+      <td>${capacity} cows</td>
+      <td>${occupied}</td>
+      <td><span class="status-badge ${statusClass}">${status}</span></td>
+      <td class="actions">
+        <button class="btn-edit">Edit</button>
+        <button class="btn-delete">Delete</button>
+      </td>
+    `;
+
+    if (currentEditRow) {
+      //  existing row
+      currentEditRow.innerHTML = rowHTML;
+      currentEditRow = null;
+    } else {
+      // add new row
+      const newRow = tableBody.insertRow();
+      newRow.innerHTML = rowHTML;
+    }
+
+    form.reset();
+    closeModal();
+  });
+});
+
+      </script>
+
+     <!---End of Manage Js-->
+
+
+ 
+  <!---Theme js-->
+<script src="theme.js" defer></script>
+    
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!---- ====font awesome==== ---->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+
+
+</body>
+</html>

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm-GO</title>
+</head>
+<!----==== styles csss===----->
+<link rel="stylesheet" href="settings.css">
+  <!----===== script js ====--->
+  <script src="script.js" defer></script>
+
+  
+<!--Chart .js-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!--Iconifyy icons-->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+
+
+
+
+<body>
+
+    <header class="dashboard-header">
+      <div class="logo-section">
+        <img src="logo.png" alt="ATS Logo" class="logo"/>
+        <button id="toggleSidebar">&#9776;</button>
+        <div class="company-name">
+        </div>
+      </div>
+      <h1 class="dashboard-title">Admin Dashboard</h1>
+      <div class="header-right">
+        <div class="search-container">
+          <input type="text" placeholder="Search..."/>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        
+        <div class="icons">
+
+         <div class="icon-wrapper notification">
+          <i class="fas fa-bell icon"></i>
+          <span class="badge">3</span> <!-- Notification count -->
+          </div>
+            <div class="icon-wrapper message">
+         <i class="fas fa-envelope icon"></i>
+          <span class="badge">6</span>
+          </div>
+
+           <div class="icon-wrapper globe">
+          <i class="fas fa-globe icon"></i> <!-- Language or globe -->
+        </div>
+          <!-- Wrap profile area in a button or link -->
+      <div class="profile" id="profileTrigger">
+        <img src="customer.jpg" alt="User" class="avatar" />
+        <span>Mark Williams</span>
+      </div>
+
+  
+    </div>
+
+      
+    </header>
+
+
+  
+</body>
+
+
+
+
+        <!-------====== New Navigation =====--->
+     
+        
+            <div class="navigation">
+                <ul>
+                    <li>
+                        <a href="page.html">
+                            <span class="icon">
+                            <i class="fa-solid fa-table-columns"></i></span>
+                            <span class="tittle">Dashboard</span>
+                        </a>    
+                    </li>
+                    <li>
+                        <a href="human.html">
+                            <span class="icon"><i class="fa-solid fa-person"></i></span>
+                            <span class="tittle">Human Resources
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                        </a>    
+                    </li>
+                    <li>
+                        <a href="customer.html">
+                            <span class="icon"><i class="fa-solid fa-people-arrows"></i></span>
+                            <span class="tittle">Customers
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                        </a>    
+                    </li>
+                   
+                    <li>
+                        <a href="monitor.html">
+                            <span class="icon"><i class="fa-solid fa-desktop"></i></span>
+                            <span class="tittle">Animals Monitor
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+            
+                        </a>    
+                    </li>
+                   <li>
+                          <a href="Manage.html">
+                              <span class="icon">
+                            <iconify-icon icon="mdi:storefront-outline"></iconify-icon>
+                             </span>
+                              <span class="tittle">Manage Stall
+                                <i class="fa-solid fa-chevron-right icon-right"></i>
+                              </span>
+                          </a>    
+                      </li>
+                    
+                    <li class="active">
+                        <a href="settings.htm">
+                            
+                             <span class="icon"><i class="fa-solid fa-gear"></i></span>
+                             
+                            <span class="tittle">Settings
+                          <i class="fa-solid fa-chevron-right icon-right"></i>
+        
+                        </a>    
+                    </li>     
+                    
+                    <li>
+                        <a href="report.html">
+                            <span class="icon"><i class="fa-solid fa-flag-checkered"></i></span>
+                            <span class="tittle">Reports
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                        </a>    
+                    </li>
+                           <li class="logout-nav">
+           <a href="#" onclick="logout()">
+        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+        <span class="tittle">Logout
+           <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                </a>
+                </li>
+                </ul>
+            </div>
+
+
+            <!---Settings page-->
+ <div class="settings-page">
+  <h2>Settings</h2>
+
+  <!-- Notification Settings -->
+  <section class="settings-section">
+    <h3>🔔 Notification Settings</h3>
+    <label>
+      <input type="checkbox" id="emailAlerts" checked />
+      Enable Email Alerts
+    </label>
+    <label>
+      <input type="checkbox" id="smsAlerts" />
+      Enable SMS Notifications
+    </label>
+    <label>
+      <input type="number" id="alertThreshold" min="1" value="5" />
+      Alert threshold (e.g., Milk below X litres)
+    </label>
+  </section>
+
+  <!-- Language & Regional Settings -->
+  <section class="settings-section">
+    <h3>🌍 Language & Regional Settings</h3>
+    <label>
+      Language:
+      <select id="language">
+        <option>English</option>
+        <option>Hindi</option>
+        <option>Spanish</option>
+      </select>
+    </label>
+    <label>
+      Date Format:
+      <select id="dateFormat">
+        <option>DD/MM/YYYY</option>
+        <option>MM/DD/YYYY</option>
+      </select>
+    </label>
+    <label>
+      Currency:
+      <select id="currency">
+        <option>INR ₹</option>
+        <option>USD $</option>
+        <option>EUR €</option>
+      </select>
+    </label>
+  </section>
+
+  <!-- Security Settings -->
+  <section class="settings-section">
+    <h3>🔒 Security Settings</h3>
+    <label>
+      <input type="checkbox" id="twoFactor" />
+      Enable Two-Factor Authentication
+    </label>
+    <label>
+      Session Timeout:
+      <select id="sessionTimeout">
+        <option>15 minutes</option>
+        <option>30 minutes</option>
+        <option>1 hour</option>
+      </select>
+    </label>
+  </section>
+
+  <!-- System Customization -->
+  <section class="settings-section">
+    <h3>🎨 System Customization</h3>
+    <label>
+      Theme:
+     <select id="theme">
+  <option value="light">Light</option>
+  <option value="dark">Dark</option>
+     </select>
+    </label>
+    <label>
+      Dashboard Layout:
+      <select id="layout">
+        <option>Standard</option>
+        <option>Compact</option>
+      </select>
+    </label>
+    <label>
+      Show Cow Monitor Module:
+      <input type="checkbox" id="showCowMonitor" checked />
+    </label>
+  </section>
+  
+  <button onclick="saveSettings()">Save Settings</button>
+</div>
+
+
+<!---SCript for Settings page-->
+<script>
+  function saveSettings() {
+    const settings = {
+      emailAlerts: document.getElementById('emailAlerts').checked,
+      smsAlerts: document.getElementById('smsAlerts').checked,
+      alertThreshold: document.getElementById('alertThreshold').value,
+      language: document.getElementById('language').value,
+      dateFormat: document.getElementById('dateFormat').value,
+      currency: document.getElementById('currency').value,
+      twoFactor: document.getElementById('twoFactor').checked,
+      sessionTimeout: document.getElementById('sessionTimeout').value,
+      theme: document.getElementById('theme').value,
+      layout: document.getElementById('layout').value,
+      showCowMonitor: document.getElementById('showCowMonitor').checked
+    };
+
+    
+
+    // Apply theme
+    document.body.classList.remove('light-theme', 'dark-theme');
+    document.body.classList.add(settings.theme + '-theme');
+
+    localStorage.setItem('theme', settings.theme);
+
+    // Log and alert
+    console.log("Saved Settings:", settings);
+    alert("Settings saved successfully!");
+  }
+
+  // saved theme on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.body.classList.add(savedTheme + '-theme');
+    const themeSelect = document.getElementById('theme');
+    if (themeSelect) themeSelect.value = savedTheme;
+  });
+</script>
+
+
+  <!---- ====Settings css==== ---->
+
+  <style>
+
+    /* Google fonts === */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+*
+ /*========Globals===========*/
+{
+    font-family: "Ubuntu", sans-serif;
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+ :root
+{
+    --blue: #292185;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1:#222; 
+    --blacl2:#999;
+    --grey:var(--grey)
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+body
+{
+background-color: #fdfdff;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header {
+   position: fixed;      
+  top: 0;              
+  left: 0;             
+  width: 100%;          
+  background-color: #fff; 
+  z-index: 1000;       
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 10px 20px;    
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;  
+}
+
+.logo-section {
+display: flex;
+align-items: center;
+gap: 10px;
+font-size: small;
+}
+
+
+
+#toggleSidebar {
+font-size: 24px;
+background: none;
+border: none;
+cursor: pointer;
+margin-left: 20px;
+}
+
+.logo {
+width: 145px;
+height: 70px;
+}
+
+.company-name {
+display: flex;
+flex-direction: column;
+font-size: 12px;
+line-height: 1.2;
+
+}
+
+.dashboard-title {
+font-size: 25px;
+color: 	#2C3E50;
+flex-grow: 1;
+text-align:left;
+margin-left: 40px;
+}
+
+
+.header-right {
+display: flex;
+align-items: center;
+gap: 32px;
+text-align: center;
+}
+
+.search-container input {
+position: relative;
+padding: 12px 34px;
+border-radius: 20px;
+border: 1px solid 	#DCDFE3;
+min-width: 332px;
+height: 40px;
+background-color: #F0F3F5;
+}
+
+.search-container .fa-magnifying-glass {
+  position: relative;
+  font-size: 1.0rem;
+  right:322px;
+
+}
+
+.search-container input::placeholder {
+  color: #95a5a6;
+  padding: 5px;
+  font-size: 15px;
+}
+
+
+.icons {
+display: flex;
+gap: 10px;
+font-size: 22px;
+}
+
+
+
+
+
+.icons {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.icon-wrapper {
+  position: relative;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.icon {
+
+  transition: color 0.3s ease;
+}
+
+
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+
+/* Notification Icon - Orange */
+.icon-wrapper.notification .icon {
+  color: #f39c12;
+}
+.icon-wrapper.notification .icon:hover {
+  color: #e67e22;
+}
+
+/* Message Icon - Blue */
+.icon-wrapper.message .icon {
+  color: #3498db;
+}
+.icon-wrapper.message .icon:hover {
+  color: #2980b9;
+}
+
+/* Globe Icon - Green */
+.icon-wrapper.globe .icon {
+  color: #2ecc71;}
+
+.profile {
+display: flex;
+align-items: center;
+gap: 9.8px;
+font-size: 16px;
+margin-right: -5px;
+color: 	#34495E;
+}
+ 
+.avatar {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+border: 2px solid 	#999;
+object-fit: cover;
+
+
+}
+
+
+
+
+
+
+/*===new navigations ===*/
+.navigation {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  background: #fff; /* Pure white background other #ecf0f3 e8f5e9 */
+  transition: 0.5s;
+  overflow: hidden;
+  top: 90px;
+  z-index: 1400;
+}
+
+
+.navigation.active {
+      width: 80px;
+}
+
+.navigation ul{
+  position: absolute ;
+  left: 0;
+  right: 0;
+  width:100%;
+
+}
+.navigation ul li{
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px ;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  
+}
+.navigation ul li:hover{
+  
+  background: #4CAF50; 
+  display: flex;
+  align-items: center ;
+  padding: 4px 4px ;  
+  height: 40px ;       
+  line-height: 0.9rem ;
+}
+.navigation ul li:nth-child(1){
+  margin-top: 10px;
+
+}
+.navigation ul li a{
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: #2c3e50;
+  margin: 5px;
+}    
+.navigation ul li:hover a {
+  color: white; 
+}
+
+.navigation ul li a .icon iconify-icon {
+  font-size: 1.60rem; 
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  min-width: 60px;
+
+}
+
+
+.navigation ul li a .icon i  { 
+  font-size: 1.30rem;
+}     
+
+ .navigation ul li a .tittle{
+    flex: 1;
+    position: relative;
+    display: flex;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }
+
+
+ 
+ .navigation ul li a .icon-right{
+  margin-left: auto;
+  font-size: 12px;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+
+/* Active state (current page) */
+.navigation ul li.active {
+  background-color: #2e7d32;
+  color: #fff;
+  border-top-left-radius: 40px;
+border-bottom-left-radius: 40px;
+border-top-right-radius: 40px;
+border-bottom-right-radius: 40px;
+}
+
+.navigation ul li.active a {
+  color: white;
+  align-items: center ;
+padding: 4px 4px ;  
+height: 40px ;     
+line-height: 0.9rem ;
+}
+
+
+/*---Settings page */
+.settings-page {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 95px;
+  
+}
+
+.settings-page  .settings-section{
+  background: .#fafafa;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.settings-section h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.settings-section label {
+  display: block;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #0057e7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+
+/*theme*/
+
+
+
+  /* Dark Theme */
+  body.dark-theme {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+  }
+
+  /* Customize buttons, sections */
+  
+  body.light-theme .settings-section {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+
+  body.dark-theme .settings-section {
+    background-color: #2c2c2c;
+  }
+
+  body.light-theme .settings-section {
+    background-color: #f9f9f9;
+  }
+
+  body.dark-theme select,
+  body.dark-theme input {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #666;
+  }
+
+
+  /* dark Theme Header */
+
+ .dark-theme h3 {
+  margin-bottom: 10px;
+  color: #f9f9f9;
+}
+
+
+/* Dark Theme Header */
+body.dark-theme header {
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+}
+
+
+/* Dark Theme Header Text */
+body.dark-theme header,
+body.dark-theme header * {
+  color: #fff !important;
+}
+
+/*logo color in dark theme */
+.dark-theme .logo {
+  filter: invert(1);  /* This inverts the logo's color */
+}
+
+/* === DARK MODE FOR NAVIGATION === */
+body.dark-theme .navigation {
+  background: #1e1e2f;}
+
+body.dark-theme .navigation ul li a {
+  color: #cfd8dc; 
+}
+
+body.dark-theme .navigation ul li:hover {
+  background: #388e3c; 
+}
+
+body.dark-theme .navigation ul li:hover a {
+  color: #ffffff;
+}
+
+body.dark-theme .navigation ul li.active {
+  background-color: #66bb6a; 
+  color: #ffffff;
+}
+
+body.dark-theme .navigation ul li.active a {
+  color: #ffffff;
+}
+
+
+    </style>
+
+    <!---- ====END of Settings css==== ---->
+
+
+            
+    <!---- ====font awesome==== ---->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+</body>
+</html>   
+

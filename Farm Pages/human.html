@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm-GO</title>
+</head>
+    
+<!----==== styles csss===----->
+<link rel="stylesheet" href="human.css">
+<!----===== script js ====--->
+<script src="human.js"></script>
+
+<!--Iconifyy icons-->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+
+
+
+<body>
+
+    <header class="dashboard-header">
+      <div class="logo-section">
+        <img src="logo.png" alt="ATS Logo" class="logo"/>
+        <button id="toggleSidebar">&#9776;</button>
+        <div class="company-name">
+        </div>
+      </div>
+      <h1 class="dashboard-title">Admin Dashboard</h1>
+      <div class="header-right">
+        <div class="search-container">
+          <input type="text" placeholder="Search..."/>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        
+        <div class="icons">
+
+         <div class="icon-wrapper notification">
+          <i class="fas fa-bell icon"></i>
+          <span class="badge">3</span> <!-- Notification count -->
+          </div>
+            <div class="icon-wrapper message">
+         <i class="fas fa-envelope icon"></i>
+          <span class="badge">6</span>
+          </div>
+
+           <div class="icon-wrapper globe">
+          <i class="fas fa-globe icon"></i> <!-- Language or globe -->
+        </div>
+          <!-- Wrap profile area in a button or link -->
+      <div class="profile" id="profileTrigger">
+        <img src="customer.jpg" alt="User" class="avatar" />
+        <span>Mark Williams</span>
+      </div>
+
+    </div>
+
+      
+    </header>
+
+  </body>
+  
+          <!-------====== New Navigation =====--->
+       
+         
+
+              <div class="navigation">
+
+                    <ul id="sidebarMenu">
+
+                      <li>
+                          <a href="page.html">
+                              <span class="icon"><i class="fa-solid fa-table-columns"></i></i></span>
+                              <span class="tittle">Dashboard</span>
+                          </a>    
+                      </li>
+                      <li class="active">
+                        <a href="human.html">
+                            <span class="icon"><i class="fa-solid fa-person"></i></span>
+                            <span class="tittle">Human Resources</span>
+                            
+                        </a>    
+                    </li>
+                      <li>
+                          <a href="customer.html">
+                              <span class="icon"><i class="fa-solid fa-people-arrows"></i></span>
+                              <span class="tittle">Customers
+                                <i class="fa-solid fa-chevron-right icon-right"></i>
+                              </span>
+                          </a>    
+                      </li>
+                     
+                      <li>
+                          <a href="monitor.html">
+                            <span class="icon"><i class="fa-solid fa-desktop"></i></span>
+                            <span class="tittle">Animals Monitor
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                          </a>    
+                      </li>
+                      <li>
+                          <a href="Manage.html">
+                             <span class="icon">
+                            <iconify-icon icon="mdi:storefront-outline"></iconify-icon>
+                             </span>
+                              <span class="tittle">Manage Stall
+                                <i class="fa-solid fa-chevron-right icon-right"></i>
+                              </span>
+                          </a>    
+                      </li>
+                      <li>
+                          <a href="settings.htm">
+                              <span class="icon"><i class="fa-solid fa-gear"></i></span>
+                              <span class="tittle">Settings
+                          <i class="fa-solid fa-chevron-right icon-right"></i>
+                          </a>    
+                      </li>
+                      
+                      <li>
+                          <a href="report.html">
+                              <span class="icon"><i class="fa-solid fa-flag-checkered"></i></span>
+                              <span class="tittle">Reports
+                                <i class="fa-solid fa-chevron-right icon-right"></i>
+                              </span>
+                          </a>    
+                      </li>
+                             <li class="logout-nav">
+           <a href="#" onclick="logout()">
+        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+        <span class="tittle">Logout
+           <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                </a>
+                </li>
+                  </ul>
+              </div>
+       
+
+          <!---===Staff table===-->
+          
+          <h2 style="margin-bottom: 10px; font-size: 28px;">Staff List</h2>
+          <div class="canvas">
+            <input type="text" id="staffSearch" placeholder="Search by name or ID..." />
+            <button class="add-employee-btn">+ Add Employee</button>
+            
+            <table>
+              <thead>
+                <tr>
+                  <th>Employee ID</th>
+                  <th>Name</th>
+                  <th>Contact No.</th>
+                  <th>Department</th>
+                  <th>Designation</th>
+                  <th>Work Shift</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="staffTable">
+                <tr>
+                  <td>ATS0001</td>
+                  <td>David Fincher</td>
+                  <td>6300510265</td>
+                  <td>Finance</td>
+                  <td>Accountant</td>
+                  <td>Morning</td>
+                  <td><span class="status active">Active</span></td>
+                      <td>
+           <button class="icon-btn edit-btn" title="Edit">
+                <i class="fas fa-pen"></i>
+           </button>
+            <button class="icon-btn view-btn" title="View">
+            <i class="fas fa-eye"></i>
+           </button>
+            <button class="icon-btn delete-btn" title="Delete">
+            <i class="fas fa-trash-alt"></i>
+            </button>
+              </td>
+                </tr>
+                <tr>
+                  <td>ATS0002</td>
+                  <td>Sameer Rizvi</td>
+                  <td>7989504852</td>
+                  <td>Operations</td>
+                  <td>Executive</td>
+                  <td>Evening</td>
+                  <td><span class="status active">Active</span></td>
+                       <td>
+           <button class="icon-btn edit-btn" title="Edit">
+                <i class="fas fa-pen"></i>
+           </button>
+             <button class="icon-btn view-btn" title="View">
+            <i class="fas fa-eye"></i>
+           </button>
+            <button class="icon-btn delete-btn" title="Delete">
+            <i class="fas fa-trash-alt"></i>
+            </button>
+              </td>
+                </tr>
+                <tr>
+                  <td>ATS0003</td>
+                  <td>Sanjeev Kumar</td>
+                  <td>9800380265</td>
+                  <td>Sales</td>
+                  <td>Manager</td>
+                  <td>Morning</td>
+                  <td><span class="status on-leave">On Leave</span></td>
+                       <td>
+           <button class="icon-btn edit-btn" title="Edit">
+                <i class="fas fa-pen"></i>
+           </button>
+             <button class="icon-btn view-btn" title="View">
+            <i class="fas fa-eye"></i>
+           </button>
+            <button class="icon-btn delete-btn" title="Delete">
+            <i class="fas fa-trash-alt"></i>
+            </button>
+              </td>
+                </tr>
+                <tr>
+                  <td>ATS0004</td>
+                  <td>Srinivas</td>
+                  <td>8924593025</td>
+                  <td>Admin</td>
+                  <td>Executive</td>
+                  <td>Night</td>
+                  <td><span class="status active">Active</span></td>
+                       <td>
+           <button class="icon-btn edit-btn" title="Edit">
+                <i class="fas fa-pen"></i>
+           </button>
+             <button class="icon-btn view-btn" title="View">
+            <i class="fas fa-eye"></i>
+           </button>
+            <button class="icon-btn delete-btn" title="Delete">
+            <i class="fas fa-trash-alt"></i>
+            </button>
+                     </td>
+                </tr>
+                <tr>
+                  <td>ATS0005</td>
+                  <td>Isha choudhary</td>
+                  <td>684440999</td>
+                  <td>Finance</td>
+                  <td>Accountant</td>
+                  <td>Morning</td>
+                  <td><span class="status inactive">Inactive</span></td>
+                       <td>
+           <button class="icon-btn edit-btn" title="Edit">
+                <i class="fas fa-pen"></i>
+           </button>
+             <button class="icon-btn view-btn" title="View">
+            <i class="fas fa-eye"></i>
+           </button>
+            <button class="icon-btn delete-btn" title="Delete">
+            <i class="fas fa-trash-alt"></i>
+            </button>
+                     </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+    <!--Add employee-->
+
+    <div id="addEmployeeModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Add New Employee</h3>
+    <form id="addEmployeeForm">
+      
+      <div class="form-group">
+        <input type="text" id="employeeIdInput" class="form-control" placeholder="Employee ID" maxlength="10" required />
+        <span id="employeeIdError" class="error-text"></span>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Name" maxlength="15" required />
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Contact No." required />
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Department" maxlength="12" required />
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Designation" maxlength="12" required />
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Work Shift" maxlength="10" required />
+      </div>
+
+      <div class="form-group">
+        <select class="form-control" required>
+          <option value="">Select Status</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+          <option value="on-leave">On Leave</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn">Add Employee</button>
+    </form>
+  </div>
+</div>
+
+
+<!-- View Employee Modal pop ROW data -->
+
+<div id="viewEmployeeModal" class="modal view-modal">
+  <div class="modal-content">
+    <span class="close close-view">&times;</span>
+    <h3>Employee Details</h3>
+    <div id="viewEmployeeDetails" class="view-grid">
+      <div class="label-column">
+        <p>Employee ID:</p>
+        <p>Name:</p>
+        <p>Contact No.:</p>
+        <p>Department:</p>
+        <p>Designation:</p>
+        <p>Work Shift:</p>
+        <p>Status:</p>
+      </div>
+      <div class="value-column">
+        <p id="view-emp-id"></p>
+        <p id="view-name"></p>
+        <p id="view-contact"></p>
+        <p id="view-dept"></p>
+        <p id="view-designation"></p>
+        <p id="view-shift"></p>
+        <p id="view-status"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+          <!--SCRIPT for ADD customer-->
+<script>
+
+let editingRow = null;
+
+/* ---------- 2. SEARCH ---------- */
+const searchInput = document.getElementById("staffSearch");
+const staffTableBody = document.getElementById("staffTable");
+
+searchInput.addEventListener("input", () => {
+  const filter = searchInput.value.toLowerCase();
+  // fresh query _every_ time so new rows are included
+  staffTableBody.querySelectorAll("tr").forEach(row => {
+    const rowText = row.textContent.toLowerCase();
+    row.style.display = rowText.includes(filter) ? "" : "none";
+  });
+});
+
+/* ---------- 3. MODAL ---------- */
+const modal   = document.getElementById("addEmployeeModal");
+const openBtn = document.querySelector(".add-employee-btn");
+const closeBtn= document.querySelector(".close");
+const form    = document.getElementById("addEmployeeForm");
+
+function closeModal() {
+  modal.style.display = "none";
+  form.reset();
+  form.querySelector("button[type='submit']").textContent = "Add Employee";
+  editingRow = null;                         // <-- always reset
+}
+
+openBtn.onclick  = () => modal.style.display = "block";
+closeBtn.onclick = closeModal;
+window.onclick   = e => { if (e.target === modal) closeModal(); };
+
+/* ---------- 4. TABLE BUTTONS (edit / delete) ---------- */
+staffTableBody.addEventListener("click", e => {
+  const btn = e.target.closest("button");   
+  if (!btn) return;
+
+  /* -----for  DELETE ----- */
+  if (btn.classList.contains("delete-btn")) {
+    if (confirm("Delete this employee?")) btn.closest("tr").remove();
+    return;
+  }
+
+  /* ----- for EDIT ----- */
+  if (btn.classList.contains("edit-btn")) {
+    editingRow = btn.closest("tr");
+    const cells = editingRow.children;
+
+    // pre‑fill form
+    const [
+      emp, name, contact, dept,
+      desig, shift, statusCell
+    ] = cells;
+
+    form.querySelector('[placeholder="Employee ID"]').value = emp.textContent;
+    form.querySelector('[placeholder="Name"]').value        = name.textContent;
+    form.querySelector('[placeholder="Contact No."]').value = contact.textContent;
+    form.querySelector('[placeholder="Department"]').value  = dept.textContent;
+    form.querySelector('[placeholder="Designation"]').value = desig.textContent;
+    form.querySelector('[placeholder="Work Shift"]').value  = shift.textContent;
+    form.querySelector('select').value =
+          statusCell.querySelector("span").classList[1];
+
+    form.querySelector("button[type='submit']").textContent = "Save";
+    modal.style.display = "block";
+  }
+});
+
+/* ---------- 5. FORM SUBMIT (add or save) ---------- */
+
+// employee iD
+
+
+//  validation for Employee ID
+employeeIdInput.addEventListener("input", function () {
+  const value = this.value.trim().toUpperCase();
+  this.value = value; // Always enforce uppercase
+
+  if (!value.startsWith("ATS")) {
+    employeeIdError.textContent = "ID must start with 'ATS'.";
+    this.style.border = "2px solid red";
+  } else if (!/^\d+$/.test(value.slice(3))) {
+    employeeIdError.textContent = "Only digits allowed after 'ATS'.";
+    this.style.border = "2px solid red";
+  } else if (value.slice(3).match(/^0*/)[0].length > 3) {
+    employeeIdError.textContent = "No more than 3 leading zeros allowed.";
+    this.style.border = "2px solid red";
+  } else {
+    employeeIdError.textContent = "";
+    this.style.border = "2px solid green";
+  }
+});
+
+
+
+// FOR NAME 
+
+const nameInput = form.querySelector('[placeholder="Name"]');
+const nameError = document.createElement("div");
+nameError.style.color = "red";
+nameError.style.fontSize = "0.9em";
+nameInput.parentNode.insertBefore(nameError, nameInput.nextSibling);
+
+// Input : block numbers/special characters
+nameInput.addEventListener("input", function () {
+  this.value = this.value.replace(/[^a-zA-Z\s]/g, ""); 
+
+  // Validation: check for at least 3 letters
+  const lettersOnly = this.value.replace(/[^a-zA-Z]/g, ""); 
+  if (lettersOnly.length < 3) {
+    nameError.textContent = "Name must contain at least 3 letters";
+  } else {
+    nameError.textContent = "";
+  }
+});
+
+
+// FOR CONTACT 
+const contactInput = form.querySelector('[placeholder="Contact No."]');
+contactInput.addEventListener("input", function () {
+  this.value = this.value.replace(/\D/g, "").slice(0, 10);
+
+   // If first digit exists, and is not 6,7,8 or 9, clear the input or show error
+  if (this.value.length > 0 && !/^[6-9]/.test(this.value)) {
+    this.value = ""; // or keep previous valid value by saving it elsewhere
+    // optionally show error message
+  }
+});
+
+
+// FOR DEPARTMENT 
+
+const departmentInput = form.querySelector('[placeholder="Department"]');
+const deptError = document.createElement("div");
+deptError.style.color = "red";
+deptError.style.fontSize = "0.9em";
+departmentInput.parentNode.insertBefore(deptError, departmentInput.nextSibling);
+
+departmentInput.addEventListener("input", function () {
+  this.value = this.value.replace(/[^a-zA-Z\s]/g, ""); 
+  const lettersOnly = this.value.replace(/[^a-zA-Z]/g, "");
+  if (lettersOnly.length < 2) {
+    deptError.textContent = "Department must contain at least 2 letters";
+  } else {
+    deptError.textContent = "";
+  }
+});
+
+
+
+// FOR DESIGNATION - 
+
+const designationInput = form.querySelector('[placeholder="Designation"]');
+const desigError = document.createElement("div");
+desigError.style.color = "red";
+desigError.style.fontSize = "0.9em";
+designationInput.parentNode.insertBefore(desigError, designationInput.nextSibling);
+
+designationInput.addEventListener("input", function () {
+  this.value = this.value.replace(/[^a-zA-Z\s]/g, ""); // Only letters and spaces
+  const lettersOnly = this.value.replace(/[^a-zA-Z]/g, "");
+  if (lettersOnly.length < 3) {
+    desigError.textContent = "Designation must contain at least 3 letters";
+  } else {
+    desigError.textContent = "";
+  }
+});
+
+
+
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const employeeId  = employeeIdInput.value.trim().toUpperCase();
+  const name        = nameInput.value.trim();
+  const contact     = contactInput.value.trim();
+  const department  = departmentInput.value.trim();
+  const designation = designationInput.value.trim();
+  const workShift   = form.querySelector('[placeholder="Work Shift"]').value;
+  const status      = form.querySelector('select').value;
+
+  let isValid = true;
+
+  // ---- EMPLOYEE ID validation ----
+  if (!validateEmployeeId(employeeId)) {
+    employeeIdError.textContent = "Employee ID must start with 'ATS' followed by digits (e.g., ATS0012), with no more than 3 leading zeros.";
+    employeeIdInput.style.border = "2px solid red";
+    isValid = false;
+  } else {
+    employeeIdError.textContent = "";
+    employeeIdInput.style.border = "2px solid green";
+  }
+
+  // ---- NAME validation ----
+  const lettersOnly = name.replace(/[^a-zA-Z]/g, "");
+  if (lettersOnly.length < 3) {
+    nameError.textContent = "Name must contain at least 3 letters";
+    isValid = false;
+  } else {
+    nameError.textContent = "";
+  }
+
+  // ---- DEPARTMENT validation ----
+  const deptLetters = department.replace(/[^a-zA-Z]/g, "");
+  if (deptLetters.length < 2) {
+    deptError.textContent = "Department must contain at least 2 letters";
+    isValid = false;
+  } else {
+    deptError.textContent = "";
+  }
+
+  // ---- DESIGNATION validation ----
+  const desigLetters = designation.replace(/[^a-zA-Z]/g, "");
+  if (desigLetters.length < 3) {
+    desigError.textContent = "Designation must contain at least 3 letters";
+    isValid = false;
+  } else {
+    desigError.textContent = "";
+  }
+
+  // ---- CONTACT validation ----
+  if (!/^[6-9]\d{9}$/.test(contact)) {
+    alert("Enter a valid 10-digit contact number starting with 6-9.");
+    isValid = false;
+  }
+
+  // ---- FINAL CHECK ----
+  if (!isValid) return;
+
+  
+ 
+  const rowHTML = `
+    <td>${employeeId}</td>
+    <td>${name}</td>
+    <td>${contact}</td>
+    <td>${department}</td>
+    <td>${designation}</td>
+    <td>${workShift}</td>
+    <td><span class="status ${status}">
+          ${status.charAt(0).toUpperCase()+status.slice(1)}
+        </span></td>
+    <td>
+      <button class="icon-btn edit-btn" title="Edit">
+        <i class="fas fa-pen"></i>
+      </button>
+      <button class="icon-btn view-btn" title="View">
+      <i class="fas fa-eye"></i>
+    </button>
+      <button class="icon-btn delete-btn" title="Delete">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+    </td>`;
+
+  if (editingRow) {
+    editingRow.innerHTML = rowHTML;      
+  } else {
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = rowHTML;
+    staffTableBody.appendChild(newRow);  // add new row
+  }
+
+  closeModal();                          // reset & close modal
+});
+</script>
+
+
+
+
+            <!-- Leave Requests Section -->
+
+    <div class="leave-box">
+<div class="leave-requests-section">
+    <h3>Leave Requests</h3>
+  
+    <!-- Search & Filter -->
+    <div class="leave-search">
+      <input type="text" id="leaveSearch" placeholder="Search leave..." oninput="searchLeaveTable()">
+      <button class="add-leave-btn">+ Add Leave Request</button>
+    </div>
+  
+    <!-- Leave Requests Table -->
+    <table id="leaveTable">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Department</th>
+          <th>Leave Type</th>
+          <th>Leave Dates</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="leaveRequestsTable">
+        <tr>
+          <td>David</td>
+          <td>Finance</td>
+          <td>Sick</td>
+          <td>2025-05-10 to 2025-05-12</td>
+          <td><span class="status pending">Pending</span></td>
+          <td>
+            <button class="approve-btn">Approve</button>
+            <button class="reject-btn">Reject</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Amit Sharma</td>
+          <td>Executive</td>
+          <td>Casual</td>
+          <td>2024-05-01 to 2024-05-05</td>
+          <td><span class="status pending">Pending</span></td>
+          <td>
+            <button class="approve-btn">Approve</button>
+            <button class="reject-btn">Reject</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Sameer</td>
+          <td>Operations</td>
+          <td>Sick</td>
+          <td>2025-05-15 to 2025-05-20</td>
+          <td><span class="status pending">Pending</span></td>
+          <td>
+            <button class="approve-btn">Approve</button>
+            <button class="reject-btn">Reject</button>
+          </td>
+        </tr>
+        <!-- More rows -->
+      </tbody>
+    </table>
+  </div>
+
+  
+  <!-- Add Leave Request Modal -->
+ 
+<div id="leaveRequestModal" class="leave-request-modal">
+    <div class="leave-request-modal-content">
+      <span class="leave-request-close">&times;</span>
+      <h3>Add Leave Request</h3>
+      <form id="addLeaveForm">
+
+        <input type="text" placeholder="Employee Name" maxlength="12" required />
+        <input type="text" placeholder="Department" maxlength="12" required />
+        <select required>
+          <option value="">Leave Type</option>
+          <option value="sick">Sick</option>
+          <option value="casual">Casual</option>
+        </select>
+        <input type="date" required />
+        <input type="date" required />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+
+  
+  
+  <!--- Script for leave --->
+
+
+<script>
+  function searchLeaveTable() {
+    const input = document.getElementById("leaveSearch");
+    const filter = input.value.toUpperCase();
+    const table = document.getElementById("leaveTable");
+    const rows = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+      const cells = rows[i].getElementsByTagName("td");
+      let match = false;
+
+      for (let j = 0; j < cells.length; j++) {
+        if (cells[j].textContent.toUpperCase().includes(filter)) {
+          match = true;
+          break;
+        }
+      }
+
+      rows[i].style.display = match ? "" : "none";
+    }
+  }
+
+  // === Leave Request Modal Functionality ===
+  const leaveModal = document.getElementById("leaveRequestModal");
+  const openLeaveBtn = document.querySelector(".add-leave-btn");
+  const closeLeaveBtn = document.querySelector(".leave-request-close");
+
+  
+// Set minimum date to today for both date inputs
+const today = new Date().toISOString().split("T")[0];
+const dateInputs = leaveModal.querySelectorAll('input[type="date"]');
+dateInputs.forEach(input => input.setAttribute("min", today));
+
+  openLeaveBtn.onclick = () => {
+    leaveModal.style.display = "block";
+  };
+
+  closeLeaveBtn.onclick = () => {
+    leaveModal.style.display = "none";
+  };
+
+  window.onclick = function (e) {
+    if (e.target === leaveModal) {
+      leaveModal.style.display = "none";
+    }
+  };
+
+  
+
+  // Enable approve/reject on existing rows
+  document.querySelectorAll("#leaveRequestsTable tr").forEach(row => {
+    attachActionButtons(row);
+  });
+
+  // Submit leave request 
+  document.getElementById("addLeaveForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const form = this;
+     const employeeName = form.querySelector('input[placeholder="Employee Name"]').value.trim();
+     const department = form.querySelector('input[placeholder="Department"]').value.trim();
+    const leaveType = form.querySelector('select').value;
+    const dateInputs = form.querySelectorAll('input[type="date"]');
+    const startDate = dateInputs[0].value;
+    const endDate = dateInputs[1].value;
+
+    if (!employeeName ||!department || !leaveType || !startDate || !endDate) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    
+    //Validation for name
+
+const nameRegex = /^[A-Za-z ]{3,}$/;
+if (!nameRegex.test(employeeName)) {
+  alert("Employee Name should be at least 3 letters and contain only alphabets.");
+  return;
+}
+
+// Validation for department 
+if (department.length < 2) {
+  alert("Department should be at least 3 characters.");
+  return;
+}
+    
+
+    
+    const tableBody = document.getElementById("leaveRequestsTable");
+    const newRow = document.createElement("tr");
+
+    newRow.innerHTML = `
+      <td>${employeeName}</td>
+     <td>${department}</td>
+      <td>${leaveType.charAt(0).toUpperCase() + leaveType.slice(1)}</td>
+      <td>${startDate} to ${endDate}</td>
+      <td><span class="status pending">Pending</span></td>
+      <td>
+        <button class="approve-btn">Approve</button>
+        <button class="reject-btn">Reject</button>
+      </td>
+    `;
+
+    tableBody.appendChild(newRow);
+    attachActionButtons(newRow); 
+
+    leaveModal.style.display = "none";
+    form.reset();
+  });
+
+
+
+  // TOAST
+function showToast(msg, bgColor = "#2ecc71", seconds = 3) {
+  const t = document.createElement("div");
+  t.className = "toast";
+  t.textContent = msg;
+  t.style.backgroundColor = bgColor;  // for  using backgroundColor
+  document.body.appendChild(t);
+
+  requestAnimationFrame(() => t.classList.add("show"));
+
+  setTimeout(() => t.classList.remove("show"), seconds * 1000);
+  setTimeout(() => t.remove(), (seconds + 0.5) * 1000);
+}
+
+function attachActionButtons(row) {
+  const approveBtn = row.querySelector(".approve-btn");
+  const rejectBtn = row.querySelector(".reject-btn");
+  const statusSpan = row.querySelector(".status");
+
+  approveBtn.addEventListener("click", () => {
+    if (statusSpan.textContent === "Pending") {
+      statusSpan.textContent = "Approved";
+      statusSpan.className = "status approved";
+      showToast("Leave was approved ✅", "#2ecc71"); // green
+    }
+  });
+
+  rejectBtn.addEventListener("click", () => {
+    if (statusSpan.textContent === "Pending") {
+      statusSpan.textContent = "Rejected";
+      statusSpan.className = "status rejected";
+      showToast("Leave was rejected ❌", "#e74c3c"); // red
+    }
+  });
+}
+</script>
+
+          <!---Human page Css Styles-->
+
+          <style>
+          /* Google fonts === */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+*
+ /*========Globals===========*/
+{
+    font-family: "Ubuntu", sans-serif;
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+ :root
+{
+    --blue: #292185;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1:#222; 
+    --blacl2:#999;
+    --grey:var(--grey)
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+body
+{
+background-color: #f7f9fb;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header {
+   position: fixed;      
+  top: 0;              
+  left: 0;             
+  width: 100%;          
+  background-color: #fff; 
+  z-index: 1000;       
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 10px 20px;    
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;  
+}
+
+.logo-section {
+display: flex;
+align-items: center;
+gap: 10px;
+font-size: small;
+}
+
+
+
+#toggleSidebar {
+font-size: 24px;
+background: none;
+border: none;
+cursor: pointer;
+margin-left: 20px;
+}
+
+.logo {
+width: 145px;
+height: 70px;
+}
+
+.company-name {
+display: flex;
+flex-direction: column;
+font-size: 12px;
+line-height: 1.2;
+
+}
+
+.dashboard-title {
+font-size: 25px;
+color: 	#2C3E50;
+flex-grow: 1;
+text-align:left;
+margin-left: 40px;
+}
+
+
+.header-right {
+display: flex;
+align-items: center;
+gap: 32px;
+text-align: center;
+}
+
+.search-container input {
+position: relative;
+padding: 12px 34px;
+border-radius: 20px;
+border: 1px solid 	#DCDFE3;
+min-width: 332px;
+height: 40px;
+background-color: #F0F3F5;
+}
+
+.search-container .fa-magnifying-glass {
+  position: relative;
+  font-size: 1.0rem;
+  right:322px;
+
+}
+
+.search-container input::placeholder {
+  color: #95a5a6;
+  padding: 5px;
+  font-size: 15px;
+}
+
+.icons {
+display: flex;
+gap: 10px;
+font-size: 22px;
+}
+
+
+
+
+
+.icons {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.icon-wrapper {
+  position: relative;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.icon {
+
+  transition: color 0.3s ease;
+}
+
+
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+
+/* Notification Icon - Orange */
+.icon-wrapper.notification .icon {
+  color: #f39c12;
+}
+.icon-wrapper.notification .icon:hover {
+  color: #e67e22;
+}
+
+/* Message Icon - Blue */
+.icon-wrapper.message .icon {
+  color: #3498db;
+}
+.icon-wrapper.message .icon:hover {
+  color: #2980b9;
+}
+
+/* Globe Icon - Green */
+.icon-wrapper.globe .icon {
+  color: #2ecc71;}
+
+.profile {
+display: flex;
+align-items: center;
+gap: 9.8px;
+font-size: 16px;
+margin-right: -5px;
+color: 	#34495E;
+}
+ 
+.avatar {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+border: 2px solid 	#999;
+object-fit: cover;
+
+
+}
+
+
+
+
+
+
+/*===new navigations ===*/
+.navigation {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  background: #fff; /* Pure white background other #ecf0f3 e8f5e9 */
+  transition: 0.5s;
+  overflow: hidden;
+  top: 90px;
+  z-index: 1400;
+}
+
+
+.navigation.active {
+      width: 80px;
+}
+
+.navigation ul{
+  position: absolute ;
+  left: 0;
+  right: 0;
+  width:100%;
+
+}
+.navigation ul li{
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px ;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  
+}
+.navigation ul li:hover{
+  
+  background: #4CAF50; 
+  display: flex;
+  align-items: center ;
+  padding: 4px 4px ;  
+  height: 40px ;       
+  line-height: 0.9rem ;
+}
+.navigation ul li:nth-child(1){
+  margin-top: 10px;
+
+}
+.navigation ul li a{
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: #2c3e50;
+  margin: 5px;
+}    
+.navigation ul li:hover a {
+  color: white; 
+}
+
+.navigation ul li a .icon iconify-icon {
+  font-size: 1.60rem; 
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  min-width: 60px;
+
+}
+
+
+.navigation ul li a .icon i  { 
+  font-size: 1.30rem;
+}     
+
+ .navigation ul li a .tittle{
+    flex: 1;
+    position: relative;
+    display: flex;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }
+
+
+ 
+ .navigation ul li a .icon-right{
+  margin-left: auto;
+  font-size: 12px;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+
+/* Active state (current page) */
+.navigation ul li.active {
+  background-color: #2e7d32;
+  color: #fff;
+  border-top-left-radius: 40px;
+border-bottom-left-radius: 40px;
+border-top-right-radius: 40px;
+border-bottom-right-radius: 40px;
+}
+
+.navigation ul li.active a {
+  color: white;
+  align-items: center ;
+padding: 4px 4px ;  
+height: 40px ;     
+line-height: 0.9rem ;
+}
+
+ /*main table*/
+
+ 
+.canvas {
+  background: #fff;
+  padding: 25px;
+  max-width: 1080px;
+  margin-left: 265px;
+  margin-top: 12px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-left: 265px;
+  margin-right: 6px;
+  margin-bottom: 20px;
+  font-size: 26px;
+  padding: 8px;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 10px;
+background-color: #fbe9e7;  
+color: #222;             
+}
+.canvas #staffSearch {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.canvas #staffSearch:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.add-employee-btn {
+  padding: 8px 16px;
+  background-color: #555555;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-employee-btn:hover {
+  background-color: #0056b3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  background-color: #d9e1ec;
+  color: #222;
+}
+
+
+
+.status {
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 0.85em;
+  display: inline-block;
+}
+
+.status.active {
+  background-color: #28a745;
+}
+
+.status.on-leave {
+  background-color: #ffc107;
+}
+
+.status.inactive {
+  background-color: #dc3545;
+}
+.icon-btn {
+  padding: 6px;
+  margin: 2px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-btn {
+ background: #f0f0f0;          
+  color: #555;            
+}
+
+.edit-btn:hover {
+  color: #f39c12;
+}
+
+.view-btn {
+ background: #bbeffb;         
+  color: #555;            
+}
+
+.view-btn:hover {
+  color: #0056b3;
+}
+
+.delete-btn {
+  background-color: #fde2e2;
+  color: #d62222;             
+}
+
+.icon-btn:hover {
+  opacity: 0.85;
+}
+
+
+/*---Add employe */
+
+/* Modal Styles */
+
+.form-group {
+  margin-bottom: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.78em;
+  margin-top: 2px;
+  display: block;
+  margin-left: 5px;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  top: -30px;
+  width: 80%;
+  max-width: 380px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  position: relative;
+  
+}
+
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #0056b3;
+}
+
+.close {
+  position: absolute;
+  right: 16px;
+  top: 10px;
+  
+  color: #888;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.close:hover {
+  
+  color: #222;
+  
+}
+
+/*---view employe data  */
+/* Close button */
+.view-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 21px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.view-close:hover,
+.view-close:focus {
+  color: #000;
+}
+
+
+/* Modal heading */
+.modal-content h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #333;
+  text-align: center;
+  margin-left: -20px;
+}
+
+/* Employee detail paragraphs */
+#viewEmployeeDetails p {
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #444;
+  border-bottom: 1px dashed #ddd;
+  padding-bottom: 5px;
+  
+  
+}
+
+#viewEmployeeDetails p:last-child {
+  border-bottom: none;
+}
+
+#viewEmployeeDetails strong {
+  color: #222;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive tweak for screens */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 20px;
+  }
+
+  #viewEmployeeDetails p {
+    font-size: 14px;
+  }
+}
+.view-grid {
+  display: flex;
+  gap: 20px; 
+
+}
+
+.label-column, .value-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label-column p {
+  font-weight: 600;
+  text-align: left; 
+  width: 120px; 
+  padding-right: 10px;
+  margin-left: 50px;
+  
+ 
+}
+
+.value-column p {
+  text-align: left;
+  min-width: 120px;
+
+}
+
+/*---Leave Requests */
+
+
+.leave-box {
+  background-color: #ffffff;
+  border: 2px solid #d9e1ec;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 30px;
+  margin-right: 7px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin-left: 263px;
+}
+
+
+.leave-requests-section {
+
+  margin-top: 
+}
+
+.leave-requests-section h3 {
+  font-size: 24px;
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.leave-requests-search {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.leave-requests-search input {
+  padding: 8px;
+  width: 70%;
+}
+
+.leave-requests-search button {
+  padding: 8px 15px;
+  background-color: #4a90e2; 
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Leave Requests Table */
+.leave-requests-section  table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.leave-requests-section th, .leave-requests-section td {
+  padding: 12px;
+  text-align: left;
+}
+
+.leave-requests-section th {
+  background-color: #e2e8f0;
+  color: #000;
+}
+
+.leave-requests-section td {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Status Column */
+.status-pending {
+  color: #f39c12; /* Yellow */
+}
+
+.status-approved {
+  color: #27ae60; /* Green */
+}
+
+.status-rejected {
+  color: #e74c3c; /* Red */
+}
+
+/* Action Buttons (Approve/Reject) */
+.leave-request-btns button {
+  padding: 5px 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.leave-request-btns .approve-btn {
+  background-color: #27ae60; /* Green */
+}
+
+.leave-request-btns .reject-btn {
+  background-color: #e74c3c; /* Red */
+}
+
+/* Modal for Add Leave */
+.leave-request-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.leave-request-modal-content {
+  background-color: white;
+  padding: 20px;
+  margin: 15% auto;
+  width: 40%;
+  border-radius: 8px;
+}
+
+.leave-request-close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  float: right;
+  cursor: pointer;
+}
+
+.leave-request-close:hover,
+.leave-request-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.leave-search {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.leave-search input {
+  padding: 8px;
+  width: 70%;
+}
+
+.leave-search button {
+  padding: 8px 15px;
+  background-color: #4a90e2; /* Blue button */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.status.pending {
+  color: #f39c12; /* Yellow */
+}
+
+.status.approved {
+  color: #27ae60; /* Green */
+}
+
+.status.rejected {
+  color: #e74c3c; /* Red */
+}
+
+button.approve-btn {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button.reject-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+
+/* Modal for Add Leave */
+/* Modal Overlay */
+
+.leave-request-modal {
+  display: none; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); 
+}
+
+/* Modal Box */
+.leave-request-modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 40%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Close Button */
+.leave-request-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.leave-request-close:hover,
+.leave-request-close:focus {
+  color: #000;
+}
+
+/* Form Inputs */
+#addLeaveForm input,
+#addLeaveForm select {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Submit Button */
+#addLeaveForm button[type="submit"] {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+#addLeaveForm button[type="submit"]:hover {
+  background-color: #2c80b4;
+}
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #2ecc71;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* Dark theme */
+
+/* DARK THEME FOR NAVIGATION */
+
+
+body.dark-theme .navigation {
+  background-color: #1e1e2f;
+}
+
+/* Dark Theme Nav Links */
+body.dark-theme .navigation ul li a {
+  color: #f1f1f1;
+}
+
+/* Dark Theme Icon Color */
+body.dark-theme .navigation ul li a .icon i,
+body.dark-theme .navigation ul li a .icon iconify-icon {
+  color: #f1f1f1;
+}
+
+/* Dark Theme Hover */
+body.dark-theme .navigation ul li:hover {
+  background-color: #2a2a3d;
+}
+
+body.dark-theme .navigation ul li:hover a {
+  color: white;
+}
+
+/* Dark Theme Active Item */
+body.dark-theme .navigation ul li.active {
+  background-color: #2c7a33;
+}
+
+body.dark-theme .navigation ul li.active a {
+  color: #ffffff;
+}
+
+/* === DARK MODE FOR NAVIGATION === */
+body.dark-theme .navigation {
+  background: #1e1e2f; 
+}
+
+body.dark-theme .navigation ul li a {
+  color: #cfd8dc;
+}
+
+body.dark-theme .navigation ul li:hover {
+  background: #388e3c; 
+}
+
+body.dark-theme .navigation ul li:hover a {
+  color: #ffffff;
+}
+
+body.dark-theme .navigation ul li.active {
+  background-color: #66bb6a;
+  color: #ffffff;
+}
+
+body.dark-theme .navigation ul li.active a {
+  color: #ffffff;
+}
+
+/* Dark Theme */
+body.dark-theme {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+.dark-theme h3, {
+  margin-bottom: 10px;
+  color: #f9f9f9;
+}
+
+
+/* Dark Theme Header */
+body.dark-theme header {
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+}
+
+
+/* Dark Theme Header Text */
+body.dark-theme header,
+body.dark-theme header * {
+  color: #fff
+}
+
+/* logo color in dark theme */
+.dark-theme .logo {
+  filter: invert(1);  
+}
+
+
+
+body.dark-theme .card {
+  background: #333333;
+  color: var(--text-dark);
+  box-shadow: 0px 1px 0px 4px rgba(0, 0, 0, 0.2);
+  .target { color: #f0f0f0; display: block; }
+}
+
+.dark-theme .search-container input {
+  background-color: var(--white);
+  border: 1px solid var(--border-light);
+}
+
+body.dark-theme .search-container input {
+  background-color: #333;
+  border: 1px solid var(--border-dark);
+  color: var(--text-dark);
+}
+
+/* General Dark Theme */
+body.dark-theme {
+  background-color: #121212; 
+  color: #e0e0e0; 
+}
+
+.dark-theme .canvas{
+  background:var(--c-bg-surface);
+  border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+.dark-theme h2{
+   background-color: #263238;  
+  color: #fbe9e7;             
+}
+
+.dark-theme .canvas #staffSearch {
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+  color: #eee;
+}
+.dark-theme .canvas #staffSearch:focus {
+  border-color: #66b2ff;
+  box-shadow: 0 0 5px rgba(102, 178, 255, 0.5);
+}
+
+.dark-theme .add-employee-btn {
+  background-color: #333;
+  color: #fff;
+}
+.dark-theme .add-employee-btn:hover {
+  background-color: #007bff;
+}
+
+.dark-theme table {
+  color: #ddd;
+}
+.dark-theme th, .dark-theme td {
+  border-bottom: 1px solid #333;
+}
+.dark-theme th {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.dark-theme .status {
+  color: #fff;
+}
+.dark-theme .status.active { background-color: #28a745; }
+.dark-theme .status.on-leave { background-color: #ffc107; }
+.dark-theme .status.inactive { background-color: #dc3545; }
+
+.dark-theme .icon-btn {
+  background-color: #222;
+  color: #ccc;
+}
+.dark-theme .edit-btn {
+  background-color: #333;
+  color: #ddd;
+}
+.dark-theme .edit-btn:hover { color: #f39c12; }
+
+.dark-theme .view-btn {
+  background-color: #335;
+  color: #eee;
+}
+.dark-theme .view-btn:hover { color: #66b2ff; }
+
+.dark-theme .delete-btn {
+  background-color: #5a1c1c;
+  color: #ff6b6b;
+}
+
+.dark-theme .modal-content {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+.dark-theme .modal-content input,
+.dark-theme .modal-content select {
+  background-color: #1e1e1e;
+  color: #eee;
+  border: 1px solid #555;
+}
+.dark-theme .modal-content button {
+  background-color: #007bff;
+}
+.dark-theme .modal-content button:hover {
+  background-color: #0056b3;
+}
+.dark-theme .close {
+  color: #bbb;
+}
+.dark-theme .close:hover {
+  color: #fff;
+}
+
+.dark-theme .view-close {
+  color: #aaa;
+}
+.dark-theme .view-close:hover {
+  color: #fff;
+}
+.dark-theme .modal-content h3 {
+  color: #fff;
+}
+.dark-theme #viewEmployeeDetails p {
+  color: #ccc;
+  border-bottom: 1px dashed #444;
+}
+.dark-theme #viewEmployeeDetails strong {
+  color: #eee;
+}
+
+.dark-theme .leave-box {
+  background-color: #1e1e1e;
+  border: 2px solid #444;
+  color: #eee;
+}
+
+.dark-theme .leave-requests-section h3 {
+  color: #fff;
+}
+.dark-theme .leave-requests-search input,
+.dark-theme .leave-search input {
+  background-color: #2a2a2a;
+  color: #eee;
+  border: 1px solid #444;
+}
+.dark-theme .leave-requests-search button,
+.dark-theme .leave-search button {
+  background-color: #555;
+}
+
+.dark-theme .leave-search button:hover
+ {
+  background-color: #333333;
+}
+.dark-theme .leave-requests-section th {
+  background-color: #333;
+  color: #fff;
+}
+.dark-theme .leave-requests-section td {
+  border-bottom: 1px solid #444;
+  color: #ddd;
+}
+
+.dark-theme .leave-request-modal-content {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+.dark-theme .leave-request-close {
+  color: #aaa;
+}
+.dark-theme .leave-request-close:hover {
+  color: #fff;
+}
+.dark-theme #addLeaveForm input,
+.dark-theme #addLeaveForm select {
+  background-color: #1e1e1e;
+  color: #eee;
+  border: 1px solid #555;
+}
+
+
+.dark-theme .toast {
+  background-color: #2ecc71;
+  color: #fff;
+}
+
+/* Dark Theme - Status Colors */
+body.dark-theme .status.pending {
+  color: #f1c40f; /* Brighter yellow for dark background */
+}
+
+body.dark-theme .status.approved {
+  color: #2ecc71; /* Brighter green */
+}
+
+body.dark-theme .status.rejected {
+  color: #e74c3c; /* Red works well on dark */
+}
+
+            </style>
+
+           <!---End of Human page Css Styles-->
+
+           <!---Human page Js -->
+  <script>
+    // View Modal elements
+document.addEventListener("DOMContentLoaded", function () {
+  // All my modal/button logic goes here
+
+const viewModal = document.getElementById("viewEmployeeModal");
+const viewDetailsBox = document.getElementById("viewEmployeeDetails");
+const closeViewBtn = document.querySelector(".close-view");
+staffTableBody.addEventListener("click", function (e) {
+  const btn = e.target.closest("button");
+  if (!btn || !btn.classList.contains("view-btn")) return;
+
+  const row = btn.closest("tr");
+  const cells = row.children;
+
+  //  text values to each p by ID
+  document.getElementById("view-emp-id").textContent = cells[0].textContent;
+  document.getElementById("view-name").textContent = cells[1].textContent;
+  document.getElementById("view-contact").textContent = cells[2].textContent;
+  document.getElementById("view-dept").textContent = cells[3].textContent;
+  document.getElementById("view-designation").textContent = cells[4].textContent;
+  document.getElementById("view-shift").textContent = cells[5].textContent;
+  document.getElementById("view-status").textContent = cells[6].textContent;
+
+  viewModal.style.display = "block";
+});
+
+// Close the view modal
+closeViewBtn.onclick = () => {
+  viewModal.style.display = "none";
+};
+window.onclick = (e) => {
+  if (e.target === viewModal) viewModal.style.display = "none";
+};
+
+});
+
+    </script>
+
+            <!---ENd Human page Js -->
+  
+  <!---Theme js-->
+<script src="theme.js" defer></script>
+
+    <!---- ====font awesome==== ---->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+
+
+</body>
+</html>

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franchise management</title>
+</head>
+<!----==== styles csss===----->
+<link rel="stylesheet" href="retail.css">
+  <!----===== script js ====--->
+  <script src="script.js" defer></script>
+
+  
+<!--Chart .js-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!--Iconifyy icons-->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+
+
+<body>
+
+      
+
+    <header class="dashboard-header">
+      <div class="logo-section">
+        <img src="Company logo.jpg" alt="ATS Logo" class="logo"/>
+        <button id="toggleSidebar">&#9776;</button>
+        <div class="company-name">
+        </div>
+      </div>
+      <h1 class="dashboard-title">Admin Dashboard</h1>
+      <div class="header-right">
+        
+        <div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search...."/>
+  <i class="fa-solid fa-magnifying-glass" id="searchBtn"></i>
+</div>
+
+        
+        <div class="icons">
+
+        <div class="notification" id="notificationBell" title="Notifications">
+        <div class="icon-wrapper notification">
+          <i class="fas fa-bell icon"></i>
+
+  <span class="notificationbadge" id="badgeCount">3</span>
+        </div>
+
+
+          </div>
+            <div class="icon-wrapper message">
+         <i class="fas fa-envelope icon"></i>
+          <span class="badge">6</span>
+          </div>
+
+           <div class="icon-wrapper globe">
+          <i class="fas fa-globe icon"></i> <!-- Language or globe -->
+        </div>
+          <!-- Wrap profile area in a button or link -->
+      <div class="profile" id="profileTrigger">
+        <img src="customer.jpg" alt="User" class="avatar" />
+        <span>Mark Williams</span>
+      </div>
+
+      
+    </header>
+
+
+
+ 
+
+
+        <!-------====== New Navigation =====--->
+     
+        
+            <div class="navigation">
+                
+                  <ul id="sidebarMenu"> 
+
+                    <li>
+                        <a href="page.html">
+                            <span class="icon">
+                            <i class="fa-solid fa-table-columns"></i></span>
+                            <span class="tittle">Dashboard</span>
+                        </a>    
+                    </li>
+                    <li>
+                        <a href="human.html">
+                            <span class="icon"><i class="fa-solid fa-person"></i></span>
+                            <span class="tittle">Human Resources
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                        </a>    
+                    </li>
+                    <li>
+                        <a href="customer.html">
+                            <span class="icon"><i class="fa-solid fa-people-arrows"></i></span>
+                            <span class="tittle">Customers
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                        </a>    
+                    </li>
+                   
+                    <li>
+                        <a href="cow.html">
+                            <span class="icon"><i class="fa-solid fa-desktop"></i></span>
+                            <span class="tittle">Cow Monitor
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+            
+                        </a>    
+                    </li>
+                    <li>
+                        <a href="Manage.html">
+            
+                            <span class="icon"><i class="fa-solid fa-cow"></i></span>
+                             
+                            <span class="tittle">Manage Stall
+                            <i class="fa-solid fa-chevron-right icon-right"></i>
+                         
+                            </span>
+                        </a>    
+                    </li>
+
+                  <li class="submenu open">
+
+  <a href="#" class="submenu-toggle">
+    <span class="icon"> <iconify-icon icon="mdi:storefront-outline"></iconify-icon></span>
+    <span class="tittle">Bussiness Units</span>
+     <i class="fa-solid fa-chevron-down submenu-arrow"></i> 
+  </a>
+  <ul class="submenu-items">
+  <li>
+    <a href="retail.html">
+      Retail
+      <i class="fa-solid fa-chevron-right icon-right"></i>
+    </a>
+  </li>
+  <li class="active">
+    <a href="franchise.html">
+      Franchise
+      
+    </a>
+  </li>
+</ul>
+</li>
+                    
+                    <li>
+                        <a href="settings.htm">
+                            <span class="icon"><i class="fa-solid fa-gear"></i></span>
+                            <span class="tittle">Settings
+                          <i class="fa-solid fa-chevron-right icon-right"></i>
+                        </span>
+                        </a>    
+                    </li>     
+                    
+                    <li>
+                        <a href="report.html">
+                            <span class="icon"><i class="fa-solid fa-flag-checkered"></i></span>
+                            <span class="tittle">Reports
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                        </a>    
+                    </li>
+
+                    <li class="logout-nav">
+           <a href="#" onclick="logout()">
+        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+        <span class="tittle">Logout
+           <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                </a>
+                </li>
+                </ul>
+            </div>
+        
+
+            <!------main page-->
+
+                
+
+
+            
+
+
+
+
+
+
+
+
+                  <!------CSS Styles-->
+
+                  <style>
+
+                  /* Google fonts === */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+*
+ /*========Globals===========*/
+{
+    font-family: "Ubuntu", sans-serif;
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+ :root
+{
+    --blue: #292185;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1:#222; 
+    --blacl2:#999;
+    --grey:var(--grey);
+    --sidebar-collapsed-width: 70px;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+body
+{
+background-color: #f7f9fb;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header {
+  display: flex;
+   position: fixed;     ;
+  top: 0;               
+  left: 0;              
+  width: 100%;  
+  height: 94px;        
+  background-color: #fff; 
+  z-index: 1000;        
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
+  padding: 10px 5px 0px ;
+ 
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;  
+  overflow: visible;
+  
+}
+
+.logo-section {
+display: flex;
+align-items: center;
+gap: 10px;
+font-size: small;
+height: 100%;
+}
+
+.logo {
+  max-height: 200px; 
+  max-width: 242px; 
+  object-fit: contain; 
+    height: auto;
+  width: auto;
+  
+}
+
+#toggleSidebar {
+font-size: 24px;
+background: none;
+border: none;
+cursor: pointer;
+margin-left: 20px;
+}
+
+
+.company-name {
+display: flex;
+flex-direction: column;
+font-size: 12px;
+line-height: 1.2;
+
+}
+
+.dashboard-title {
+font-size: 25px;
+color: 	#2C3E50;
+flex-grow: 1;
+text-align:left;
+margin-left: 40px;
+}
+
+.header-right {
+display: flex;
+align-items: center;
+gap: 35px;
+text-align: center;
+}
+
+.search-container input {
+position: relative;
+padding: 12px 34px;
+border-radius: 20px;
+border: 1px solid 	#DCDFE3;
+min-width: 332px;
+height: 40px;
+background-color: #F0F3F5;
+}
+
+.search-container .fa-magnifying-glass {
+  position: relative;
+  font-size: 1.0rem;
+  right:322px;
+
+}
+
+.search-container input::placeholder {
+  color: #95a5a6;
+  padding: 5px;
+  font-size: 15px;
+}
+
+.icons {
+  display: flex;
+  gap: 25px;
+  font-size: 22px;
+  align-items: center;
+}
+
+.icon-wrapper {
+  position: relative;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.icon {
+
+  transition: color 0.3s ease;
+}
+
+
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  font-weight: bold;
+  
+}
+
+
+/* Message Icon - Blue */
+.icon-wrapper.message .icon {
+  color: #3498db;
+}
+.icon-wrapper.message .icon:hover {
+  color: #2980b9;
+}
+
+/* Globe Icon - Green */
+.icon-wrapper.globe .icon {
+  color: #2ecc71;}
+
+.profile {
+display: flex;
+align-items: center;
+gap: 9.8px;
+font-size: 16px;
+margin-right: 10px;
+color: 	#34495E;
+}
+ 
+.avatar {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+border: 2px solid 	#999;
+object-fit: cover;
+
+}
+
+
+.notification-header {
+  position: relative;
+  background: #d6eaff;
+  padding: 12px 16px;
+  font-weight: bold;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  color: #333;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* The arrow */
+/* #notificationDropdown::before {
+  content: "";
+  position: absolute;
+  top: 15px;            
+  left: 50%;          
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid #222; 
+  width: 10px;
+  height: 20px;
+  z-index: 1101;
+} */
+
+
+
+ .notification {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 23px;
+    color: #333;
+    overflow: visible;
+  }
+
+
+  .notification .notificationbadge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    border-radius: 50%;
+    background: #e03e2f;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    position: absolute;
+  font-size: 10px;
+  padding: 2px 5px;
+
+  }
+
+
+  /* Notification Icon - Orange */
+.icon-wrapper.notification .icon {
+  color: #f39c12;
+}
+.icon-wrapper.notification .icon:hover {
+  color: #e67e22;
+}
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 45px;
+    
+   min-width: 350px;
+  max-height: 400px;
+  overflow-y: auto;
+  position: absolute;   
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff; 
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  padding-top: 10px; 
+  z-index: 1100;
+}
+  
+
+  
+  .dropdown.active {
+    display: block;
+  }
+  .dropdown-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .dropdown-item:last-child {
+    border-bottom: none;
+  }
+  .dropdown-item:hover {
+    background: #f2f6fb;
+  }
+  .dropdown-item.read {
+    background: #f9f9f9;
+    color: #888;
+  }
+  .dropdown-item p {
+    margin: 0 0 6px 0;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #222;
+  }
+  .dropdown-item.read p {
+    color: #666;
+    text-decoration: none;
+  }
+  .dropdown-item p strong {
+    font-weight: 700;
+  }
+  .timestamp {
+    font-size: 13px;
+    color: #999;
+    font-style: italic;
+  }
+
+
+
+/* toggle click collapsed sidebar -----------------------------------------------------*/
+
+/* === COLLAPSED SIDEBAR STYLES === */
+.navigation.collapsed {
+  width: 80px;
+}
+
+
+.navigation.collapsed ul li a .tittle {
+  display: none;
+}
+
+.navigation.collapsed ul li a .icon {
+  justify-content: center;
+  min-width: 100%;
+}
+
+
+.navigation.collapsed ul li a {
+  padding: 16px 0;
+  justify-content: center;
+  text-align: center;
+}
+
+.navigation.collapsed ul li a .icon-right {
+  display: none;
+}
+
+.content-area.sidebar-collapsed {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+/* end toggle click collapsed sidebar -----------------------------------------------------*/
+
+
+
+
+
+/*===new navigations ===*/
+.navigation {
+  position: fixed;
+  width: 250px;
+    height: calc(100% - 90px);
+  background: #fff; /* options #ecf0f3 e8f5e9 */
+    transition: all 0.3s ease;
+
+  top: 90px;
+  z-index: 1400;
+    overflow-y: auto; 
+  overflow-x: hidden;
+  scrollbar-width: thin;
+ scrollbar-color: #888 transparent;
+}
+
+
+
+
+.navigation.active {
+      width: 80px;
+}
+
+.navigation ul{
+  position: static ;
+  left: 0;
+  right: 0;
+  width:100%;
+
+}
+.navigation ul li{
+  
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px ;
+
+}
+
+
+
+.navigation ul li:nth-child(1){
+  margin-top: 10px;
+
+}
+.navigation ul li a{
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: #2c3e50;
+  margin: 5px;
+    padding-right: 8px; 
+}
+
+
+.navigation ul li > a:hover {
+  background: #4CAF50;
+  color: white;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+}
+
+.navigation ul li a .icon iconify-icon {
+  font-size: 1.60rem; 
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  min-width: 60px;
+
+}
+
+
+.navigation ul li a .icon i  { 
+  font-size: 1.30rem;
+}     
+
+ .navigation ul li a .tittle{
+    flex: 1;
+    position: relative;
+    display: flex;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }
+
+
+ 
+ .navigation ul li a .icon-right{
+  margin-left: auto;
+  font-size: 12px;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+.submenu-items li a .icon-right {
+  font-size: 12px;
+  color: #444;
+  margin-right: 9px;       
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.submenu {
+  display: block; 
+  margin: 0; 
+  padding-left: 0;
+  border-radius: 0;
+  width: 100%;
+}
+
+
+.submenu-items {
+ 
+   display: none;
+  flex-direction: column;
+  background-color: #fff;
+  border-left: 3px solid #4CAF50;
+  padding-left: 25px;
+  border-radius: 0 0;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+.submenu.open .submenu-items {
+  display: flex;
+  width: 100%;
+}
+
+
+.submenu-items li {
+  display: block;
+  width: 100%;
+}
+
+.submenu-items li a {
+   color: #444;
+  font-size: 15px;
+  padding: 8px 12px;
+  transition: background 0.3s;
+}
+
+
+
+
+
+.submenu-arrow {
+    margin-left: auto;
+    padding-right: 9px;
+  font-size: 12px;
+  color: #444;
+    width: 20px;
+  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible; 
+  transition: transform 0.3s ease;
+}
+
+.submenu.open .submenu-arrow {
+  transform: rotate(180deg); 
+  
+}
+
+.submenu-items li.active a {
+  background-color: #2e7d32;
+  color: white;
+ 
+    border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+}
+
+</style>
+
+                  <!------End CSS Styles-->
+
+
+            <!------JS Script-->
+
+
+
+             <!------END JS Script-->
+
+            
+  <!---Theme js-->
+<script src="theme.js" defer></script>
+
+
+    <!----===== script js ====--->
+    <script src="script.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <!---- ====font awesome==== ---->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+</body>
+</html>   

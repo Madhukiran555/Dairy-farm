@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm-GO</title>
+</head>
+    
+<!----==== styles csss===----->
+<link rel="stylesheet" href="customer.css">
+<!----===== script js ====--->
+<script src="customer.js"></script>
+
+ <!-- jsPDF Library -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!--Iconifyy icons-->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+
+
+<body>
+
+    <header class="dashboard-header">
+      <div class="logo-section">
+        <img src="logo.png" alt="ATS Logo" class="logo"/>
+        <button id="toggleSidebar">&#9776;</button>
+        <div class="company-name">
+        </div>
+      </div>
+      <h1 class="dashboard-title">Admin Dashboard</h1>
+      <div class="header-right">
+        <div class="search-container">
+          <input type="text" placeholder="Search..."/>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        
+        <div class="icons">
+
+         <div class="icon-wrapper notification">
+          <i class="fas fa-bell icon"></i>
+          <span class="badge">3</span> <!-- Notification count -->
+          </div>
+            <div class="icon-wrapper message">
+         <i class="fas fa-envelope icon"></i>
+          <span class="badge">6</span>
+          </div>
+
+           <div class="icon-wrapper globe">
+          <i class="fas fa-globe icon"></i> <!-- Language or globe -->
+        </div>
+          <!-- Wrap profile area in a button or link -->
+      <div class="profile" id="profileTrigger">
+        <img src="customer.jpg" alt="User" class="avatar" />
+        <span>Mark Williams</span>
+      </div>
+
+  
+
+      
+    </header>
+
+
+  
+          <!-------====== New Navigation =====--->
+       
+          <div class="container">
+              <div class="navigation">
+                  <ul>
+                      <li>
+                          <a href="page.html">
+                              <span class="icon"><i class="fa-solid fa-table-columns"></i></i></span>
+                              <span class="tittle">Dashboard</span>
+                          </a>    
+                      </li>
+                      <li>
+                        <a href="human.html">
+                            <span class="icon"><i class="fa-solid fa-person"></i></span>
+                            <span class="tittle">Human Resources
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                        </a>    
+                    </li>
+                      <li class="active">
+                          <a href="customer.html">
+                              <span class="icon">
+                                <i class="fa-solid fa-people-arrows"></i></span>
+                              <span class="tittle">Customers</span>
+                          </a>    
+                      </li>
+                     
+                      <li>
+                          <a href="monitor.html">
+                            <span class="icon"><i class="fa-solid fa-desktop"></i></span>
+                            <span class="tittle">Animals Monitor
+                                <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                          </a>    
+                      </li>
+                      <li>
+                          <a href="Manage.html">
+                             <span class="icon">
+                            <iconify-icon icon="mdi:storefront-outline"></iconify-icon>
+                             </span>
+                              <span class="tittle">Manage Stall
+                                <i class="fa-solid fa-chevron-right icon-right"></i>
+                              </span>
+                          </a>    
+                      </li>
+                      <li>
+                          <a href="settings.htm">
+                              <span class="icon"><i class="fa-solid fa-gear"></i></span>
+                            
+                                <span class="tittle">Settings
+                          <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                          </a>    
+                      </li>
+                      
+                      <li>
+                          <a href="report.html">
+                              <span class="icon"><i class="fa-solid fa-flag-checkered"></i></span>
+                              <span class="tittle">Reports
+                                <i class="fa-solid fa-chevron-right icon-right"></i>
+                              </span>
+                          </a>    
+                      </li>
+                             <li class="logout-nav">
+           <a href="#" onclick="logout()">
+        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+        <span class="tittle">Logout
+           <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                </a>
+                </li>
+                  </ul>
+              </div>
+          </div>
+
+
+          <!---===main table===-->
+          
+          <div class="canvas">
+            <h2>Customers Information</h2>
+         <button class="add-customer-btn" onclick="openNewCustomerModal()">+ Add New Customer</button>
+
+
+            <div class="table-container">
+              <table class="contact-table">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Milk Parlour</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><img src="mega cos.jpg" alt="Customer 1" width="40"></td>
+                    <td>Megha Reddy</td>
+                    <td>7433312678</td>
+                    <td>megha@example.com</td>
+                    <td>123 Elm Road, Vijayawada</td>
+                    <td>
+                      <button class="view-btn" onclick="showCustomerDetails(1)">View Sale Details</button>
+                  </td>
+              </tr>
+              <tr>
+              <td><img src="customer 9.jpg" alt="Customer 2" width="40"></td>
+              <td>Shreyas </td>
+              <td>6877093348</td>
+              <td>Shreyas6@outlook.com</td>
+              <td>132 Miyapur, Hyderabad</td>
+              <td>
+                <button class="view-btn" onclick="showCustomerDetails(2)">View Sale Details</button>
+            </td>
+        </tr>
+        <tr>
+          <td><img src="customer 5.jpg" alt="Customer 3" width="40"></td>
+          <td>Ravi Patel</td>
+          <td>9627405097</td>
+          <td>Ravi97@outlook.com</td>
+          <td>1-48 newcity, Warangal</td>
+          <td>
+            <button class="view-btn" onclick="showCustomerDetails(3)">View Sale Details</button>
+        </td>
+    </tr>
+    <tr>
+      <td><img src="customer 2.jpg" alt="Customer 4" width="40"></td>
+      <td>Ashlesha Reddy</td>
+      <td>8882000938</td>
+      <td>A.reddy@gmail.com.com</td>
+      <td>Geethabhavan, Karimnagar</td>
+      <td>
+        <button class="view-btn" onclick="showCustomerDetails(4)">View Sale Details</button>
+    </td>
+</tr>
+<tr>
+  <td><img src="customer 3.jpg" alt="Customer 5" width="40"></td>
+  <td>Priya Sharma</td>
+  <td> 9870965348</td>
+  <td>Varma.p@outlook.com</td>
+  <td>Gachibowli, Hyderabad</td>
+  <td>
+    <button class="view-btn" onclick="showCustomerDetails(5)">View Sale Details</button>
+</td>
+</tr>
+       
+                  <!-- More rows as needed -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Popup Modal view sale -->
+<!-- The Modal -->
+<div id="milkModal" class="modal">
+  <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="customerName"></h2>
+      
+      <!-- Milk Delivery Table -->
+      <table class="milk-table">
+          <thead>
+              <tr>
+                  <th>Day</th>
+                  <th>Quantity (L)</th>
+                  <th>Rate</th>
+                  <th>Amount</th>
+              </tr>
+          </thead>
+          <tbody id="milkDetails">
+          
+          </tbody>
+      </table>
+  </div>
+</div>
+
+          </div>
+
+ <!----- pop table for ad new customer ---->
+ 
+<!-- Add New Customer Modal -->
+<div id="newCustomerModal" class="new-modal">
+  <div class="new-modal-content">
+    <span class="new-close" onclick="closeNewCustomerModal()">&times;</span>
+    <h2>Add New Customer</h2>
+    <form id="newCustomerForm">
+      <label>
+        Image URL:
+        <input type="text" id="customerImage" placeholder="Enter image URL (optional)">
+      </label>
+      <label>
+        Name:
+        <input type="text" id="customerNameInput" placeholder="Customer name"  maxlength="15" required>
+      </label>
+      <label>
+        Phone:
+        <input type="tel" id="customerPhone" placeholder="Phone number" maxlength="12" required>
+      </label>
+      <label>
+        Email:
+        <input type="email" id="customerEmail" placeholder="Email" maxlength="21" required>
+      </label>
+      <label>
+        Address:
+        <input type="text" id="customerAddress" placeholder="Address" maxlength="28" required>
+      </label>
+    
+      <button type="submit" class="new-submit-btn">Add Customer</button>
+    </form>
+  </div>
+</div>
+
+
+<!---script for view sale pop up message-->
+
+<script>
+const customers = {
+  1: {
+      name: "Megha",
+      milkData: [
+          { day: "Monday", quantity: 12, rate: 0.75, amount: 9.00 },
+          { day: "Tuesday", quantity: 15, rate: 0.75, amount: 11.25 },
+          { day: "Wednesday", quantity: 13, rate: 0.75, amount: 9.75 },
+          { day: "Thursday", quantity: 15, rate: 0.75, amount: 11.25 },
+          { day: "Friday", quantity: 15, rate: 0.75, amount: 11.25 },
+          { day: "Saturday", quantity: 15, rate: 0.75, amount: 11.25 },
+          { day: "Sunday", quantity: 15, rate: 0.75, amount: 11.25 }
+      ]
+  },
+  2: {
+      name: "Shreyas",
+      milkData: [
+          { day: "Monday", quantity: 18, rate: 0.75, amount: 13.50 },
+          { day: "Tueday", quantity: 15, rate: 0.75, amount: 11.25 },
+          { day: "Wednesday", quantity: 18, rate: 0.75, amount: 13.50 },
+          { day: "Thursday", quantity: 15, rate: 0.75, amount: 11.25 },
+          { day: "Friday", quantity: 18, rate: 0.75, amount: 13.50 },
+          { day: "Saturday", quantity: 15, rate: 0.75, amount: 11.25 },
+          { day: "Sunday", quantity: 15, rate: 0.75, amount: 11.25 }
+      ]
+  },
+  3: { // third customer
+      name: "Ravi ",
+      milkData: [
+          { day: "Monday", quantity: 20, rate: 0.75, amount: 15.00 },
+          { day: "Tuesday", quantity: 18, rate: 0.75, amount: 13.50 },
+          { day: "Wednesday", quantity: 20, rate: 0.75, amount: 15.00 },
+          { day: "Thursday", quantity: 18, rate: 0.75, amount: 13.50 },
+          { day: "Friday", quantity: 20, rate: 0.75, amount: 15.00 },
+          { day: "Saturday", quantity: 18, rate: 0.75, amount: 13.50 },
+          { day: "Sunday", quantity: 18, rate: 0.75, amount: 13.50 }
+      ]
+  },
+  4: { 
+      name: "Ashlesha",
+      milkData: [
+          { day: "Monday", quantity: 20, rate: 0.75, amount: 15.00 },
+          { day: "Tuesday", quantity: 18, rate: 0.75, amount: 13.50 },
+          { day: "Wednesday", quantity: 20, rate: 0.75, amount: 15.00 },
+          { day: "Thursday", quantity: 18, rate: 0.75, amount: 13.50 },
+          { day: "Friday", quantity: 20, rate: 0.75, amount: 15.00 },
+          { day: "Saturday", quantity: 18, rate: 0.75, amount: 13.50 },
+          { day: "Sunday", quantity: 18, rate: 0.75, amount: 13.50 }
+      ]
+  },
+  5: { 
+      name: "Priya",
+      milkData: [
+          { day: "Monday", quantity: 20, rate: 0.75, amount: 15.00 },
+          { day: "Tuesday", quantity: 18, rate: 0.75, amount: 13.50 },
+          { day: "Wednesday", quantity: 20, rate: 0.75, amount: 15.00 },
+          { day: "Thursday", quantity: 18, rate: 0.75, amount: 13.50 },
+          { day: "Friday", quantity: 20, rate: 0.75, amount: 15.00 },
+          { day: "Saturday", quantity: 18, rate: 0.75, amount: 13.50 },
+          { day: "Sunday", quantity: 18, rate: 0.75, amount: 13.50 }
+      ]
+  }
+
+};
+
+//  function with error handling
+function showCustomerDetails(customerId) {
+  const customer = customers[customerId];
+  
+  if (!customer) {
+      alert("Customer data not found!");
+      return;
+  }
+
+  const modal = document.getElementById("milkModal");
+  const tbody = document.getElementById("milkDetails");
+  
+  document.getElementById("customerName").textContent = `${customer.name}'s Sale Details`;
+  tbody.innerHTML = "";
+
+  customer.milkData.forEach(item => {
+      tbody.innerHTML += `
+          <tr>
+              <td>${item.day}</td>
+              <td>${item.quantity}</td>
+              <td>$${item.rate.toFixed(2)}</td>
+              <td>$${item.amount.toFixed(2)}</td>
+          </tr>
+      `;
+  });
+  
+  modal.style.display = "block";
+}
+
+// Rest of existing modal functions
+function closeModal() {
+  document.getElementById("milkModal").style.display = "none";
+}
+
+window.onclick = function(event) {
+  const modal = document.getElementById("milkModal");
+  if (event.target === modal) {
+      modal.style.display = "none";
+  }
+}
+</script>
+
+        
+           <!--payment list-->
+
+           
+        <div class="invoice">
+          
+            <hr>
+            <h3>Payment List</h3>
+            <div class="add-payment-section">
+    <button id="addPaymentBtn" class="add-payment-btn">+ Add New Payment</button>
+</div>
+
+            <table class="payment-table">
+                <thead>
+                    <tr>
+                        <th>Invoice</th>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Payment Method</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#RW-0879</td>
+                        <td>June 1, 2024</td>
+                        <td>Morgan</td>
+                        <td>₹ 25650.00</td>
+                        <td>Credit Card</td>
+                        <td class="status-paid">Paid</td>
+                        <td>
+                            <button class="generateReceipt" data-customer="Morgan" data-receipt="#RW-0879" data-date="June 1, 2024" data-amount="$176.00" data-payment-method="Credit Card" data-status="Paid">Receipt</button>
+                        </td>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td>#RW-2345</td>
+                        <td>Apr 1, 2024</td>
+                        <td>Megha</td>
+                        <td>₹ 41780.00</td>
+                        <td>Bank Transfer</td>
+                        <td class="status-paid">Paid</td>
+                        <td>
+                            <button class="generateReceipt" data-customer="Megha" data-receipt="#RW-2345" data-date="Apr 1, 2024" data-amount="$168.00" data-payment-method="Bank Transfer" data-status="Paid">Receipt</button>
+                        </td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#RW-0098</td>
+                        <td>Apr 1, 2024</td>
+                        <td>Ravi Patel</td>
+                        <td>₹ 23200.00</td>
+                        <td>Google Pay</td>
+                        <td class="status-paid">Paid</td>
+                        <td>
+                           
+                        <button class="generateReceipt" data-customer="Ravi Patel" data-receipt="#RW-0098" data-date="Apr 1, 2024" data-amount="$155.00" data-payment-method="Google Pay" data-status="Paid">Receipt</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#RW-9908</td>
+                        <td>Jun 1, 2024</td>
+                        <td>Ananya Reddy</td>
+                        <td>₹ 25180.00</td>
+                        <td>-</td>
+                        <td class="status-pending">Pending</td>
+                        <td>
+                            <button class="action-btn record-btn">Record Payment</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <a href="#" class="view-all">View All Payments</a>
+        </div>
+
+
+        <!-----Payment form-->
+        
+          <div id="paymentModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h3>Add New Payment</h3>
+    <form id="paymentForm">
+      <label>Invoice No:</label><input type="text" id="invoice" maxlength="10" required><br>
+      <label>Date:</label><input type="date" id="date" required><br>
+      <label>Customer:</label><input type="text" id="customer" maxlength="12" required><br>
+      <label>Amount:</label><input type="number" id="amount"  required><br>
+      <label>Payment Method:</label>
+      <select id="paymentMethod" required>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Bank Transfer">Bank Transfer</option>
+        <option value="Google Pay">Google Pay</option>
+        <option value="Cash">Cash</option>
+      </select><br>
+      <label>Status:</label>
+      <select id="status" required>
+        <option value="Paid">Paid</option>
+        <option value="Pending">Pending</option>
+      </select><br>
+      <button type="submit">Add Payment</button>
+    </form>
+  </div>
+</div>
+
+
+
+   <!--payment list receipt--> 
+    
+<title>Receipt Generator</title>
+
+<!--reciept btn to dow pdf-->
+
+<!-- script for Receipt -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const { jsPDF } = window.jspdf;
+
+    // Function to generate receipt
+    function generateReceipt(btn) {
+      const doc = new jsPDF();
+      const data = btn.dataset;
+      
+      // Header
+      doc.setFontSize(20);
+      doc.setTextColor(40, 40, 40);
+      doc.text("PAYMENT RECEIPT", 105, 20, { align: 'center' });
+      
+      // Company Info (Customize these)
+      doc.setFontSize(10);
+      doc.setTextColor(100, 100, 100);
+      doc.text("Your Dairy Farm Name", 105, 30, { align: 'center' });
+      doc.text("123 Farm Road, Dairyland", 105, 35, { align: 'center' });
+      
+      // Divider Line
+      doc.setDrawColor(200, 200, 200);
+      doc.line(20, 40, 190, 40);
+      
+      // Invoice Details
+      doc.setFontSize(12);
+      let yPos = 50;
+      
+      const details = [
+        ["Receipt No:", data.receipt],
+        ["Date:", data.date],
+        ["Customer:", data.customer],
+        ["Amount:", data.amount],
+        ["Payment Method:", data.paymentMethod],
+        ["Status:", data.status]
+      ];
+      
+      // Add details
+      details.forEach(row => {
+        doc.setFont(undefined, 'bold');
+        doc.text(row[0], 20, yPos);
+        doc.setFont(undefined, 'normal');
+        doc.text(row[1], 60, yPos);
+        yPos += 10;
+      });
+      
+      // Footer
+      yPos += 15;
+      doc.setFontSize(10);
+      doc.setTextColor(100, 100, 100);
+      doc.text("Thank you for your business!", 105, yPos, { align: 'center' });
+      doc.text("Terms: Payment receipt generated on " + new Date().toLocaleDateString(), 105, yPos + 5, { align: 'center'} );
+      
+      // Save PDF
+      doc.save(`${data.customer}_Receipt_${data.receipt.replace('#','')}.pdf`);
+    }
+
+    // Attach to all receipt buttons
+    document.querySelectorAll(".generateReceipt").forEach(btn => {
+      btn.addEventListener("click", function() {
+        generateReceipt(this);
+      });
+    });
+  });
+</script>
+
+      <!----===== Customer CSs ====--->
+
+      <style>
+
+        /* Google fonts === */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+*
+ /*========Globals===========*/
+{
+    font-family: "Ubuntu", sans-serif;
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+ :root
+{
+    --blue: #292185;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1:#222; 
+    --blacl2:#999;
+    --grey:var(--grey)
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+body
+{
+background-color: #f7f9fb;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header {
+   position: fixed;      
+  top: 0;              
+  left: 0;             
+  width: 100%;          
+  background-color: #fff; 
+  z-index: 1000;       
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 10px 20px;    
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;  
+}
+
+.logo-section {
+display: flex;
+align-items: center;
+gap: 10px;
+font-size: small;
+}
+
+
+
+#toggleSidebar {
+font-size: 24px;
+background: none;
+border: none;
+cursor: pointer;
+margin-left: 20px;
+}
+
+.logo {
+width: 145px;
+height: 70px;
+}
+
+.company-name {
+display: flex;
+flex-direction: column;
+font-size: 12px;
+line-height: 1.2;
+
+}
+
+.dashboard-title {
+font-size: 25px;
+color: 	#2C3E50;
+flex-grow: 1;
+text-align:left;
+margin-left: 40px;
+}
+
+
+.header-right {
+display: flex;
+align-items: center;
+gap: 32px;
+text-align: center;
+}
+
+.search-container input {
+position: relative;
+padding: 12px 34px;
+border-radius: 20px;
+border: 1px solid 	#DCDFE3;
+min-width: 332px;
+height: 40px;
+background-color: #F0F3F5;
+}
+
+.search-container .fa-magnifying-glass {
+  position: relative;
+  font-size: 1.0rem;
+  right:322px;
+
+}
+
+.search-container input::placeholder {
+  color: #95a5a6;
+  padding: 5px;
+  font-size: 15px;
+}
+
+
+.icons {
+display: flex;
+gap: 10px;
+font-size: 22px;
+}
+
+
+
+
+
+.icons {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.icon-wrapper {
+  position: relative;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.icon {
+
+  transition: color 0.3s ease;
+}
+
+
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+
+/* Notification Icon - Orange */
+.icon-wrapper.notification .icon {
+  color: #f39c12;
+}
+.icon-wrapper.notification .icon:hover {
+  color: #e67e22;
+}
+
+/* Message Icon - Blue */
+.icon-wrapper.message .icon {
+  color: #3498db;
+}
+.icon-wrapper.message .icon:hover {
+  color: #2980b9;
+}
+
+/* Globe Icon - Green */
+.icon-wrapper.globe .icon {
+  color: #2ecc71;}
+
+.profile {
+display: flex;
+align-items: center;
+gap: 9.8px;
+font-size: 16px;
+margin-right: -5px;
+color: 	#34495E;
+}
+ 
+.avatar {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+border: 2px solid 	#999;
+object-fit: cover;
+
+
+}
+
+
+
+
+
+
+/*===new navigations ===*/
+.navigation {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  background: #fff; /* Pure white background other #ecf0f3 e8f5e9 */
+  transition: 0.5s;
+  overflow: hidden;
+  top: 90px;
+  z-index: 1400;
+}
+
+
+.navigation.active {
+      width: 80px;
+}
+
+.navigation ul{
+  position: absolute ;
+  left: 0;
+  right: 0;
+  width:100%;
+
+}
+.navigation ul li{
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px ;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  
+}
+.navigation ul li:hover{
+  
+  background: #4CAF50; 
+  display: flex;
+  align-items: center ;
+  padding: 4px 4px ;  
+  height: 40px ;       
+  line-height: 0.9rem ;
+}
+.navigation ul li:nth-child(1){
+  margin-top: 10px;
+
+}
+.navigation ul li a{
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: #2c3e50;
+  margin: 5px;
+}    
+.navigation ul li:hover a {
+  color: white; 
+}
+
+.navigation ul li a .icon iconify-icon {
+  font-size: 1.60rem; 
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  min-width: 60px;
+
+}
+
+
+.navigation ul li a .icon i  { 
+  font-size: 1.30rem;
+}     
+
+ .navigation ul li a .tittle{
+    flex: 1;
+    position: relative;
+    display: flex;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }
+
+
+ 
+ .navigation ul li a .icon-right{
+  margin-left: auto;
+  font-size: 12px;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+
+/* Active state (current page) */
+.navigation ul li.active {
+  background-color: #2e7d32;
+  color: #fff;
+  border-top-left-radius: 40px;
+border-bottom-left-radius: 40px;
+border-top-right-radius: 40px;
+border-bottom-right-radius: 40px;
+}
+
+.navigation ul li.active a {
+  color: white;
+  align-items: center ;
+padding: 4px 4px ;  
+height: 40px ;     
+line-height: 0.9rem ;
+}
+
+
+/*main table*/
+
+.canvas {
+  padding: 10px;
+  margin-left: 252px;
+  margin-top: 90px;
+
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+ background: #D1ECF1;
+  color: 	#0C5460; /* Deep green */
+  padding: 12px;
+  transition: background 1s ease;
+}
+
+.table-container {
+  border: 1px solid  #999;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #fff;
+  overflow-x: auto;
+}
+
+.contact-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border-radius:8px ;
+
+}
+
+.contact-table thead {
+   background-color: #f1f8f5; /* Very light green background */
+  color: #333;
+  border-radius: 6px;
+}
+
+.contact-table th, 
+.contact-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.contact-table img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.table-container  button {
+  padding: 6px 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.table-container button:hover {
+  background-color: #4caf50;
+}
+
+ /* popup */
+ /* Modal Background */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Close Button */
+.close {
+  color: #999;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 3px;
+
+}
+
+.close:hover {
+  color: #000;
+}
+h4 {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+/* Table inside modal */
+.milk-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.milk-table th, 
+.milk-table td {
+  border: 1px solid #eee;
+  padding: 10px;
+  text-align: center;
+}
+
+.milk-table th {
+  background-color: #f5f5f5;
+  font-size: 14px;
+}
+
+
+/* ADD new customer css*/
+/* Modal overlay */
+.add-customer-btn {
+    background-color: #4f46e5; /* Indigo-600 */
+  color: #ffffff;
+  padding: 0.55rem 1.0rem;
+  font-size: .90rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 10px;
+  margin-left: 900px;
+}
+
+.add-customer-btn:hover {
+  background-color: #0069d9;
+  transform: translateY(-1px);
+}
+
+.add-customer-btn:active {
+  background-color: #005cbf;
+  transform: translateY(0);
+}
+
+.new-modal {
+    display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal box */
+.new-modal-content {
+ background-color: #fff;
+  margin: 10% auto;
+  padding: 2em;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 440px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Close button */
+.new-close {
+  color: #aaa;
+  float: right;
+  font-size: 29px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: -10px;
+  margin-top: -29px;
+}
+
+.new-close:hover,
+.new-close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* Form styling */
+.new-modal-content form label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+}
+
+.new-modal-content form input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 5px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.new-modal-content form input:focus {
+  border-color: #007bff;
+}
+
+/* Submit button */
+.new-submit-btn {
+  margin-top: 15px;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.new-submit-btn:hover {
+  background-color: #0056b3;
+}
+
+
+/* payment list*/
+ 
+ h3 {
+    color:var(--black1);
+    font-size: 25px;
+    margin-top: -6px;
+    background: linear-gradient(95deg, #FFE3D8 0%, #FFB8B8 100%);
+    text-align: center;
+    font-size:28px;
+    padding: .7rem;
+
+ }
+
+
+ .invoice{
+    margin-left: 258px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-top: 50px;
+    
+ }
+ 
+ .payment-table hr {
+     border: none;
+     margin: 20px 10px;
+     margin-left: 250px;
+ }
+ 
+ .payment-table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-top: 20px;
+ }
+ 
+ .payment-table th, td {
+     padding: 12px 15px;
+     text-align: left;
+     border-bottom: 1px solid #ddd;
+ }
+ 
+ 
+ .payment-table th {
+     background-color:#1e90ff;
+     font-weight: 600;
+     color:#fff;
+ }
+
+
+ .payment-table tr:hover {
+     background-color: #f5f5f5;
+ }
+ 
+ .status-paid {
+     color: #27ae60;
+     font-weight: bold;
+ }
+ 
+ .status-pending {
+     color: #e74c3c;
+     font-weight: bold;
+ }
+
+ .receipt-view-btn {
+  background-color: #3498db; /* green */
+  color: white;
+  padding: 4px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+.generateReceipt{
+  background-color: #4CAF50; /* green */
+  color: white;
+  padding: 4px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+ .receipt-view-btn:hover {
+  background-color: #999;
+}
+.generateReceipt:hover{
+  background-color: #1d1160;
+}
+.record-btn{
+  background-color: #f28c28; /* green */
+  color: white;
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  
+}
+
+
+#generateReceipt {
+  background-color: #4CAF50; /* Green background */
+  color: white;              /* White text */
+  border: none;              /* No border */
+  padding: 6px 10px;        /* Padding around the button */
+  font-size: 13px;           /* Larger text */
+  cursor: pointer;          /* Change cursor to pointer on hover */
+  border-radius: 5px;        /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Button hover effect */
+#generateReceipt:hover {
+  background-color: #45a049;
+}
+
+
+.add-payment-btn {
+  background-color: #005cbf;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  margin-bottom: -12px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 15px;
+  margin-left: 915px;
+}
+.add-payment-btn:hover {
+  background-color: #0069d9;
+  transform: translateY(-1px);
+}
+
+
+
+/* Modal Overlay */
+#paymentModal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 20;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+}
+
+/* Modal Box */
+#paymentModal .modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 30px 35px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Close Button */
+#paymentModal .close-modal {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+}
+#paymentModal .close-modal:hover {
+  color: #000;
+}
+
+/* Heading */
+#paymentModal h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #333;
+}
+
+/* Form Styling */
+#paymentForm {
+  display: flex;
+  flex-direction: column;
+}
+
+#paymentForm label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #444;
+}
+
+#paymentForm input,
+#paymentForm select {
+  padding: 10px 7px;
+  margin-bottom: -5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+#paymentForm input:focus,
+#paymentForm select:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+/* Submit Button */
+#paymentForm button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#paymentForm button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #paymentModal .modal-content {
+    padding: 20px 15px;
+  }
+
+  #paymentForm input,
+  #paymentForm select {
+    font-size: 0.95rem;
+  }
+
+  #paymentForm button[type="submit"] {
+    font-size: 0.95rem;
+  }
+}
+
+
+
+                          /*themes*/
+
+/* Dark Theme */
+body.dark-theme {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+.dark-theme h3, {
+  margin-bottom: 10px;
+  color: #f9f9f9;
+}
+
+
+/* Dark Theme Header */
+body.dark-theme header {
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+}
+
+
+/* Dark Theme Header Text */
+body.dark-theme header,
+body.dark-theme header * {
+  color: #fff ;
+}
+
+/* logo color in dark theme */
+.dark-theme .logo {
+  filter: invert(1);  
+}
+
+
+
+body.dark-theme .card {
+  background: #333333;
+  color: var(--text-dark);
+  box-shadow: 0px 1px 0px 4px rgba(0, 0, 0, 0.2);
+  .target { color: #f0f0f0; display: block; }
+}
+
+.dark-theme .search-container input {
+  background-color: var(--white);
+  border: 1px solid var(--border-light);
+}
+
+body.dark-theme .search-container input {
+  background-color: #333;
+  border: 1px solid var(--border-dark);
+  color: var(--text-dark);
+}
+
+/* General Dark Theme */
+body.dark-theme {
+  background-color: #121212; 
+  color: #e0e0e0; 
+}
+
+
+/* DARK THEME FOR NAVIGATION */
+
+/* Dark Theme Sidebar */
+body.dark-theme .navigation {
+  background-color: #1e1e2f;
+}
+
+/* Dark Theme Nav Links */
+body.dark-theme .navigation ul li a {
+  color: #f1f1f1;
+}
+
+/* Dark Theme Icon Color */
+body.dark-theme .navigation ul li a .icon i,
+body.dark-theme .navigation ul li a .icon iconify-icon {
+  color: #f1f1f1;
+}
+
+/* Dark Theme Hover */
+body.dark-theme .navigation ul li:hover {
+  background-color: #2a2a3d;
+}
+
+body.dark-theme .navigation ul li:hover a {
+  color: white;
+}
+
+/* Dark Theme Active Item */
+body.dark-theme .navigation ul li.active {
+  background-color: #2c7a33;
+}
+
+body.dark-theme .navigation ul li.active a {
+  color: #ffffff;
+}
+
+/* === DARK MODE FOR NAVIGATION === */
+body.dark-theme .navigation {
+  background: #1e1e2f; 
+}
+
+body.dark-theme .navigation ul li a {
+  color: #cfd8dc;
+}
+
+body.dark-theme .navigation ul li:hover {
+  background: #388e3c; 
+}
+
+body.dark-theme .navigation ul li:hover a {
+  color: #ffffff;
+}
+
+body.dark-theme .navigation ul li.active {
+  background-color: #66bb6a;
+  color: #ffffff;
+}
+
+body.dark-theme .navigation ul li.active a {
+  color: #ffffff;
+}
+
+
+.dark-theme .canvas {
+  padding: 10px;
+  margin-left: 252px;
+  margin-top: 90px;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+.dark-theme h2 {
+  background: #0C5460;
+  color: #D1ECF1;
+}
+
+.dark-theme .table-container {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+}
+
+.dark-theme .contact-table thead {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-theme .contact-table th,
+.dark-theme .contact-table td {
+  border-bottom: 1px solid #444;
+}
+
+.dark-theme .table-container button {
+  background-color: #444;
+  color: #fff;
+}
+
+.dark-theme .table-container button:hover {
+  background-color: #4caf50;
+}
+
+.dark-theme .modal-content,
+.dark-theme .new-modal-content,
+.dark-theme #paymentModal .modal-content {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+}
+
+.dark-theme .close,
+.dark-theme .new-close,
+.dark-theme #paymentModal .close-modal {
+  color: #bbb;
+}
+
+.dark-theme .close:hover,
+.dark-theme .new-close:hover,
+.dark-theme #paymentModal .close-modal:hover {
+  color: #fff;
+}
+
+.dark-theme .milk-table th {
+  background-color: #444;
+  color: #f0f0f0;
+}
+
+.dark-theme .milk-table td {
+  border: 1px solid #555;
+}
+
+.dark-theme .new-modal-content form label {
+  color: #ccc;
+}
+
+.dark-theme .new-modal-content form input,
+.dark-theme #paymentForm input,
+.dark-theme #paymentForm select {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+.dark-theme h3,
+.dark-theme h4 {
+  color: #f9f9f9;
+  background: #333;
+}
+
+.dark-theme .invoice {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+.dark-theme .payment-table th {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+.dark-theme .payment-table tr:hover {
+  background-color: #2a2a2a;
+}
+
+.dark-theme .receipt-view-btn,
+.dark-theme .generateReceipt,
+.dark-theme .record-btn,
+.dark-theme .add-payment-btn,
+.dark-theme #generateReceipt,
+.dark-theme #paymentForm button[type="submit"] {
+  background-color: #444;
+  color: #fff;
+}
+
+.dark-theme .receipt-view-btn:hover,
+.dark-theme .generateReceipt:hover,
+.dark-theme #generateReceipt:hover,
+.dark-theme #paymentForm button[type="submit"]:hover {
+  background-color: #555;
+}
+
+.dark-theme .add-customer-btn {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+.dark-theme .add-customer-btn:hover {
+  background-color: #444;
+}
+
+.dark-theme .new-submit-btn {
+  background-color: #555;
+}
+
+.dark-theme .new-submit-btn:hover {
+  background-color: #666;
+}
+/* Dark theme modal content */
+body.dark-theme #paymentModal .modal-content {
+  background-color: #222;      
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  color: #eee;                 
+}
+
+/* Dark theme close button */
+body.dark-theme #paymentModal .close-modal {
+  color: #bbb;
+}
+body.dark-theme #paymentModal .close-modal:hover {
+  color: #fff;
+}
+
+/* Dark theme heading */
+body.dark-theme #paymentModal h3 {
+  color: #eee;
+}
+
+/* Dark theme form labels */
+body.dark-theme #paymentForm label {
+  color: #ccc;
+}
+
+/* Dark theme form selects */
+body.dark-theme #paymentForm input,
+body.dark-theme #paymentForm select {
+  background-color: #333;
+  border: 1px solid #555;
+  color: #eee;
+}
+
+body.dark-theme #paymentForm input:focus,
+body.dark-theme #paymentForm select:focus {
+  border-color: #4a90e2;
+  outline: none;
+  background-color: #444;
+}
+
+/* Dark theme submit button */
+body.dark-theme #paymentForm button[type="submit"] {
+  background-color: #388e3c;
+  color: white;
+}
+body.dark-theme #paymentForm button[type="submit"]:hover {
+  background-color: #2e7d32;
+}
+        </style>
+
+      <!----===== END of Customer CSs ====--->
+
+        <!----=====  Customer Js ====--->
+<script>
+  // Open Add Customer Modal
+function openNewCustomerModal() {
+  document.getElementById("newCustomerModal").style.display = "block";
+}
+
+// Close Add Customer Modal
+function closeNewCustomerModal() {
+  document.getElementById("newCustomerModal").style.display = "none";
+}
+
+
+// Add New Customer Form
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("newCustomerForm");
+  const tableBody = document.querySelector(".contact-table tbody");
+
+    // inputs
+  const nameInput = document.getElementById("customerNameInput");
+  const phoneInput = document.getElementById("customerPhone");
+
+
+
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const imgUrl = document.getElementById("customerImage").value || "default.jpg";
+    const name = document.getElementById("customerNameInput").value;
+    const phone = document.getElementById("customerPhone").value;
+    const email = document.getElementById("customerEmail").value;
+    const address = document.getElementById("customerAddress").value;
+
+
+
+     // Validation checks
+
+
+    const lettersOnly = name.replace(/[^a-zA-Z]/g, "");
+if (lettersOnly.length < 3 || name.length > 15) {
+  alert("Customer name must contain at least 3 letters and be under 15 characters.");
+  return;
+}
+
+   
+ if (!/^[6-9]\d{9}$/.test(phone)) {
+  alert("Phone number must be exactly 10 digits and start with 6, 7, 8, or 9.");
+  return;
+}
+    
+
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+      <td><img src="${imgUrl}" alt="${name}" width="40"></td>
+      <td>${name}</td>
+      <td>${phone}</td>
+      <td>${email}</td>
+      <td>${address}</td>
+      <td><button class="view-btn" onclick="showCustomerDetails(-1)">View Sale Details</button></td>
+    `;
+
+    tableBody.appendChild(newRow);
+
+    form.reset(); // Clear the form
+    closeNewCustomerModal(); // Close the modal
+  });
+});
+
+
+
+
+
+///////////////////////////////////////////////////////////
+// for add payment
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Open Payment Modal
+  document.getElementById("addPaymentBtn").onclick = function () {
+    document.getElementById("paymentModal").style.display = "flex";
+  };
+
+  // Close Payment Modal
+  document.querySelector(".close-modal").onclick = function () {
+    document.getElementById("paymentModal").style.display = "none";
+  };
+
+  const amountInput = document.getElementById("amount");
+
+
+//  Amount input length to 12 characters 
+amountInput.addEventListener("input", () => {
+  if (amountInput.value.length > 12) {
+    amountInput.value = amountInput.value.slice(0, 12);
+  }
+});
+
+
+
+
+
+
+  // Payment Form Submission
+  document.getElementById("paymentForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const invoice = document.getElementById("invoice").value;
+    const date = document.getElementById("date").value;
+    const customer = document.getElementById("customer").value;
+    const amount = "₹" + parseFloat(document.getElementById("amount").value).toFixed(2);
+    const paymentMethod = document.getElementById("paymentMethod").value;
+    const status = document.getElementById("status").value;
+
+    // Name validation:
+
+    if (!customer) {
+    alert("Name is required.");
+    return;
+  }
+  if (!/^[a-zA-Z\s]+$/.test(customer)) {
+    alert("Name must contain only letters and spaces.");
+    return;
+  }
+  if (customer.length < 3 || customer.length > 12) {
+    alert("Name must be between 3 and 12 characters.");
+    return;
+  }
+
+  // Amount Validation
+
+const amountValue = document.getElementById("amount").value.trim();
+
+
+// if amount is empty
+if (!amountValue) {
+  alert("Amount is required.");
+  return;
+}
+
+// if amount contains only digits 
+if (!/^\d+(\.\d{1,2})?/.test(amountValue)) {
+  alert("Amount must be a valid number (up to 2 decimal places) and no letters.");
+  return;
+}
+
+//  Check if amount is greater than 0
+if (parseFloat(amountValue) <= 0) {
+  alert("Amount must be greater than zero.");
+  return;
+}
+
+
+    const table = document.querySelector(".payment-table tbody");
+    const row = table.insertRow();
+    row.innerHTML = `
+      <td>${invoice}</td>
+      <td>${new Date(date).toLocaleDateString()}</td>
+      <td>${customer}</td>
+      <td>${amount}</td>
+      <td>${paymentMethod}</td>
+      <td class="${status === 'Paid' ? 'status-paid' : 'status-pending'}">${status}</td>
+      <td>
+        <button class="generateReceipt" 
+          data-customer="${customer}" 
+          data-receipt="${invoice}" 
+          data-date="${new Date(date).toLocaleDateString()}" 
+          data-amount="${amount}" 
+          data-payment-method="${paymentMethod}" 
+          data-status="${status}">
+          Receipt
+        </button>
+      </td>
+    `;
+
+    attachReceiptHandlers(); 
+    document.getElementById("paymentModal").style.display = "none";
+    this.reset();
+  });
+
+  //receipt button click
+  function attachReceiptHandlers() {
+    document.querySelectorAll(".generateReceipt").forEach((btn) => {
+      btn.removeEventListener("click", handleReceipt);
+      btn.addEventListener("click", handleReceipt);
+    });
+  }
+
+
+
+  // receipt buttons on page load
+  attachReceiptHandlers();
+});
+
+  </script>
+
+
+        <!----===== END of Customer Js ====--->
+
+
+
+           <!----===== script js ====--->
+    <script src="script.js"></script>
+
+      
+         <!---Theme js-->
+  <script src="theme.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!---- ====font awesome==== ---->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+
+</body>
+</html>

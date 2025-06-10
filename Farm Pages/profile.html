@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm-GO</title>
+</head>
+<!----==== styles csss===----->
+<link rel="stylesheet" href="profile.css">
+  <!----===== script js ====--->
+  <script src="profile.js" defer></script>
+
+  
+<!--Chart .js-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!--Iconifyy icons-->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+
+    
+<body>
+
+    <header class="dashboard-header">
+      <div class="logo-section">
+        <img src="logo.png" alt="ATS Logo" class="logo"/>
+        <button id="toggleSidebar">&#9776;</button>
+        <div class="company-name">
+        </div>
+      </div>
+      <h1 class="dashboard-title">Admin Dashboard</h1>
+      <div class="header-right">
+        
+        <div class="search-container">
+  <input type="text" placeholder="Search..."/>
+  <i class="fa-solid fa-magnifying-glass"></i>
+</div>
+
+        
+        <div class="icons">
+
+         <div class="icon-wrapper notification">
+          <i class="fas fa-bell icon"></i>
+          <span class="badge">3</span> <!-- Notification count -->
+          </div>
+            <div class="icon-wrapper message">
+         <i class="fas fa-envelope icon"></i>
+          <span class="badge">6</span>
+          </div>
+
+           <div class="icon-wrapper globe">
+          <i class="fas fa-globe icon"></i> <!-- Language or globe -->
+        </div>
+          <!-- Wrap profile area in a button or link -->
+      <div class="profile" id="profileTrigger">
+        <img src="customer.jpg" alt="User" class="avatar" />
+        <span>Mark Williams</span>
+      </div>
+
+      
+    </header>
+
+  
+</body>
+
+
+
+        <!-------====== New Navigation =====--->
+     
+        
+            <div class="navigation">
+                <ul>
+                    <li>
+                        <a href="page.html">
+                            <span class="icon">
+                            <i class="fa-solid fa-table-columns"></i></span>
+                            <span class="tittle">Dashboard</span>
+                        </a>    
+                    </li>
+                    <li>
+                        <a href="human.html">
+                            <span class="icon"><i class="fa-solid fa-person"></i></span>
+                            <span class="tittle">Human Resources
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                        </a>    
+                    </li>
+                    <li>
+                        <a href="customer.html">
+                            <span class="icon"><i class="fa-solid fa-people-arrows"></i></span>
+                            <span class="tittle">Customers
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                        </a>    
+                    </li>
+                   
+                    <li>
+                        <a href="monitor.html">
+                            <span class="icon"><i class="fa-solid fa-desktop"></i></span>
+                            <span class="tittle">Animals Monitor
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+            
+                        </a>    
+                    </li>
+                    <li>
+                        <a href="Manage.html">
+                           <span class="icon">
+                            <iconify-icon icon="mdi:storefront-outline"></iconify-icon>
+                             </span>
+                            <span class="tittle">Manage Stall
+                            <i class="fa-solid fa-chevron-right icon-right"></i>
+                            </span>
+                        </a>    
+                    </li>
+                    
+                    <li>
+                        <a href="settings.htm">
+                            <span class="icon"><i class="fa-solid fa-gear"></i></span>
+                            <span class="tittle">Settings
+                               <i class="fa-solid fa-chevron-right icon-right"></i></span>
+        
+                        </a>    
+                    </li>     
+                    
+                    <li>
+                        <a href="report.html">
+                            <span class="icon"><i class="fa-solid fa-flag-checkered"></i></span>
+                            <span class="tittle">Reports
+                            <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                        </a>    
+                    </li>
+                         <li class="logout-nav">
+           <a href="#" onclick="logout()">
+        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+        <span class="tittle">Logout
+           <i class="fa-solid fa-chevron-right icon-right"></i></span>
+                </a>
+                </li>
+
+                </ul>
+            </div>
+        
+
+
+            
+            <!-- profile page-->
+    
+
+
+            <body>
+                <div class="profile-container">
+                  <div class="profile-header">
+                    <div class="profile-img-wrapper">
+              <img src="customer.jpg" alt="Profile Picture" class="profile-img" id="profileImage" />
+                    <input type="file" id="imageUpload" accept="image/*" />
+              <label for="imageUpload" class="upload-label">
+                 <i class="fa-solid fa-camera"></i>
+                        </label>
+                      </div>
+                    <div>
+                        <h2>Mark Williams 
+                            <span class="verified-badge">
+                                <svg viewBox="0 0 24 24" aria-label="Verified account" fill="#1DA1F2">
+                                    <g>
+                                        <path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.66-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.91-.2-3.92.81s-1.26 2.52-.8 3.91c-1.31.67-2.2 1.91-2.2 3.34s.89 2.67 2.2 3.34c-.46 1.39-.21 2.9.8 3.91s2.52 1.26 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.68-.88 3.34-2.19c1.39.45 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"></path>
+                                    </g>
+                                </svg>
+                            </span>
+                        </h2>
+                        <p>williams@example.com</p>
+                    </div>
+                    <button id="editProfileBtn" class="edit-icon" title="Edit Profile">
+  <i class="fa-solid fa-pen-to-square"></i>
+</button>
+                </div>
+              
+                  <div class="profile-grid">
+                    <!-- Personal Details -->
+                    <section class="profile-card">
+                      <h3>Personal details</h3>
+                      <ul>
+                        <li><strong>Full name:</strong> Mark Williams</li>
+                        <li><strong>Date of Birth:</strong> January 14, 1997</li>
+                        <li><strong>Gender:</strong> Male</li>
+                        <li><strong>Nationality:</strong> American</li>
+                        <li><strong>Address:</strong> 🇺🇸 California - United States</li>
+                        <li><strong>Phone Number:</strong> (213) 555-1234</li>
+                        <li><strong>Email:</strong> williams@example.com</li>
+                      </ul>
+                    </section>
+              
+                    <!-- Account Details -->
+                    <section class="profile-card">
+                      <h3>Account Details</h3>
+                      <ul>
+                        <li><strong>Display Name:</strong> Mark williams</li>
+                        <li><strong>Account Created:</strong> March 20, 2020</li>
+                        <li><strong>Last Login:</strong> May 9, 2025</li>
+                        <li><strong>Membership Status:</strong> Premium Member</li>
+                        <li><strong>Account Verification:</strong> <span class="verified">Verified</span></li>
+                        <li><strong>Language Preference:</strong> English</li>
+                        <li><strong>Time Zone:</strong> GMT-5 (Eastern Time)</li>
+                      </ul>
+                    </section>
+              
+                    <!-- Security Settings -->
+                    <section class="profile-card">
+                      <h3>Security Settings</h3>
+                      <ul>
+                        <li><strong>Password Last Changed:</strong> July 15, 2024</li>
+                        <li><strong>Two-Factor Authentication:</strong> <span class="enabled">Enabled</span></li>
+                        <li><strong>Security Questions Set:</strong> Yes</li>
+                        <li><strong>Login Notifications:</strong> <span class="enabled">Enabled</span></li>
+                        <li><strong>Connected Devices:</strong> 3 Devices</li>
+                        <li><strong>Recent Account Activity:</strong> No Suspicious Activity Detected</li>
+                      </ul>
+                    </section>
+              
+                    <!-- Preferences -->
+                    <section class="profile-card">
+                      <h3>Preferences</h3>
+                      <ul>
+                        <li><strong>Email Notifications:</strong> <span class="subscribed">Subscribed</span></li>
+                        <li><strong>SMS Alerts:</strong> <span class="enabled">Enabled</span></li>
+                        <li><strong>Content Preferences:</strong> Technology, Design, Innovation</li>
+                        <li><strong>Default Dashboard View:</strong> Compact Mode</li>
+                        <li><strong>Dark Mode:</strong> Activated</li>
+                        <li><strong>Language for Content:</strong> English</li>
+                      </ul>
+                    </section>
+                  </div>
+                </div>
+ 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const editBtn = document.getElementById("editProfileBtn");
+  const imageInput = document.getElementById("imageUpload");
+  const profileImage = document.getElementById("profileImage");
+  const headerAvatar = document.getElementById("headerAvatar"); // <== NEW
+
+  // Load saved image if any
+  const savedImage = localStorage.getItem("profilePic");
+  if (savedImage) {
+    profileImage.src = savedImage;
+    if (headerAvatar) headerAvatar.src = savedImage; // <== NEW
+  }
+
+  // Handle image change
+  imageInput.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const newImage = event.target.result;
+        profileImage.src = newImage;
+        if (headerAvatar) headerAvatar.src = newImage; // <== NEW
+        localStorage.setItem("profilePic", newImage);
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  // Edit button logic
+  editBtn.addEventListener("click", () => {
+    const cards = document.querySelectorAll(".profile-card ul");
+
+    cards.forEach(ul => {
+      ul.querySelectorAll("li").forEach(li => {
+        const strong = li.querySelector("strong");
+        const key = strong?.textContent.replace(":", "").trim();
+        const value = strong?.nextSibling?.textContent.trim();
+
+        if (key && value) {
+          const input = document.createElement("input");
+          input.type = "text";
+          input.value = value;
+          input.setAttribute("data-key", key);
+          li.innerHTML = `<strong>${key}:</strong> `;
+          li.appendChild(input);
+        }
+      });
+    });
+
+    const saveBtn = document.createElement("button");
+    saveBtn.textContent = "Save";
+    saveBtn.classList.add("save-btn");
+
+    const cancelBtn = document.createElement("button");
+    cancelBtn.textContent = "Cancel";
+    cancelBtn.classList.add("cancel-btn");
+
+    editBtn.style.display = "none";
+    editBtn.parentNode.appendChild(saveBtn);
+    editBtn.parentNode.appendChild(cancelBtn);
+
+    saveBtn.addEventListener("click", () => {
+      cards.forEach(ul => {
+        ul.querySelectorAll("li").forEach(li => {
+          const input = li.querySelector("input");
+          if (input) {
+            const key = input.getAttribute("data-key");
+            const newValue = input.value;
+            li.innerHTML = `<strong>${key}:</strong> ${newValue}`;
+          }
+        });
+      });
+
+      saveBtn.remove();
+      cancelBtn.remove();
+      editBtn.style.display = "inline-block";
+    });
+
+    cancelBtn.addEventListener("click", () => {
+      location.reload(); // simple rollback
+    });
+  });
+});
+</script>
+
+
+
+
+
+  <!---Theme js-->
+<script src="theme.js" defer></script>
+
+
+<!---- ====apex charts==== ---->
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>   
+
+<!---- ====font awesome==== ---->
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+</body>
+</html>   
